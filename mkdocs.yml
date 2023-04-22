@@ -1,0 +1,34 @@
+site_name: FastTransplant
+site_url: https://mdsreq-fga-unb.github.io/2023.1-FastTransplant/
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+  language: pt-BR
+  palette: 
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+  features:
+    - navigation.instant
+    - navigation.section
+    - navigation.path
+    - navigation.top
+    - tabs
+nav:
+  - Home: index.md
+  - Visão do Produto e Projeto:
+    - Visão do Produto: visao-do-produto-e-projeto/visao-do-produto.md
+    - Visão do Projeto: visao-do-produto-e-projeto/visao-do-projeto.md
+    - Processo de Desenvolvimento: visao-do-produto-e-projeto/processo-de-desenvolvimento.md
+    - Lições Aprendidas: visao-do-produto-e-projeto/licoes-aprendidas.md
+  - Entregas das Unidades:
+    - Unidade 1: entregas/unidade1.md
+
