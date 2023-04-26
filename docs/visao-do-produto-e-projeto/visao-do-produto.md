@@ -8,7 +8,7 @@
 
 ## Problema
 
-De acordo com o [portal oficial do Governo Federal](http://gov.br), o Hospital Universitário de Brasília [HUB](https://www.gov.br/ebserh/pt-br/hospitais-universitarios/regiao-centro-oeste/hub-unb) é referência nacional no que tange à área médica de transplantes: “Em 2014, a instituição contabilizou 36 transplantes de rins. Já o primeiro transplante de córnea ocorreu em 2008. Até o momento, o hospital soma 466 cirurgias realizadas, sendo 63 delas feitas só no ano passado. O Hospital Universitário possui, desde 2010, programas de residência médica em urologia e em nefrologia com área de atuação em transplantes renais, sendo o único centro de formação de residência médica em transplante das regiões Centro‑Oeste e Norte do país”¹.</br></br>
+De acordo com o [portal oficial do Governo Federal](http://gov.br), o Hospital Universitário de Brasília [HUB](https://www.gov.br/ebserh/pt-br/hospitais-universitarios/regiao-centro-oeste/hub-unb) é referência nacional no que tange à área médica de transplantes: “Em 2014, a instituição contabilizou 36 transplantes de rins. Já o primeiro transplante de córnea ocorreu em 2008. Até o momento, o hospital soma 466 cirurgias realizadas, sendo 63 delas feitas só no ano passado. O Hospital Universitário possui, desde 2010, programas de residência médica em urologia e em nefrologia com área de atuação em transplantes renais, sendo o único centro de formação de residência médica em transplante das regiões Centro‑Oeste e Norte do país” ¹.</br></br>
 No entanto, o HUB possui alguns empecilhos de ordem estrutural (tecnológica) e técnica que inviabilizam o processo de transplantes. Em relação àquele, um problema notável é a  dificuldade de análise dos dados referentes aos órgãos a serem transplantados. A documentação que contém essas informações é enviada em formato PDF, o que torna a visualização e análise dos dados bastante aglomerada, confusa e não padronizada.</br></br>
 Em consequência, essa situação acaba gerando um grande impacto no tempo necessário para que a equipe médica possa analisar e tomar a decisão sobre a aceitação ou não do órgão. Além disso, essa demora pode ser extremamente prejudicial ao paciente que aguarda o transplante, pois quanto mais tempo demora para que o órgão seja aceito, maiores são as chances de que ele seja comprometido e, portanto, inviável para o transplante. Esta problemática pode ser visualizada abaixo por intermédio do diagrama de Ishikawa (Figura 1):</br></br>
 
@@ -57,6 +57,6 @@ Front-end: React.js</br>
 Back-end: Django</br>
 Banco de dados: MongoDB</br>
 
-## Referências
+## Referências Bibliográficas
 
- ¹ Hospital Universitário de Brasília (HUB) é destaque por transplantes realizados. Disponível em: <https://www.gov.br/ebserh/pt-br/hospitais-universitarios/regiao-centro-oeste/hub-unb/comunicacao/noticias/hub-e-destaque-por-transplantes-realizados>. Acesso em: 25 abr. 2023.
+ > ¹ Hospital Universitário de Brasília (HUB) é destaque por transplantes realizados. Disponível em: <https://www.gov.br/ebserh/pt-br/hospitais-universitarios/regiao-centro-oeste/hub-unb/comunicacao/noticias/hub-e-destaque-por-transplantes-realizados>. Acesso em: 25 abr. 2023.
