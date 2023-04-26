@@ -6,41 +6,57 @@ Gupta (2008)¹ propõe que a escolha da abordagem de desenvolvimento de software
 
 ### Características dos Requisitos
 
-Requerimentos | Waterfall | Prototype | Iterative Enhancement | Evolutionary development | Spiral | RAD
-:---|:---:|:---:|:---:|:---:|:---:|:---:|
-Os requisitos são facilmente compreensíveis e definidos? (SIM)| Sim | Não | Não | Não | Não | Sim |
-Mudamos os requisitos com bastante frequência? (NÃO)| Sim | Não | Sim | Sim | Não | Sim |
-Podemos mudar os requisitos no início do ciclo? (SIM)| Sim | Não | Sim | Sim | Não  | Sim |
-Os requisitos indicam um sistema complexo a ser construído? (NÃO)| Sim | Não | Não | Não | Não | Sim |
+<center>
+
+| Requerimentos | Waterfall | Prototype | Iterative Enhancement | Evolutionary development | Spiral | RAD |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|
+|Os requisitos são facilmente compreensíveis e definidos? (SIM)| Sim | Não | Não | Não | Não | Sim |
+|Mudamos os requisitos com bastante frequência? (NÃO)| Sim | Não | Sim | Sim | Não | Sim |
+|Podemos mudar os requisitos no início do ciclo? (SIM)| Sim | Não | Sim | Sim | Não  | Sim |
+|Os requisitos indicam um sistema complexo a ser construído? (NÃO)| Sim | Não | Não | Não | Não | Sim |
+
+</center>
 
 ### Status da Equipe de Desenvolvimento
 
-Requerimentos | Waterfall | Prototype | Iterative Enhancement | Evolutionary development | Spiral | RAD
-:---|:---:|:---:|:---:|:---:|:---:|:---:|
-Menos experiência em projetos similares(SIM) | Não | Sim | Não | Não | Sim | Não |
-Menos conhecimento de domínio (novidade na tecnologia) (NÃO) | Não | Sim | Não | Não | Não | Sim |
-Menos experiência nas ferramentas a serem utilizadas (NÃO) | Não | Sim | Sim | Sim | Não | Sim |
-Disponibilidade de treinamento, se necessário(SIM) | Não | Não | Sim | Sim | Não | Sim |
+<center>
+
+|Requerimentos | Waterfall | Prototype | Iterative Enhancement | Evolutionary development | Spiral | RAD |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|
+|Menos experiência em projetos similares(SIM) | Não | Sim | Não | Não | Sim | Não |
+|Menos conhecimento de domínio (novidade na tecnologia) (NÃO) | Não | Sim | Não | Não | Não | Sim |
+|Menos experiência nas ferramentas a serem utilizadas (NÃO) | Não | Sim | Sim | Sim | Não | Sim |
+|Disponibilidade de treinamento, se necessário(SIM) | Não | Não | Sim | Sim | Não | Sim |
+
+</center>
 
 ### Envolvimento do Usuário
 
-Requerimentos | Waterfall | Prototype | Iterative Enhancement | Evolutionary development | Spiral | RAD
-:---|:---:|:---:|:---:|:---:|:---:|:---:|
-Envolvimento do usuário em todas as fases (NÃO) | Sim | Não | Sim | Sim | Sim | Não |
-Participação limitada do usuário(SIM) | Sim | Não | Sim | Sim | Sim | Não |
-O usuário não tem experiência prévia de participação em projeto semelhante(SIM)| Não | Sim | Sim | Sim | Sim | Não |
-Os usuários são especialistas no domínio do problema (NÃO) | Sim | Não | Não | Sim | Sim | Não |
+<center>
+
+|Requerimentos | Waterfall | Prototype | Iterative Enhancement | Evolutionary development | Spiral | RAD |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|
+|Envolvimento do usuário em todas as fases (NÃO) | Sim | Não | Sim | Sim | Sim | Não |
+|Participação limitada do usuário(SIM) | Sim | Não | Sim | Sim | Sim | Não |
+|O usuário não tem experiência prévia de participação em projeto semelhante(SIM)| Não | Sim | Sim | Sim | Sim | Não |
+|Os usuários são especialistas no domínio do problema (NÃO) | Sim | Não | Não | Sim | Sim | Não |
+
+</center>
 
 ### Tipo de Projeto e Risco Associado
 
-Requerimentos | Waterfall | Prototype | Iterative Enhancement | Evolutionary development | Spiral | RAD
-:---|:---:|:---:|:---:|:---:|:---:|:---:|
-O projeto é aprimoramento do sistema existente (NÃO)| Sim | Sim | Não | Não | Sim | Não |
-O financiamento é estável para o projeto(SIM)| Sim | Sim | Não | Não | Não | Sim |
-Altos requisitos de confiabilidade(SIM)| Não | Não | Sim | Sim | Sim  | Não |
-Cronograma do projeto apertado(SIM)| Não | Sim | Sim | Sim | Sim | Sim |
-Uso de componentes reutilizáveis(NÃO)| Sim | Não | Sim | Sim | Não | Não |
-Os recursos (tempo, dinheiro, pessoas etc.) são escassos?(SIM)| Não | Sim | Não | Não | Sim | Não |
+<center>
+
+|Requerimentos | Waterfall | Prototype | Iterative Enhancement | Evolutionary development | Spiral | RAD |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|
+|O projeto é aprimoramento do sistema existente (NÃO)| Sim | Sim | Não | Não | Sim | Não |
+|O financiamento é estável para o projeto(SIM)| Sim | Sim | Não | Não | Não | Sim |
+|Altos requisitos de confiabilidade(SIM)| Não | Não | Sim | Sim | Sim  | Não |
+|Cronograma do projeto apertado(SIM)| Não | Sim | Sim | Sim | Sim | Sim |
+|Uso de componentes reutilizáveis(NÃO)| Sim | Não | Sim | Sim | Não | Não |
+|Os recursos (tempo, dinheiro, pessoas etc.) são escassos?(SIM)| Não | Sim | Não | Não | Sim | Não |
+
+</center>
 
 ## Facetas
 
@@ -127,6 +143,6 @@ Figura 2 - Rapid Application Development (Fonte: [Kissflow](https://kissflow.com
 
 ## Referências Bibliográficas
 
-> ¹ GUPTA, S. Managing Iterative Software Development Projects. Auerbach Publications, 2008.
-> ² INTERNATIONAL REQUIREMENTS ENGINEERING BOARD. Handbook IREB CPRE Foundation Level, Version 1.1.0, september 2022. [S.l.]: International Requirements Engineering Board, 2022.
+> ¹ GUPTA, S. Managing Iterative Software Development Projects. Auerbach Publications, 2008.</br>
+> ² INTERNATIONAL REQUIREMENTS ENGINEERING BOARD. Handbook IREB CPRE Foundation Level, Version 1.1.0, september 2022. [S.l.]: International Requirements Engineering Board, 2022.</br>
 > ³ GLIN, Martin. Requirements Engineering I – Part II: RE Practices. [S.l.]: Martin Glin, 2019.
