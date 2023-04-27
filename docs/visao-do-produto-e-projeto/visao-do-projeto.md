@@ -69,7 +69,7 @@ A tabela 2 traz um resumo de cada fase e quais serão os produtos de gerados de 
 | **Fase** | **Etapas**                               | **Produto (Entrega)**                                  | **Data Início** | **Data Fim** |
 |:--------:|:----------------------------------------:|:------------------------------------------------------:|:---------------:|:------------:|
 | Fase 1   | Definição de requisitos                  | Escopo do projeto e backlog                            | 02/05/23        | 09/05/23     |
-| Fase 2   | Projeto de Interface do Usuário e Design | Arquitetura do sistema, protótipos de baixa fidelidade | 10/05/23        | 23/05/23     |
+| Fase 2   | Projeto de Interface do Usuário e Design | Arquitetura do sistema, protótipos de alta fidelidade  | 10/05/23        | 23/05/23     |
 | Fase 3   | Desenvolvimento de Software              | MVP1                                                   | 24/05/23        | 13/06/23     |
 | Fase 4   | MVP1                                     | MVP1 testado e validado                                | 14/06/23        | 19/06/23     |
 | Fase 5   | Aperfeiçoamento e Aprimoramento          | MVP2                                                   | 20/06/23        | 04/07/23     |
