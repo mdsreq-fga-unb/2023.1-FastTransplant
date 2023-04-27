@@ -31,9 +31,10 @@ nav:
     - Lições Aprendidas: visao-do-produto-e-projeto/licoes-aprendidas.md
   - Entregas das Unidades:
     - Unidade 1:
-      - Pitch RAD: entregas\unidade1\pitch-rad.md 
-      - Diagrama de Ishikawa: entregas\unidade1\ishiwaka.md 
-      - Processo de ER: entregas\unidade1\processo-ER.md 
-    - Vídeos: entregas\videos\videos.md
+      - Pitch RAD: entregas/unidade1/pitch-rad.md 
+      - Diagrama de Ishikawa: entregas/unidade1/ishiwaka.md 
+      - Processo de ER: entregas/unidade1/processo-ER.md 
+    - Vídeos: entregas/videos/videos.md
+    
     
 
