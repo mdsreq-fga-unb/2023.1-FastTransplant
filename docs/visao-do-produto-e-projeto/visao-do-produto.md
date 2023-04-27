@@ -52,6 +52,12 @@ Prima-se pela compatibilidade do software com os sistemas existentes do hospital
 
 ## Tecnologias a serem Utilizadas
 
+![python](../assets/visao-do-produto/django.png)
+![python](../assets/visao-do-produto/js.png)
+![python](../assets/visao-do-produto/mongo.png)
+![python](../assets/visao-do-produto/python.png)
+![python](../assets/visao-do-produto/react.png)
+
 Linguagens de programação: Python e Javascript</br>
 Front-end: React.js</br>
 Back-end: Django</br>
