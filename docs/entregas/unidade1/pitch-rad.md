@@ -14,4 +14,4 @@
 
 ![RAD7](../assets//entregas/unidade1/rad/7.png)
 
-![RAD8](../assets//entregas/unidade1/rad/8.png)
+![RAD8](..\assets\entregas\unidade1\rad\8.png)
