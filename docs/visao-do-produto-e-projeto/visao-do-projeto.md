@@ -5,6 +5,7 @@
 | **Data** | **Versão** | **Descrição**                                              | **Autor**                               |
 |:--------:|:----------:|:----------------------------------------------------------:|:---------------------------------------:|
 | 25/04    | 1.0        | Criação das seções de visão geral do produto e do projeto. | Ana Beatriz, Bruno, Gabriel, João Pedro |
+| 24/05    | 1.1        | Alterações de acordo com os feedbacks recebidos.           | João Pedro                              |
 
 ## Organização do Projeto
 
@@ -32,31 +33,33 @@ Fase 1: Definição de requisitos (elicitação e descoberta, análise e consens
 - Identificar e documentar os requisitos do projeto.
 - Definir o escopo do projeto.
 
-Fase 2: Projeto de Interface do Usuário e Design (10/05 - 23/05)
+Fase 2: Projeto de arquitetura, definição de MVPs e estudo de tecnologias (10/05 - 23/05)
 
-- Definir e projetar a interface do usuário.
 - Projetar a arquitetura do sistema.
-- Criar protótipos de baixa fidelidade e testá-los com usuários.
+- Definir os MVPs do projeto.
+- Capacitar a equipe nas tecnologias que serão utilizadas.
 
-Fase 3: Desenvolvimento de Software (24/05 - 13/06)
+Fase 3: Prototipação e desenvolvimento 1  (24/05 - 13/06)
 
-- Desenvolver o software com base nos requisitos e no design
-- Realizar testes unitários e de integração
-- Revisar e refinar o código
+- Realizar a prototipação do MVP1
+- Validar os protótipos
+- Ajustar os protótipos
+- Iniciar o desenvolvimento
 
-Fase 4: MVP1 (14/06 - 19/06)
+Fase 4: Finalização do MVP1, validação e testes (14/06 - 19/06)
 
 - Testar e validar o MVP1 com base nos requisitos e no design
 - Corrigir quaisquer erros ou problemas encontrados durante os testes
 - Preparar uma apresentação e documentação do MVP1
 
-Fase 5: Aperfeiçoamento e Aprimoramento (20/06 - 04/07)
+Fase 5: Prototipação e desenvolvimento 2 (20/06 - 04/07)
 
-- Implementar feedback e melhorias no MVP1
-- Desenvolver recursos adicionais e melhorias para o produto
-- Realizar testes de desempenho e estabilidade
+- Realizar a prototipação do MVP2
+- Validar os protótipos
+- Ajustar os protótipos
+- Iniciar o desenvolvimento
 
-Fase 6: Entrega Final (05/07 - 17/07)
+Fase 6: Finalização do MVP2, validação e testes (05/07 - 17/07)
 
 - Finalizar e polir o produto
 - Realizar testes finais de aceitação
@@ -66,14 +69,14 @@ A tabela 2 traz um resumo de cada fase e quais serão os produtos de gerados de 
 
 <center>
 
-| **Fase** | **Etapas**                               | **Produto (Entrega)**                                  | **Data Início** | **Data Fim** |
-|:--------:|:----------------------------------------:|:------------------------------------------------------:|:---------------:|:------------:|
-| Fase 1   | Definição de requisitos                  | Escopo do projeto e backlog                            | 02/05/23        | 09/05/23     |
-| Fase 2   | Projeto de Interface do Usuário e Design | Arquitetura do sistema, protótipos de alta fidelidade  | 10/05/23        | 23/05/23     |
-| Fase 3   | Desenvolvimento de Software              | MVP1                                                   | 24/05/23        | 13/06/23     |
-| Fase 4   | MVP1                                     | MVP1 testado e validado                                | 14/06/23        | 19/06/23     |
-| Fase 5   | Aperfeiçoamento e Aprimoramento          | MVP2                                                   | 20/06/23        | 04/07/23     |
-| Fase 6   | Entrega Final                            | MVP2 testado e validado                                | 05/07/23        | 17/07/23     |
+| **Fase** | **Etapas**                                     | **Produto (Entrega)**                                  | **Data Início** | **Data Fim** |
+|:--------:|:----------------------------------------------:|:------------------------------------------------------:|:---------------:|:------------:|
+| Fase 1   | Definição de requisitos                        | Escopo do projeto e backlog                            | 02/05/23        | 09/05/23     |
+| Fase 2   | Projeto de arquitetura, definição de MVPs e estudo de tecnologias | Arquitetura do sistema, MVPs e equipe capacitada| 10/05/23        | 23/05/23     |
+| Fase 3   | Prototipação e desenvolvimento 1               | Protótipo e produto desenvolvido (primeira metade do MVP1)| 24/05/23        | 13/06/23     |
+| Fase 4   | Finalização do MVP1, validação e testes        | MVP1 desenvolvido, testado e validado                  | 14/06/23        | 19/06/23     |
+| Fase 5   | Prototipação e desenvolvimento 2               | Protótipo e produto desenvolvido (primeira metade do MVP2)| 20/06/23        | 04/07/23     |
+| Fase 6   | Finalização do MVP2, validação e testes        | MVP1 desenvolvido, testado e validado                  | 05/07/23        | 17/07/23     |
 
 Tabela 2 - Fases do projeto (Fonte: Autor, 2023)
 

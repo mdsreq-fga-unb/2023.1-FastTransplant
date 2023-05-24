@@ -5,6 +5,7 @@
 | **Data** | **Versão** | **Descrição**                                              | **Autor**                               |
 |:--------:|:----------:|:----------------------------------------------------------:|:---------------------------------------:|
 | 25/04    | 1.0        | Criação das seções de visão geral do produto e do projeto. | Ana Beatriz, Bruno, Gabriel, João Pedro |
+| 24/05    | 1.1        | Alterações de acordo com os feedbacks recebidos.           | João Pedro                              |
 
 ## Problema
 
@@ -36,19 +37,13 @@ A solução pode ser condensada no seguinte quadro-resumo (Tabela 1):</br></br>
 | **Para**             | Equipes médicas e funcionários do HUB que trabalham no processo de transplantes de órgãos e cirurgias.                                                                                                                                                                                              |
 | **Quem**             | simplificar e agilizar o processo de análise dos dados referentes aos órgãos a serem transplantados, tornando-o mais eficiente e seguro para a equipe médica e pacientes.                                                                                                                           |
 | **O FastTransplant** | é um produto de software destinado à área médica.                                                                                                                                                                                                                                                   |
-| **Que**              | possui a capacidade única de extrair os dados necessários a partir de arquivos PDF, permitindo que a equipe médica possa analisá-los de maneira mais rápida e precisa, além de comparar informações médicas de diferentes doadores e pacientes cadastrados em uma base de dados.                    |
+| **Que**              | possui a capacidade de extrair os dados necessários a partir de arquivos PDF e organizá-los em um banco de dados, permitindo que a equipe médica possa analisá-los de maneira mais rápida, precisa e organizada, além de comparar informações médicas de diferentes doadores e pacientes cadastrados em uma base de dados.                    |
 | **Ao contrário**     | para os médicos, conferir um relatório com dados de um doador vivo/falecido se tornaria algo estressante (e. g.,  informações aglutinadas, falta de padronização) e  manual - sem contar a maior possibilidade de haver erros humanos.                                                              |
 | **Nosso produto**    | abre a possibilidade para uma solução menos custosa, porém sem deixar de lado a segurança e a praticidade, evitando gastos excessivos como a contratação de uma equipe especializada em análise de dados médicos para realizar a leitura e organização dos dados dos órgãos a serem transplantados. |
 
 Tabela 1 - Quadro-resumo da solução (Fonte: Autor, 2023)
 
 </center>
-
-## Objetivos do Produto
-
-O propósito principal do projeto é desenvolver um software exclusivo que permita a extração e organização dos dados contidos em arquivos PDF relacionados aos órgãos a serem transplantados, a fim de tornar o processo de análise mais eficiente e seguro para a equipe médica e pacientes.</br></br>
-Os objetivos secundários incluem o desenvolvimento de uma maneira de gerar dados de compatibilidade entre os órgãos doadores e os pacientes que estão na lista de espera, além de garantir a segurança e privacidade dos dados dos pacientes, implementando medidas de segurança avançadas para proteger as informações sensíveis dos pacientes.</br></br>
-Prima-se pela compatibilidade do software com os sistemas existentes do hospital ou clínica, a fim de permitir uma fácil integração com o fluxo de trabalho existente.
 
 ## Tecnologias a serem Utilizadas
 
