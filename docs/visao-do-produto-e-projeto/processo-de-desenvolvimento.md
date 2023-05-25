@@ -1,5 +1,12 @@
 # Processo de Desenvolvimento
 
+## Histórico de Revisão
+
+| **Data** | **Versão** | **Descrição**                                              | **Autor**                               |
+|:--------:|:----------:|:----------------------------------------------------------:|:---------------------------------------:|
+| 25/04    | 1.0        | Criação das seções de visão geral do produto e do projeto. | Ana Beatriz, Bruno, Gabriel, João Pedro |
+| 24/05    | 1.1        | Alterações de acordo com os feedbacks recebidos.           | João Pedro                              |
+
 ## GUPTA
 
 Gupta (2008)¹ propõe que a escolha da abordagem de desenvolvimento de software deve ser baseada em critérios como as necessidades e requisitos do projeto, o ambiente e cultura organizacional em que o projeto será executado, o tamanho e complexidade do projeto, o risco envolvido, o orçamento e o prazo para conclusão do projeto. Ele enfatiza que a escolha da abordagem não é uma decisão única e estática, mas sim um processo contínuo que deve ser revisado e adaptado ao longo do tempo para garantir o sucesso do projeto.
@@ -8,7 +15,7 @@ Gupta (2008)¹ propõe que a escolha da abordagem de desenvolvimento de software
 
 <center>
 
-| Requerimentos | Waterfall | Prototype | Iterative Enhancement | Evolutionary development | Spiral | RAD |
+| Requisitos | Cascata | Prototipação | Iterativo e Incremental | Evolutivo | Spiral | RAD |
 |:---|:---:|:---:|:---:|:---:|:---:|:---:|
 |Os requisitos são facilmente compreensíveis e definidos? (SIM)| Sim | Não | Não | Não | Não | Sim |
 |Mudamos os requisitos com bastante frequência? (NÃO)| Sim | Não | Sim | Sim | Não | Sim |
@@ -21,7 +28,7 @@ Gupta (2008)¹ propõe que a escolha da abordagem de desenvolvimento de software
 
 <center>
 
-|Requerimentos | Waterfall | Prototype | Iterative Enhancement | Evolutionary development | Spiral | RAD |
+|Requisitos | Cascata | Prototipação | Iterativo e Incremental | Evolutivo | Spiral | RAD |
 |:---|:---:|:---:|:---:|:---:|:---:|:---:|
 |Menos experiência em projetos similares(SIM) | Não | Sim | Não | Não | Sim | Não |
 |Menos conhecimento de domínio (novidade na tecnologia) (NÃO) | Não | Sim | Não | Não | Não | Sim |
@@ -34,7 +41,7 @@ Gupta (2008)¹ propõe que a escolha da abordagem de desenvolvimento de software
 
 <center>
 
-|Requerimentos | Waterfall | Prototype | Iterative Enhancement | Evolutionary development | Spiral | RAD |
+|Requisitos | Cascata | Prototipação | Iterativo e Incremental | Evolutivo | Spiral | RAD |
 |:---|:---:|:---:|:---:|:---:|:---:|:---:|
 |Envolvimento do usuário em todas as fases (NÃO) | Sim | Não | Sim | Sim | Sim | Não |
 |Participação limitada do usuário(SIM) | Sim | Não | Sim | Sim | Sim | Não |
@@ -47,7 +54,7 @@ Gupta (2008)¹ propõe que a escolha da abordagem de desenvolvimento de software
 
 <center>
 
-|Requerimentos | Waterfall | Prototype | Iterative Enhancement | Evolutionary development | Spiral | RAD |
+|Requisitos | Cascata | Prototipação | Iterativo e Incremental | Evolutivo | Spiral | RAD |
 |:---|:---:|:---:|:---:|:---:|:---:|:---:|
 |O projeto é aprimoramento do sistema existente (NÃO)| Sim | Sim | Não | Não | Sim | Não |
 |O financiamento é estável para o projeto(SIM)| Sim | Sim | Não | Não | Não | Sim |
@@ -101,41 +108,41 @@ Figura 2 - Rapid Application Development (Fonte: [Kissflow](https://kissflow.com
 
 </center>
 
-## Atividade 1
+## Etapa 1
 
 <center>
 
-| **Atividade**           | **Método** | **Ferramenta**  | **Entrega**            |
+| **Etapa**               | **Método** | **Ferramenta**  | **Entrega**            |
 |:-----------------------:|:----------:|:---------------:|:----------------------:|
 | Definição de Requisitos | Kanban     | GitHub Projects | Conjunto de Requisitos |
 
 </center>
 
-## Atividade 2
+## Etapa 2
 
 <center>
 
-| **Atividade** | **Método**      | **Ferramenta** | **Entrega**                  |
+| **Etapa**     | **Método**      | **Ferramenta** | **Entrega**                  |
 |:-------------:|:---------------:|:--------------:|:----------------------------:|
 | Prototipação  | Mock-up digital | Figma          | Protótipo de alta fidelidade |
 
 </center>
 
-## Atividade 3
+## Etapa 3
 
 <center>
 
-| **Atividade**   | **Método** | **Ferramenta**  | **Entrega** |
+| **Etapa**       | **Método** | **Ferramenta**  | **Entrega** |
 |:---------------:|:----------:|:---------------:|:-----------:|
 | Desenvolvimento | Lean       | VS Code, Github | Produto     |
 
 </center>
 
-## Atividade 4
+## Etapa 4
 
 <center>
 
-| **Atividade** | **Método**       | **Ferramenta** | **Entrega**     |
+| **Etapa**     | **Método**       | **Ferramenta** | **Entrega**     |
 |:-------------:|:----------------:|:--------------:|:---------------:|
 | Testagem      | Testes Unitários | Unittest       | Produto testado |
 
