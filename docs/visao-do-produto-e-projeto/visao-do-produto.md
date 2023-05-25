@@ -14,7 +14,7 @@ Em consequência, essa situação acaba gerando um grande impacto no tempo neces
 
 <center>
 
-![Diagrama de Ishikawa](../assets/visao-do-produto/Fishbone-Graph.png)
+![Diagrama de Ishikawa](../assets//entregas/unidade1/ishikawa/4.png)
 
 Figura 1 - Diagrama de Ishikawa (Fonte: Autor, 2023)
 
