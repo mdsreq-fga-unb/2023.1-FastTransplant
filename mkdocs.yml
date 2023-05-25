@@ -29,12 +29,15 @@ nav:
     - Visão do Projeto: visao-do-produto-e-projeto/visao-do-projeto.md
     - Processo de Desenvolvimento: visao-do-produto-e-projeto/processo-de-desenvolvimento.md
     - Lições Aprendidas: visao-do-produto-e-projeto/licoes-aprendidas.md
+  - Requisitos do Produto: requisitos-do-produto/productbacklog.md
   - Entregas das Unidades:
     - Unidade 1:
       - Pitch RAD: entregas/unidade1/pitch-rad.md 
       - Diagrama de Ishikawa: entregas/unidade1/ishiwaka.md 
-      - Processo de ER: entregas/unidade1/processo-ER.md 
+      - Processo de ER: entregas/unidade1/processo-ER.md
+    - Unidade 2:
+      - Mural: entregas/unidade2/mural.md
     - Vídeos: entregas/videos/videos.md
-    
+
     
 

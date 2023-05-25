@@ -6,6 +6,7 @@
 |:--------:|:----------:|:----------------------------------------------------------:|:---------------------------------------:|
 | 25/04    | 1.0        | Criação das seções de visão geral do produto e do projeto. | Ana Beatriz, Bruno, Gabriel, João Pedro |
 | 24/05    | 1.1        | Alterações de acordo com os feedbacks recebidos.           | João Pedro                              |
+| 24/05    | 2.0        | Adição das entregas unidade 2, do backlog do produto, das lições aprendidas, correção do diagrama de ishikawa, processo de desenvolvimento, visão do produto e projeto, atualização crono grama. | Ana Beatriz, Bruno, Gabriel, João Pedro |
 
 ## Problema
 
@@ -15,7 +16,7 @@ Em consequência, essa situação acaba gerando um grande impacto no tempo neces
 
 <center>
 
-![Diagrama de Ishikawa](../assets/visao-do-produto/Fishbone-Graph.png)
+![Diagrama de Ishikawa](../assets//entregas/unidade1/ishikawa/4.png)
 
 Figura 1 - Diagrama de Ishikawa (Fonte: Autor, 2023)
 
