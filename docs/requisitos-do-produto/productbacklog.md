@@ -39,11 +39,16 @@
 ## Requisitos Não-Funcionais
 | Nº | Classificação | Descrição |
 | --- | --- | --- |
-|  RNF01   | ? | A análise dos documentos deve ser feita em 1 minuto ou menos. |
-|  RNF02   | ? | O sistema deve manter sigilo, privacidade e segurança dos dados contidos nele. |
-|  RNF03   | ? | O sistema deve registrar as atividades dos usuários para manter a rastreabilidade das ações (log). |
-|  RNF04   | ? | O sistema deve estar disponível a qualquer momento e a qualquer dispositivo com acesso a internet e um navegador (site responsivo). |
-|  RNF05   | ? | O acesso ao sistema deve ser restrito apenas à usuários cadastrados. |
+|  RNF01   | Requisito de Desempenho | A análise dos documentos deve ser feita em 1 minuto ou menos. |
+|  RNF02   | Requisito de Confiabilidade | O sistema deve manter sigilo, privacidade e segurança dos dados contidos nele. |
+|  RNF03   | Requisito de Confiabilidade | O sistema deve registrar as atividades dos usuários para manter a rastreabilidade das ações (log). |
+|  RNF04   | Requisito de Usabilidade | O sistema deve estar disponível a qualquer momento e a qualquer dispositivo com acesso a internet e um navegador (site responsivo). |
+|  RNF05   | Requisito de Confiabilidade | O acesso ao sistema deve ser restrito apenas à usuários cadastrados. |
+| RNF06 | Requisito de Implementação | O site deve ser orientado a objetos |
+| RNF07 | Requisito de Implementação | O backend deve ser desenvolvido em python, através do framework Django |
+| RNF08 | Requisito de Implementação | O frontend deve ser desenvolvindo utilizando o ReactJS e JavaScript |
+| RNF09 | Requisito de Implementação | O sistema de banco de dados deve ser modelado utilizando o MongoDB |
+
 
 
 ## Histórico de revisão
@@ -51,3 +56,4 @@
 | --- | --- | --- | --- |
 |  `1.0`   | 23/05/2023 | Criação inicial do documento. | [Bruno Martins](https://github.com/gitbmvb) |
 |  `1.1`   | 23/05/2023 | Reorganização das tabelas dos MVPs 1, 2, e incremento. | [Bruno Martins](https://github.com/gitbmvb) |
+|  `1.2`   | 24/05/2023 | Adicionando mais RNFs. | [Bruno Martins](https://github.com/gitbmvb) |
