@@ -1,6 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from rest_framework import generics
+from .serializers import RimSerializer
+from .models import Rim
 
 # Create your views here
-def main(request):
-    return HttpResponse("Hello")
+
+class RimView(generics.ListAPIView):
+    queryset = Rim.objects.all()
+    serializer_class = RimSerializer
+
+
+

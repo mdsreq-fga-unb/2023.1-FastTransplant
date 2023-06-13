@@ -1,7 +1,6 @@
-from django.urls import path, include
-from .views import main
+from django.urls import path
+from .views import RimView
 
 urlpatterns = [
-    path('home', main),
-    path('', main)
+    path('rim', RimView.as_view()),
 ]
