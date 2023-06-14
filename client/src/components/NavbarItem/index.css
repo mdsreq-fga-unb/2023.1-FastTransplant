@@ -1,0 +1,22 @@
+.button {
+  background-color: #010101;
+  box-sizing: border-box;
+  color: #fff;
+  border: none;
+  position: relative;
+  height: 9.15vh;
+  width: 30vh;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  font-size: 1.2vw; /* Browsers that do not support "MIN () - MAX ()" and "Clamp ()" functions will take this value.*/
+  font-size: max(
+    18px,
+    min(1.2vw, 32px)
+  ); /* Browsers that do not support the "clamp ()" function will take this value. */
+  font-size: clamp(18px, 1.2vw, 32px);
+}
+
+.button:hover {
+  background-color: #222;
+  transition: 250ms;
+}
