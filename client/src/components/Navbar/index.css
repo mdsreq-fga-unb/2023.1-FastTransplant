@@ -1,6 +1,6 @@
 .navbar-container {
-  background-color: #010101;
-  color: #fff;
+  background-color: var(--main-color);
+  color: var(--light-text);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,7 +23,7 @@
 }
 
 .spacer {
-  background-color: #666;
+  background-color: var(--third-color);
   margin-top: 7%;
   margin-bottom: 7%;
   width: 100%;
@@ -35,6 +35,6 @@
 }
 
 .credit {
-  color: #222;
+  color: var(--second-color);
   margin: 5%;
 }

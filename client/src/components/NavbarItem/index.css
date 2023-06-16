@@ -1,7 +1,7 @@
 .button {
-  background-color: #010101;
+  background-color: var(--main-color);
   box-sizing: border-box;
-  color: #fff;
+  color: var(--light-text);
   border: none;
   position: relative;
   height: 9.15vh;
@@ -17,6 +17,6 @@
 }
 
 .button:hover {
-  background-color: #222;
+  background-color: var(--second-color);
   transition: 250ms;
 }

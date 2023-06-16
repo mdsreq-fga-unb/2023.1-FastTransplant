@@ -1,1 +1,16 @@
+.HomeContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.Title {
+    margin-bottom: 10vh;
+    padding-left: 50vh;
+}
+
+.InputContainer {
+    padding-left: 50vh;
+    margin-bottom: 10vh;
+}

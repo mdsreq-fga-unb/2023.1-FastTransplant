@@ -1,4 +1,12 @@
 * {
+  --base-color: #fff;
+  --main-color: #010101;
+  --second-color: #222;
+  --third-color: #666;
+
+  --light-text: #fff;
+  --dark-text: #000;
+
   font-family: "Ubuntu", sans-serif;
   box-sizing: border-box;
   margin: 0;
