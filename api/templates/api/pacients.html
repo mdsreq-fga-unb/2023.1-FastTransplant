@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pacients</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>RGCT</th>
+                <th>Position</th>
+                <th>ABO</th>
+                <th>Age</th>
+                <th>Panel</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pacient in pacients %}
+            <tr>
+                <td>{{ pacient.name }}</td>
+                <td>{{ pacient.rgct }}</td>
+                <td>{{ pacient.position }}</td>
+                <td>{{ pacient.abo }}</td>
+                <td>{{ pacient.age }}</td>
+                <td>{{ pacient.panel }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

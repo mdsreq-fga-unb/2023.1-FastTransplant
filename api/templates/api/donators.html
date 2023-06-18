@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Donators</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>RGCT</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for donator in donators %}
+            <tr>
+                <td>{{ donator.rgct }}</td>
+                <td>{{ donator.date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
