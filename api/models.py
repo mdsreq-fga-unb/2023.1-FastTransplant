@@ -36,7 +36,7 @@ class Donator(models.Model):
     age_50_60 = models.BooleanField(blank=False)
     cr_in_greater_than_15 = models.BooleanField(blank=False)
 
-class Pacient(models.Model):
+class Patient(models.Model):
     name = models.CharField(max_length=100, blank=False)
     rgct = models.BigIntegerField(blank=False)
     position = models.IntegerField(blank=False)
