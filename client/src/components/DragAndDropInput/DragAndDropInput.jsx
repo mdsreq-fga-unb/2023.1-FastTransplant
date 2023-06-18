@@ -72,13 +72,13 @@ function DragAndDropInput() {
           <div>
             <label htmlFor="paciente" id="paciente">
               <input type="radio" name="type" value="paciente" onChange={handleRadioChange} checked={true} id="paciente" className="radio"/>  
-              <span id="paciente">Paciente</span>
+              <span id="paciente">Seleção de Receptores de Rim</span>
             </label>
           </div>
           <div>
             <label htmlFor="rim" id="rim">
               <input type="radio" name="type" value="rim" onChange={handleRadioChange} id="rim" className="radio"/>
-              <span>Rim</span>
+              <span>Informações sobre o doador</span>
             </label>
           </div>
         </div>
