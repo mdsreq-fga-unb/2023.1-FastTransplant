@@ -1,5 +1,10 @@
 from django import forms
-from .models import Organ, Pacient, User
+from .models import *
+
+class OrganReportForm(forms.ModelForm):
+    class Meta:
+        model = OrganReport
+        fields = '__all__'
 
 class OrganForm(forms.ModelForm):
     class Meta:

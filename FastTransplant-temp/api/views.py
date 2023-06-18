@@ -1,6 +1,17 @@
 from django.shortcuts import render, redirect
-from .forms import OrganForm, PacientForm, UserForm
-from .models import Organ, Pacient, User
+from .forms import *
+from .models import *
+
+# OrganReport CRUD
+def create_organ_report(request):
+    if request.method == "POST":
+        form = OrganReportForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        else:
+            form = OrganReportForm()
+    return render(request, 'create_organ_report.html', {'form': form})
 
 # Organ CRUD
 def create_organ(request):

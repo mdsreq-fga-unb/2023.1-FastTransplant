@@ -1,23 +1,21 @@
 from django.db import models
 
-class User(models.Model):
-    name = models.CharField(max_length=100, blank=False)
-    email = models.EmailField(max_length=100, blank=False)
-    password = models.CharField(max_length=100, blank=False)
-    crm = models.CharField(max_length=9, blank=False)
+class OrganReport(models.Model):
+    date = models.DateField(blank=False)
+    file = models.FileField(upload_to='reports/')
 
 class Organ(models.Model):
     gender_choices = (
         ('M', 'Male'),
         ('F', 'Female')
     )
-
+    report = models.ForeignKey(OrganReport, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, blank=False)
     rgct = models.IntegerField(blank=False)
     date = models.DateField(blank=False)
     location  = models.CharField(max_length=100, blank=False)
     opo = models.CharField(max_length=100, blank=False)
-    height = models.DecimalField(blank=False)
+    height = models.FloatField(blank=False)
     age = models.IntegerField(blank=False)
     gender = models.CharField(max_length=1, choices=gender_choices)
     death_cause = models.TextField(blank=False)
@@ -42,3 +40,9 @@ class Pacient(models.Model):
     name = models.CharField(max_length=100, blank=False)
     age = models.IntegerField(blank=False)
     transplant_date = models.DateField(blank=False)
+
+class User(models.Model):
+    name = models.CharField(max_length=100, blank=False)
+    email = models.EmailField(max_length=100, blank=False)
+    password = models.CharField(max_length=100, blank=False)
+    crm = models.CharField(max_length=9, blank=False)
