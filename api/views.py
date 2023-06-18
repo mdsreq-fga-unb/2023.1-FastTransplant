@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Donator, Patient, Receiver
-from .forms import DonatorForm, PatientForm, ReceiverForm
+from .models import Donator, Patient, Receiver, OrganReport
+from .forms import DonatorForm, PatientForm, ReceiverForm, OrganReportForm
 
 def index(request):
     return render(request, 'api/index.html')
@@ -121,3 +121,14 @@ def receiver_delete(request, pk):
         receiver.delete()
         return redirect('receiver')
     return render(request, 'receiver/receiver_confirm_delete.html', {'receiver': receiver})
+
+# Functions related to file upload
+def upload_report(request):
+    if request.method == 'POST':
+        form = OrganReportForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('report_list')
+    else:
+        form = OrganReportForm()
+    return render(request, 'api/index.html', {'form': form})

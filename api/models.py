@@ -1,7 +1,7 @@
 from django.db import models
 
 class OrganReport(models.Model):
-    date = models.DateField(blank=False)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
     file = models.FileField(upload_to='reports/')
 
 class Donator(models.Model):

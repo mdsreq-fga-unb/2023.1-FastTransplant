@@ -1,5 +1,5 @@
 from django import forms
-from .models import Donator, Patient, Receiver
+from .models import Donator, Patient, Receiver, OrganReport
 
 class DonatorForm(forms.ModelForm):
     class Meta:
@@ -40,3 +40,8 @@ class ReceiverForm(forms.ModelForm):
     class Meta:
         model = Receiver
         fields = ('name', 'rgct', 'position', 'abo', 'age', 'panel')
+
+class OrganReportForm(forms.Form):
+    class Meta:
+        model = OrganReport
+        fields = ('file')
