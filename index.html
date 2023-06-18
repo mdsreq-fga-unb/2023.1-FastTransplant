@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FastTransplant</title>
+  <style>
+    body {
+      display: flex;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+    }
+
+    nav {
+      background-color: #f1f1f1;
+      width: 200px;
+      padding: 20px;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    li a {
+      display: block;
+      padding: 10px;
+      background-color: #ddd;
+      color: #333;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    li a:hover {
+      background-color: #aaa;
+      color: #fff;
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 20px;
+    }
+
+    .drag-area {
+      border: 2px dashed #ccc;
+      padding: 100px;
+      text-align: center;
+    }
+
+    .buttons {
+      text-align: right;
+      margin-top: 20px;
+    }
+    .checkbox{
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .submit-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Dados</a></li>
+      <li><a href="#">Painel de Controle</a></li>
+      <li><a href="#">Lista de Órgãos</a></li>
+      <li><a href="#">Lista de Doadores</a></li>
+      <li><a href="#">Lista de Receptores</a></li>
+      <li><a href="#">Opção</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <div class = "checkbox">
+      <div>
+        <input type="checkbox" id="horns" name="horns">
+        <label for="horns">Seleção de Receptores de Rim</label>
+      </div>
+      <div>
+        <input type="checkbox" id="horns" name="horns">
+        <label for="horns">Informações sobre o doador</label>
+      </div>
+    </div>
+
+    <p></p>
+
+    <div class="drag-area">
+      <p>Arraste os itens aqui</p>
+    </div>
+
+    <div class="buttons">
+      <button class="submit-button">Submeter Envios</button>
+    </div>
+  </main>
+</body>
+</html>
