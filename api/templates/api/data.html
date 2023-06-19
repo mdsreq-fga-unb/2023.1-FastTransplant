@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FastTransplant</title>
+  <style>
+    body {
+        display: flex;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+  
+    header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
+    }
+  
+    nav {
+        background-color: #0a1f5c;
+        width: 200px;
+        padding: 20px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    li a {
+      display: block;
+      padding: 10px;
+      background-color: #ddd;
+      color: #333;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    li a:hover {
+      background-color: #aaa;
+      color: #fff;
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 20px;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .form-container label {
+      display: block;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .form-container input[type="text"],
+    .form-container select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .submit-button {
+      background-color: #27ae60;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Dados</a></li>
+      <li><a href="#">Painel de Controle</a></li>
+      <li><a href="#">Lista de Órgãos</a></li>
+      <li><a href="#">Lista de Doadores</a></li>
+      <li><a href="#">Lista de Receptores</a></li>
+      <li><a href="#">Opção</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="form-container">
+      <form>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome">
+
+        <label for="rgct">RGCT:</label>
+        <input type="text" id="rgct" name="rgct">
+
+        <label for="data-oferta">Data da Oferta:</label>
+        <input type="text" id="data-oferta" name="data-oferta">
+
+        <label for="localidade">Localidade:</label>
+        <input type="text" id="localidade" name="localidade">
+
+        <label for="opo">OPO:</label>
+        <input type="text" id="opo" name="opo">
+
+        <label for="altura">Altura:</label>
+        <input type="text" id="altura" name="'altura">
+
+        <label for="idade">Idade:</label>
+        <input type="text" id="idade" name="idade">
+
+        <label for="sexo">Sexo:</label>
+        <select id="sexo" name="sexo">
+          <option value="feminino">Feminino</option>
+          <option value="masculino">Masculino</option>
+        </select>
+
+        <label for="causa-obito">Causa do Óbito:</label>
+        <input type="text" id="causa-obito" name="causa-obito">
+
+        <label for="cr-entrada">Cr Entrada:</label>
+        <input type="text" id="cr-entrada" name="cr-entrada">
+
+        <label for="cr-saida">Cr Saída:</label>
+        <input type="text" id="cr-saida" name="cr-saida">
+
+        <label for="hipertensao">Hipertensão:</label>
+        <select id="hipertensao" name="hipertensao">
+          <option value="nao">Não</option>
+          <option value="sim">Sim</option>
+        </select>
+
+        <label for="diagnostico-hipertensao">Tempo de Diagnóstico da Hipertensão:</label>
+        <input type="text" id="tempo-diagnostico-hipertensao" name="tempo-diagnostico-hipertensao">
+
+
+        <label for="diabetes">Diabetes:</label>
+        <select id="diabetes" name="diabetes">
+          <option value="nao">Não</option>
+          <option value="sim">Sim</option>
+        </select>
+
+        <label for="tempo-diagnostico-diabetes">Tempo de Diagnóstico do Diabetes:</label>
+        <input type="text" id="tempo-diagnostico-diabetes" name="tempo-diagnostico-diabetes">
+
+        <label for="hbsag">HBsAG:</label>
+        <select id="hbsag" name="hbsag">
+          <option value="nao">Não</option>
+          <option value="sim">Sim</option>
+        </select>
+
+        <label for="antihcv">AntiHCV:</label>
+        <select id="antihcv" name="antihcv">
+          <option value="nao">Não</option>
+          <option value="sim">Sim</option>
+        </select>
+
+        <label for="morte-avch">Morte por AVCH:</label>
+        <select id="morte-avch" name="morte-avch">
+          <option value="nao">Não</option>
+          <option value="sim">Sim</option>
+        </select>
+
+        <label for="chagas">Chagas:</label>
+        <select id="chagas" name="chagas">
+          <option value="nao">Não</option>
+          <option value="sim">Sim</option>
+        </select>
+
+        <label for="antihbs">Anti-HBS:</label>
+        <select id="antihbs" name="antihbs">
+            <option value="nao">Não</option>
+            <option value="sim">Sim</option> 
+        </select>
+
+        <label for="hltv">HLTV:</label>
+        <select id="hltv" name="hltv">
+          <option value="nao">Não</option>
+          <option value="sim">Sim</option>
+        </select>
+
+        <label for="vdrl">VDRL:</label>
+        <select id="vdrl" name="vdrl">
+          <option value="nao">Não</option>
+          <option value="sim">Sim</option>
+        </select>
+
+        <label for="antihbs">Anti-HBC:</label>
+        <select id="antihbc" name="antihbc">
+            <option value="nao">Não</option>
+            <option value="sim">Sim</option> 
+        </select>
+
+        <label for="hiv">HIV:</label>
+        <select id="hiv" name="hiv">
+            <option value="nao">Não</option>
+            <option value="sim">Sim</option> 
+        </select>
+
+        <label for="Toxoplasmose">Toxoplasmose:</label>
+        <select id="toxoplasmose" name="toxoplasmose">
+            <option value="nao">Não</option>
+            <option value="sim">Sim</option> 
+        </select>
+
+        <label for="Entre 60 e 50 anos">Entre 60 e 50 anos:</label>
+        <select id="idoso" name="idoso">
+            <option value="nao">Não</option>
+            <option value="sim">Sim</option> 
+        </select>
+
+        <label for="Cr de entrada maior que 1,5">Cr de entrada maior que 1,5:</label>
+        <select id="cralto" name="cralto">
+            <option value="nao">Não</option>
+            <option value="sim">Sim</option> 
+        </select>
+
+        <div class="buttons">
+          <button class="submit-button">Submeter Envios</button>
+        </div>
+      </form>
+    </div>
+  </main>
+</body>
+</html>
