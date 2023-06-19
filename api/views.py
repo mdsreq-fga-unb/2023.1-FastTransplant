@@ -1,6 +1,12 @@
+import PyPDF2
+import spacy
+
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Donator, Patient, Receiver, OrganReport
 from .forms import DonatorForm, PatientForm, ReceiverForm, OrganReportForm
+
+# Carregar o modelo de linguagem em português do spaCy
+nlp = spacy.load('pt_core_news_sm')
 
 def index(request):
     return render(request, 'api/index.html')
@@ -137,9 +143,8 @@ def upload_pdf(request):
     if request.method == 'POST' and request.FILES['pdfFile']:
         pdf_file = request.FILES['pdfFile']
         
-        # Aqui você pode fazer o que desejar com o arquivo PDF, por exemplo, salvá-lo em um local específico
-        # Você pode acessar as propriedades do arquivo, como pdf_file.name (nome do arquivo) e pdf_file.size (tamanho do arquivo)
-        # Aqui, estamos simplesmente exibindo o nome do arquivo em um template de confirmação
+        
+        
         
         return render(request, 'api/confirmation.html', {'pdf_file_name': pdf_file.name})
     
