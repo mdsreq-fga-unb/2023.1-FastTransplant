@@ -12,6 +12,14 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
+                    <form action="{% url ' upload_pdf_receptores' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="file" id="pdfFile" name="pdfFile" accept=".pdf">
+                        <br>
+                        <input type="submit" value="Enviar">
+                    </form>
+                </div>
+                <div class="card">
                     <div class="card-header">
                     <h3 class="card-title">Receptores Cadastrados</h3>
                     </div>

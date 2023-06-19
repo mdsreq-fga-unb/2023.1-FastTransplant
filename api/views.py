@@ -2,6 +2,7 @@ import datetime
 import PyPDF2
 import spacy
 import re
+import pdfplumber
 
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Donator, Patient, Receiver, OrganReport
@@ -294,6 +295,58 @@ def upload_pdf(request):
 def update_forms(request):
 
     return render(request, 'api\create_donator.html')
+
+def upload_pdf_receptores(request):
+    if request.method == 'POST' and request.FILES['pdfFile']:
+        pdf_file = request.FILES['pdfFile']
+
+        read_pdf = PyPDF2.PdfReader(pdf_file)
+
+        number_of_pages = len(read_pdf.pages)
+
+        page = read_pdf.pages[0]
+
+        page_content = page.extract_text()
+
+        parsed = ""
+
+        # faz a junção das linhas 
+        parsed = ''.join(page_content)
+
+        # remove as quebras de linha
+        parsed = re.sub('n', '', parsed)
+        print("Após eliminar as quebras")
+        
+        print(parsed)
+
+        pattern = r'(6\s+\d{6}-\d{4}\s+Fulaa\s+DD\s+DF - DF - HUB - Pedro Rico Citra\s+\d{2}/\d{2}/\d{4}\s+A6310004/04/2023\s+112\s+S\s+[__])'
+        matches = re.findall(pattern, parsed)
+
+        # Process and print the extracted information
+        if matches:
+            match = matches[0]
+            rgct = match[0].split()[1]
+            name = match[1]
+            abo = match[0].split()[-3]
+            age = match[0].split()[-2]
+            panel = match[0].split()[-1]
+            print(f"RGCT: {rgct}, Name: {name}, ABO: {abo}, Age: {age}, Panel: {panel}")
+        else:
+            print("No match found.")
+
+    
+        #dados_report = OrganReport.objects.create(file=pdf)
+
+        #dados = Receiver.objects.create(name=nome, rgct=rgct, abo=abo, age=idade, panel=painel, position=posicao)
+        #dados.save()
+                    
+
+        return render(request, 'api\index.html')
+
+
+    
+    return render(request, 'api/receivers.html')
+
 
     
 

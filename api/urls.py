@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import upload_pdf
+from .views import upload_pdf, upload_pdf_receptores
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -17,4 +17,5 @@ urlpatterns = [
     path('receivers/update/<int:pk>', views.receiver_update, name='receiver_update'),
     path('receivers/delete/<int:pk>', views.receiver_delete, name='receiver_delete'),
     path('patients/', upload_pdf, name='upload_pdf'),
+    path('receivers/', upload_pdf_receptores, name=' upload_pdf_receptores'),
 ]
