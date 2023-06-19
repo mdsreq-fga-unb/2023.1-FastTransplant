@@ -2,26 +2,23 @@
 {% block headtitle %}Pacientes{% endblock %}
 {% block pagetitle %}Pacientes{% endblock %}
 {% block path %}
-<li class="breadcrumb-item"><a href="#">Home</a></li>
+<li class="breadcrumb-item"><a href="index">Home</a></li>
 <li class="breadcrumb-item active">Pacientes</li>
 {% endblock %}
 {% block content %}
+
+
 <section class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
               <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Ações principais</h3>
-                    </div>
-                    <div class="card-body row">
-                        <div class="col-md-3">
-                            <button type="button" class="btn btn-primary btn-block">Adicionar via PDF</button>
-                        </div>
-                        <div class="col-md-3">
-                            <button type="button" class="btn btn-primary btn-block">Adicionar</button>
-                        </div>
-                    </div>
+                <form action="{% url 'upload_pdf' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" id="pdfFile" name="pdfFile" accept=".pdf">
+                    <br>
+                    <input type="submit" value="Enviar">
+                </form>
                 </div>
             </div> 
         </div>

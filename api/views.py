@@ -132,3 +132,15 @@ def upload_report(request):
     else:
         form = OrganReportForm()
     return render(request, 'api/index.html', {'form': form})
+
+def upload_pdf(request):
+    if request.method == 'POST' and request.FILES['pdfFile']:
+        pdf_file = request.FILES['pdfFile']
+        
+        # Aqui você pode fazer o que desejar com o arquivo PDF, por exemplo, salvá-lo em um local específico
+        # Você pode acessar as propriedades do arquivo, como pdf_file.name (nome do arquivo) e pdf_file.size (tamanho do arquivo)
+        # Aqui, estamos simplesmente exibindo o nome do arquivo em um template de confirmação
+        
+        return render(request, 'api/confirmation.html', {'pdf_file_name': pdf_file.name})
+    
+    return render(request, 'api/patients.html')
