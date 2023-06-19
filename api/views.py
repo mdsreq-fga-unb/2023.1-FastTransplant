@@ -57,7 +57,7 @@ def patient_create(request):
             return redirect('list_patient')
     else:
         form = PatientForm()
-    return render(request, 'api/create_patient.html', {'form': form})
+    return render(request, 'api/patient_create.html', {'form': form})
         
 def patient_list(request):
     patients = Patient.objects.all()
