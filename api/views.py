@@ -1,3 +1,4 @@
+import datetime
 import PyPDF2
 import spacy
 import re
@@ -170,45 +171,34 @@ def upload_pdf(request):
         #else:
             #nome = ""
 
-        # Extrair RGCT
-        correspondencia_rgct = re.search(r'RGCT:(\w+-\w+)', parsed)
-        if correspondencia_rgct:
-            rgct = correspondencia_rgct.group(1)
-            print("RGCT encontrado:", rgct)
-        else:
-            rgct = ""
 
-        # Extrair Data da Oferta
-        correspondencia_data = re.search(r'Data:(\d{2}/\d{2}/\d{4})', parsed)
-        if correspondencia_data:
-            data_oferta = correspondencia_data.group(1)
-            print("Data da Oferta encontrada:", data_oferta)
-        else:
-            data_oferta = ""
-        
         # Extrair Localidade
-        correspondencia_localidade = re.search(r'Hosp\. Notificante:(\w+)', parsed)
+        correspondencia_localidade = re.search(r'Hosp. Notificate: (\w+)', parsed)
         if correspondencia_localidade:
             localidade = correspondencia_localidade.group(1)
             print("Localidade encontrada:", localidade)
         else:
             localidade = ""
+        #donator = Donator()
+        #donator.save_localidade(localidade)
 
-        # Extrair OPO
-        correspondencia_opo = re.search(r'OPO(\s+)(\w+\s+\w+)', parsed)
-        if correspondencia_opo:
-            opo = correspondencia_opo.group(2)
-            print("OPO encontrado:", opo)
+        # Extrair Data da Oferta
+        correspondencia_data = re.search(r'Data: (\d{2}/\d{2}/\d{4})', parsed)
+        if correspondencia_data:
+            data_oferta = datetime.datetime.strptime(correspondencia_data.group(1), '%d/%m/%Y').date()
+            print("Data da Oferta encontrada:", data_oferta)
         else:
-            opo = ""
+            data_oferta = ""
+        #donator.save_data_oferta(data_oferta)
 
-        # Extrair Altura
-        correspondencia_altura = re.search(r'Altura:(\d+)\scm', parsed)
-        if correspondencia_altura:
-            altura = correspondencia_altura.group(1)
-            print("Altura encontrada:", altura)
+        # Extrair RGCT
+        correspondencia_rgct = re.search(r'RGCT :(\w+-\w+)', parsed)
+        if correspondencia_rgct:
+            rgct = correspondencia_rgct.group(1)
+            print("RGCT encontrado:", rgct)
         else:
-            altura = ""
+            rgct = ""
+        #donator.save_rgct(rgct)
 
         # Extrair Idade
         correspondencia_idade = re.search(r'Idade:(\s+)(\w+)', parsed)
@@ -217,23 +207,65 @@ def upload_pdf(request):
             print("Idade encontrada:", idade)
         else:
             idade = ""
+        #donator.save_idade(idade)
 
         # Extrair Sexo
-        correspondencia_sexo = re.search(r'Sexo:(\w+)', parsed)
+        correspondencia_sexo = re.search(r'Sexo: (\w+)', parsed)
         if correspondencia_sexo:
             sexo = correspondencia_sexo.group(1)
             print("Sexo encontrado:", sexo)
         else:
             sexo = ""
+        #donator.save_sexo(sexo)
+
+        # Extrair Peso
+        correspondencia_peso = re.search(r'Peso: (\d+),00', parsed)
+        if correspondencia_peso:
+            peso = correspondencia_peso.group(1)
+            print("Peso encontrado:", peso)
+        else:
+            altura = ""
+        #donator.save_peso(peso)
+
+        # Extrair Altura
+        correspondencia_altura = re.search(r'Altura: (\d+) cm', parsed)
+        if correspondencia_altura:
+            altura = correspondencia_altura.group(1)
+            print("Altura encontrada:", altura)
+        else:
+            altura = ""
+        #donator.save_altura(altura)
+
+         # Extrair OPO
+        correspondencia_opo = re.search(r'OPO(\s+)(\w+\s+\w+)', parsed)
+        if correspondencia_opo:
+            opo = correspondencia_opo.group(2)
+            print("OPO encontrado:", opo)
+        else:
+            opo = ""
+        #donator.save_opo(opo)
 
         # Extrair Causa do Óbito
-        correspondencia_causa = re.search(r'Causa da morte encefálica:(\w+)', parsed)
+        correspondencia_causa = re.search(r'Causa da morte ecefálica: (\w+)', parsed)
         if correspondencia_causa:
             causa_obito = correspondencia_causa.group(1)
             print("Causa do Óbito encontrada:", causa_obito)
         else:
             causa_obito = ""
+        #donator.save_causa_obito(causa_obito)
+
+        dados_report = OrganReport.objects.create(file=parsed)
+
+        dados = Donator.objects.create(report=dados_report,opo=opo, rgct=rgct, date=data_oferta, location=localidade, height=altura, age=idade, gender=sexo, death_cause=causa_obito)
+        dados.save()
+
+        teste = Donator.objects.filter(opo=opo).first()
+        print(teste.date)
 
         return render(request, 'api/confirmation.html', {'pdf_file_name': pdf_file.name})
     
     return render(request, 'api/patients.html')
+
+           #dados = Donator.objects.filter(name="ana")
+            #dados.update(name="ANA BEATRIZ MASSUH")
+            #dados.delete()
