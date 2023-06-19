@@ -5,6 +5,9 @@
   <style>
     body {
       display: flex;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
     }
 
     header {
@@ -16,7 +19,7 @@
     }
 
     nav {
-      background-color: #f1f1f1;
+      background-color: #0a1f5c;
       width: 200px;
       padding: 20px;
       box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
@@ -42,7 +45,7 @@
     }
 
     li a:hover {
-      background-color: #aaa;
+      background-color: #0a1f5c;
       color: #fff;
     }
 
@@ -52,22 +55,25 @@
     }
 
     .drag-area {
-      border: 2px dashed #ccc;
+      border: 2px dashed #0a1f5c;
       padding: 100px;
       text-align: center;
+      color: #333;
+      font-size: 20px;
     }
 
     .buttons {
       text-align: right;
       margin-top: 20px;
     }
-    .checkbox{
+    
+    .checkbox {
       text-align: left;
       margin-top: 20px;
     }
 
     .submit-button {
-      background-color: #4CAF50;
+      background-color: #0a1f5c;
       color: white;
       padding: 10px 20px;
       border: none;
@@ -82,20 +88,20 @@
       <li><a href="">Home</a></li>
       <li><a href="panel">Painel de Controle</a></li>
       <li><a href="">Lista de Órgãos</a></li>
-      <li><a href="#">Lista de Doadores</a></li>
-      <li><a href="#">Lista de Receptores</a></li>
+      <li><a href="donators">Lista de Doadores</a></li>
+      <li><a href="receivers">Lista de Receptores</a></li>
       <li><a href="#">Opção</a></li>
     </ul>
   </nav>
   <main>
-    <div class = "checkbox">
+    <div class="checkbox">
       <div>
         <input type="checkbox" id="horns" name="horns">
         <label for="horns">Seleção de Receptores de Rim</label>
       </div>
       <div>
-        <input type="checkbox" id="horns" name="horns">
-        <label for="horns">Informações sobre o doador</label>
+        <input type="checkbox" id="distributor" name="distributor">
+        <label for="distributor">Informações sobre o doador</label>
       </div>
     </div>
 
@@ -111,3 +117,5 @@
   </main>
 </body>
 </html>
+
+

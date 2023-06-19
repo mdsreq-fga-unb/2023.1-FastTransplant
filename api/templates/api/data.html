@@ -4,24 +4,27 @@
   <title>FastTransplant</title>
   <style>
     body {
-      display: flex;
+        display: flex;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
     }
-
+  
     header {
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-      width: 100%;
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        width: 100%;
     }
-
+  
     nav {
-      background-color: #f1f1f1;
-      width: 200px;
-      padding: 20px;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        background-color: #0a1f5c;
+        width: 200px;
+        padding: 20px;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     }
-
+    
     ul {
       list-style-type: none;
       padding: 0;
@@ -59,6 +62,7 @@
     .form-container label {
       display: block;
       margin-bottom: 10px;
+      color: #333;
     }
 
     .form-container input[type="text"],
@@ -75,7 +79,7 @@
     }
 
     .submit-button {
-      background-color: #4CAF50;
+      background-color: #27ae60;
       color: white;
       padding: 10px 20px;
       border: none;
@@ -142,10 +146,9 @@
           <option value="sim">Sim</option>
         </select>
 
-        <div id="tempo-hipertensao" style="display: none;">
-          <label for="tempo-diagnostico-hipertensao">Tempo de Diagnóstico da Hipertensão:</label>
-          <input type="text" id="tempo-diagnostico-hipertensao" name="tempo-diagnostico-hipertensao">
-        </div>
+        <label for="diagnostico-hipertensao">Tempo de Diagnóstico da Hipertensão:</label>
+        <input type="text" id="tempo-diagnostico-hipertensao" name="tempo-diagnostico-hipertensao">
+
 
         <label for="diabetes">Diabetes:</label>
         <select id="diabetes" name="diabetes">
@@ -153,10 +156,8 @@
           <option value="sim">Sim</option>
         </select>
 
-        <div id="tempo-diabetes" style="display: none;">
-          <label for="tempo-diagnostico-diabetes">Tempo de Diagnóstico do Diabetes:</label>
-          <input type="text" id="tempo-diagnostico-diabetes" name="tempo-diagnostico-diabetes">
-        </div>
+        <label for="tempo-diagnostico-diabetes">Tempo de Diagnóstico do Diabetes:</label>
+        <input type="text" id="tempo-diagnostico-diabetes" name="tempo-diagnostico-diabetes">
 
         <label for="hbsag">HBsAG:</label>
         <select id="hbsag" name="hbsag">
@@ -206,25 +207,25 @@
             <option value="sim">Sim</option> 
         </select>
 
-        <label for="antihbs">HIV:</label>
+        <label for="hiv">HIV:</label>
         <select id="hiv" name="hiv">
             <option value="nao">Não</option>
             <option value="sim">Sim</option> 
         </select>
 
-        <label for="Toxoplasmose">Anti-HBS:</label>
+        <label for="Toxoplasmose">Toxoplasmose:</label>
         <select id="toxoplasmose" name="toxoplasmose">
             <option value="nao">Não</option>
             <option value="sim">Sim</option> 
         </select>
 
-        <label for="Entre 60 e 50 anos">Anti-HBS:</label>
+        <label for="Entre 60 e 50 anos">Entre 60 e 50 anos:</label>
         <select id="idoso" name="idoso">
             <option value="nao">Não</option>
             <option value="sim">Sim</option> 
         </select>
 
-        <label for="Cr de entrada maior que 1,5">Anti-HBS:</label>
+        <label for="Cr de entrada maior que 1,5">Cr de entrada maior que 1,5:</label>
         <select id="cralto" name="cralto">
             <option value="nao">Não</option>
             <option value="sim">Sim</option> 
