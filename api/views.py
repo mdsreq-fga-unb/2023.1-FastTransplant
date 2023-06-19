@@ -1,5 +1,6 @@
 import PyPDF2
 import spacy
+import re
 
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Donator, Patient, Receiver, OrganReport
@@ -142,10 +143,97 @@ def upload_report(request):
 def upload_pdf(request):
     if request.method == 'POST' and request.FILES['pdfFile']:
         pdf_file = request.FILES['pdfFile']
+
+        read_pdf = PyPDF2.PdfReader(pdf_file)
+
+        number_of_pages = len(read_pdf.pages)
+
+        page = read_pdf.pages[0]
+
+        page_content = page.extract_text()
+
+        parsed = ""
+
+        # faz a junção das linhas 
+        parsed = ''.join(page_content)
+
+        # remove as quebras de linha
+        parsed = re.sub('n', '', parsed)
+        print("Após eliminar as quebras")
+        print(parsed)
+
+        # Extrair Nome
+        #correspondencia_nome = re.search(r'Nome:(\s+)(\w+)', parsed)
+        #if correspondencia_nome:
+            #nome = correspondencia_nome.group(2)
+            #print("Nome encontrado:", nome)
+        #else:
+            #nome = ""
+
+        # Extrair RGCT
+        correspondencia_rgct = re.search(r'RGCT:(\w+-\w+)', parsed)
+        if correspondencia_rgct:
+            rgct = correspondencia_rgct.group(1)
+            print("RGCT encontrado:", rgct)
+        else:
+            rgct = ""
+
+        # Extrair Data da Oferta
+        correspondencia_data = re.search(r'Data:(\d{2}/\d{2}/\d{4})', parsed)
+        if correspondencia_data:
+            data_oferta = correspondencia_data.group(1)
+            print("Data da Oferta encontrada:", data_oferta)
+        else:
+            data_oferta = ""
         
-        
-        
-        
+        # Extrair Localidade
+        correspondencia_localidade = re.search(r'Hosp\. Notificante:(\w+)', parsed)
+        if correspondencia_localidade:
+            localidade = correspondencia_localidade.group(1)
+            print("Localidade encontrada:", localidade)
+        else:
+            localidade = ""
+
+        # Extrair OPO
+        correspondencia_opo = re.search(r'OPO(\s+)(\w+\s+\w+)', parsed)
+        if correspondencia_opo:
+            opo = correspondencia_opo.group(2)
+            print("OPO encontrado:", opo)
+        else:
+            opo = ""
+
+        # Extrair Altura
+        correspondencia_altura = re.search(r'Altura:(\d+)\scm', parsed)
+        if correspondencia_altura:
+            altura = correspondencia_altura.group(1)
+            print("Altura encontrada:", altura)
+        else:
+            altura = ""
+
+        # Extrair Idade
+        correspondencia_idade = re.search(r'Idade:(\s+)(\w+)', parsed)
+        if correspondencia_idade:
+            idade = correspondencia_idade.group(2)
+            print("Idade encontrada:", idade)
+        else:
+            idade = ""
+
+        # Extrair Sexo
+        correspondencia_sexo = re.search(r'Sexo:(\w+)', parsed)
+        if correspondencia_sexo:
+            sexo = correspondencia_sexo.group(1)
+            print("Sexo encontrado:", sexo)
+        else:
+            sexo = ""
+
+        # Extrair Causa do Óbito
+        correspondencia_causa = re.search(r'Causa da morte encefálica:(\w+)', parsed)
+        if correspondencia_causa:
+            causa_obito = correspondencia_causa.group(1)
+            print("Causa do Óbito encontrada:", causa_obito)
+        else:
+            causa_obito = ""
+
         return render(request, 'api/confirmation.html', {'pdf_file_name': pdf_file.name})
     
     return render(request, 'api/patients.html')
