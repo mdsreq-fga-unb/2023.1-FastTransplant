@@ -1,32 +1,62 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Receivers</title>
-</head>
-<body>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>RGCT</th>
-                <th>Position</th>
-                <th>ABO</th>
-                <th>Age</th>
-                <th>Panel</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for receiver in receivers %}
-            <tr>
-                <td>{{ receiver.name }}</td>
-                <td>{{ receiver.rgct }}</td>
-                <td>{{ receiver.position }}</td>
-                <td>{{ receiver.abo }}</td>
-                <td>{{ receiver.age }}</td>
-                <td>{{ receiver.panel }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</body>
-</html>
+{% extends 'partials/base.html' %}
+{% block headtitle %}Receptores{% endblock %}
+{% block pagetitle %}Receptores{% endblock %}
+{% block path %}
+<li class="breadcrumb-item"><a href="#">Home</a></li>
+<li class="breadcrumb-item active">Receptores</li>
+{% endblock %}
+{% block content %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Ações principais</h3>
+                    </div>
+                    <div class="card-body row">
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-primary btn-block">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                    <h3 class="card-title">Receptores Cadastrados</h3>
+                    </div>
+                    <div class="card-body table-responsive p-0">
+                    <table class="table table-hover text-nowrap">
+                        <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>RGCT</th>
+                            <th>Posição</th>
+                            <th>ABO</th>
+                            <th>Idade</th>
+                            <th>Painel</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for receiver in receivers %}
+                            <tr>
+                                <td>{{ patient.name }}</td>
+                                <td>{{ patient.rgct }}</td>
+                                <td>{{ patient.position }}</td>
+                                <td>{{ patient.abo }}</td>
+                                <td>{{ patient.age }}</td>
+                                <td>{{ patient.panel }}</td>
+                            </tr>
+                            {% endfor %}                  
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
