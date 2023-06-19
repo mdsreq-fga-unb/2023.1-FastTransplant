@@ -7,6 +7,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Donator, Patient, Receiver, OrganReport
 from .forms import DonatorForm, PatientForm, ReceiverForm, OrganReportForm
 
+
 # Carregar o modelo de linguagem em português do spaCy
 nlp = spacy.load('pt_core_news_sm')
 
@@ -262,10 +263,50 @@ def upload_pdf(request):
         teste = Donator.objects.filter(opo=opo).first()
         print(teste.date)
 
-        return render(request, 'api/confirmation.html', {'pdf_file_name': pdf_file.name})
+        last_donator = Donator.objects.filter(opo=opo, rgct=rgct, date=data_oferta, location=localidade, height=altura, age=idade, gender=sexo, death_cause=causa_obito).last()
+        last_opo = last_donator.opo
+        last_rgct = last_donator.rgct
+        last_date = last_donator.date
+        last_location = last_donator.location
+        last_height = last_donator.height
+        last_age = last_donator.age
+        last_gender = last_donator.gender
+        last_death_cause = last_donator.death_cause
+
+
+        return render(request, 'api\create_donator.html',  {'last_rgct': last_rgct,
+                                                            'last_opo': last_opo,
+                                                            'last_date': last_date,
+                                                            'last_location': last_location,
+                                                            'last_height': last_height,
+                                                            'last_age': last_age,
+                                                            'last_gender': last_gender,
+                                                            'last_death_cause': last_death_cause})
+
+
     
     return render(request, 'api/patients.html')
 
            #dados = Donator.objects.filter(name="ana")
             #dados.update(name="ANA BEATRIZ MASSUH")
             #dados.delete()
+    
+def update_forms(request):
+
+    return render(request, 'api\create_donator.html')
+
+    
+
+
+
+
+
+# def my_view(request):
+    
+#     last_donator = Donator.objects.filter(id=id).latest()
+#     last_rgct = last_donator.rgct
+
+#     print(id)
+#     print(last_donator)
+
+#     return render(request, 'api/create_donator.html', {'last_rgct': last_rgct})
