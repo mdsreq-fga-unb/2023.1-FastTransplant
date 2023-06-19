@@ -1,113 +1,58 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>FastTransplant</title>
-  <style>
-    body {
-      display: flex;
-    }
-
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-      width: 100%;
-    }
-
-    nav {
-      background-color: #f1f1f1;
-      width: 200px;
-      padding: 20px;
-      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    li {
-      margin-bottom: 10px;
-    }
-
-    li a {
-      display: block;
-      padding: 10px;
-      background-color: #ddd;
-      color: #333;
-      text-decoration: none;
-      transition: background-color 0.3s;
-    }
-
-    li a:hover {
-      background-color: #aaa;
-      color: #fff;
-    }
-
-    main {
-      flex-grow: 1;
-      padding: 20px;
-    }
-
-    .drag-area {
-      border: 2px dashed #ccc;
-      padding: 100px;
-      text-align: center;
-    }
-
-    .buttons {
-      text-align: right;
-      margin-top: 20px;
-    }
-    .checkbox{
-      text-align: left;
-      margin-top: 20px;
-    }
-
-    .submit-button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-
-  <nav>
-    <ul>
-      <li><a href="">Home</a></li>
-      <li><a href="panel">Painel de Controle</a></li>
-      <li><a href="">Lista de Órgãos</a></li>
-      <li><a href="#">Lista de Doadores</a></li>
-      <li><a href="#">Lista de Receptores</a></li>
-      <li><a href="#">Opção</a></li>
-    </ul>
-  </nav>
-  <main>
-    <div class = "checkbox">
-      <div>
-        <input type="checkbox" id="horns" name="horns">
-        <label for="horns">Seleção de Receptores de Rim</label>
-      </div>
-      <div>
-        <input type="checkbox" id="horns" name="horns">
-        <label for="horns">Informações sobre o doador</label>
-      </div>
+{% extends 'partials/base.html' %}
+{% block headtitle %}Home{% endblock %}
+{% block pagetitle %}Home{% endblock %}
+{% block path %}
+<li class="breadcrumb-item"><a href="#">Home</a></li>
+{% endblock %}
+{% block content %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>150</h3>
+                        <p>Transplantes com êxito</p>
+                    </div>
+                    <div class="icon">
+                    <i class="ion ion-bag"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-success">
+                    <div class="inner">
+                    <h3>53</h3>
+                    <p>Relatórios lidos</p>
+                    </div>
+                    <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                    <h3>44</h3>
+                    <p>Doadores registrados</p>
+                    </div>
+                    <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6">
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                    <h3>65</h3>
+                    <p>Pacientes na fila</p>
+                    </div>
+                    <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <p></p>
-
-    <div class="drag-area">
-      <p>Arraste os itens aqui</p>
-    </div>
-
-    <div class="buttons">
-      <button class="submit-button">Submeter Envios</button>
-    </div>
-  </main>
-</body>
-</html>
+</section>
+{% endblock %}
