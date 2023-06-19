@@ -286,7 +286,7 @@ def upload_pdf(request):
 
 
     
-    return render(request, 'api/patients.html')
+    return render(request, 'api/receivers.html')
 
            #dados = Donator.objects.filter(name="ana")
             #dados.update(name="ANA BEATRIZ MASSUH")
@@ -294,7 +294,7 @@ def upload_pdf(request):
     
 def update_forms(request):
 
-    return render(request, 'api\create_donator.html')
+    return render(request, 'api/receivers.html')
 
 def upload_pdf_receptores(request):
     if request.method == 'POST' and request.FILES['pdfFile']:
@@ -319,8 +319,8 @@ def upload_pdf_receptores(request):
         
         print(parsed)
 
-        pattern = r'(6\s+\d{6}-\d{4}\s+Fulaa\s+DD\s+DF - DF - HUB - Pedro Rico Citra\s+\d{2}/\d{2}/\d{4}\s+A6310004/04/2023\s+112\s+S\s+[__])'
-        matches = re.findall(pattern, parsed)
+        pattern = r'(\d+\s+\d+-\d+\s+[A-Za-z]+\s+[A-Za-z]+\s+[A-Za-z\s]+\s+HUB\s+-\s+Pedro\s+Rico\s+Citra)'
+        matches= re.findall(pattern, parsed)
 
         # Process and print the extracted information
         if matches:
@@ -341,7 +341,7 @@ def upload_pdf_receptores(request):
         #dados.save()
                     
 
-        return render(request, 'api\index.html')
+        return render(request, 'api\receivers.html')
 
 
     
