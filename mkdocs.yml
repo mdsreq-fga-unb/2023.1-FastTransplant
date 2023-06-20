@@ -29,8 +29,9 @@ nav:
     - Visão do Projeto: visao-do-produto-e-projeto/visao-do-projeto.md
     - Processo de Desenvolvimento: visao-do-produto-e-projeto/processo-de-desenvolvimento.md
     - Lições Aprendidas: visao-do-produto-e-projeto/licoes-aprendidas.md
+    - Registros Reuniões: 
   - Requisitos do Produto: requisitos-do-produto/productbacklog.md
-  - Entregas das Unidades:
+  - Entregas das Unidades: visao-do-produto-e-projeto/atas-e-videos.md
     - Unidade 1:
       - Pitch RAD: entregas/unidade1/pitch-rad.md 
       - Diagrama de Ishikawa: entregas/unidade1/ishiwaka.md 
