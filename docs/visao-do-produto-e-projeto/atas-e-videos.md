@@ -92,6 +92,7 @@ Revisar o cronograma inicial assim que estiver disponível.
 Manter uma comunicação regular para compartilhar progressos, desafios e alinhamentos necessários.
 
 ## [Vídeo reunião 12/06 (validação protótipo)](https://youtu.be/ZUc8Kr6Afks)
+https://www.figma.com/file/JBsWNniTAroKWoGR0j8iOA/FastTransplant?type=design&node-id=0%3A1&t=qLDwV6nSABdWsOM8-1
 
 ## Ata reunião emergencial 17/06
 
