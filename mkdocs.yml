@@ -22,7 +22,8 @@ theme:
     - navigation.path
     - navigation.top
     - tabs
-nav:
+
+  nav:
   - Home: index.md
   - Visão do Produto e Projeto:
     - Visão do Produto: visao-do-produto-e-projeto/visao-do-produto.md
@@ -31,7 +32,7 @@ nav:
     - Lições Aprendidas: visao-do-produto-e-projeto/licoes-aprendidas.md
     - Registros Reuniões: 
   - Requisitos do Produto: requisitos-do-produto/productbacklog.md
-  - Entregas das Unidades: visao-do-produto-e-projeto/atas-e-videos.md
+  - Entregas das Unidades: 
     - Unidade 1:
       - Pitch RAD: entregas/unidade1/pitch-rad.md 
       - Diagrama de Ishikawa: entregas/unidade1/ishiwaka.md 
