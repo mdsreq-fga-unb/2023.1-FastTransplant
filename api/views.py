@@ -2,11 +2,12 @@ import datetime
 import PyPDF2
 import spacy
 import re
-import pdfplumber
+
 
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Donator, Patient, Receiver, OrganReport
 from .forms import DonatorForm, PatientForm, ReceiverForm, OrganReportForm
+from dateutil import parser as date_parser
 
 
 # Carregar o modelo de linguagem em português do spaCy
@@ -363,3 +364,51 @@ def upload_pdf_receptores(request):
 #     print(last_donator)
 
 #     return render(request, 'api/create_donator.html', {'last_rgct': last_rgct})
+
+def atualizar_dados(request):
+
+
+    if request.method == 'POST':
+        # Obtenha os valores enviados pelo formulário
+        rgct = request.POST['rgct']
+        date_string = request.POST['date']
+        parsed_date = date_parser.parse(date_string)
+        formatted_date = parsed_date.strftime('%Y-%m-%d')
+        location = request.POST['location']
+        opo = request.POST['opo']
+        height = request.POST['height']
+        age = request.POST['age']
+        gender = request.POST['gender']
+        death_cause = request.POST['death_cause']
+
+        # Obtenha o último donator
+        last_donator = Donator.objects.last()
+
+        # Verifique se o último donator existe e possui um report associado
+        if last_donator and last_donator.report:
+            # Use o report do último donator para criar o novo donator
+            dados = Donator.objects.create(
+                report=last_donator.report,
+                rgct=rgct,
+                date=formatted_date,
+                location=location,
+                opo=opo,
+                height=height,
+                age=age,
+                gender=gender,
+                death_cause=death_cause
+            )
+            dados.save()
+            print('Atualização de dados:')
+            print(rgct)
+            print(formatted_date)
+            print(location)
+            print(opo)
+            print(height)
+            print(age)
+            print(gender)
+            print(death_cause)
+        else:
+            print('Não foi possível encontrar um report válido para associar ao donator.')
+
+    return render(request, 'api/receivers.html')
