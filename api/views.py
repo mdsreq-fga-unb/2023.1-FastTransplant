@@ -144,6 +144,7 @@ def upload_report(request):
         form = OrganReportForm()
     return render(request, 'api/index.html', {'form': form})
 
+
 def upload_pdf(request):
     if request.method == 'POST' and request.FILES['pdfFile']:
         pdf_file = request.FILES['pdfFile']
@@ -287,17 +288,13 @@ def upload_pdf(request):
 
 
     
-    return render(request, 'api/receivers.html')
+    return render(request, 'api/donators.html')
 
            #dados = Donator.objects.filter(name="ana")
             #dados.update(name="ANA BEATRIZ MASSUH")
             #dados.delete()
     
-def update_forms(request):
-
-    return render(request, 'api/receivers.html')
-
-def upload_pdf_receptores(request):
+def dados_receptores(request):
     if request.method == 'POST' and request.FILES['pdfFile']:
         pdf_file = request.FILES['pdfFile']
 
@@ -342,11 +339,11 @@ def upload_pdf_receptores(request):
         #dados.save()
                     
 
-        return render(request, 'api\receivers.html')
+        return render(request, 'api/receivers.html')
 
 
     
-    return render(request, 'api/receivers.html')
+    return render(request, 'api/index.html')
 
 
     
@@ -364,6 +361,31 @@ def upload_pdf_receptores(request):
 #     print(last_donator)
 
 #     return render(request, 'api/create_donator.html', {'last_rgct': last_rgct})
+
+def recep(request):
+
+
+    if request.method == 'POST':
+        # Obtenha os valores enviados pelo formulário
+        nome = request.POST['name']
+        rgct = request.POST['rgct']
+        posicao = request.POST['position']
+        abo = request.POST['abo']
+        idade = request.POST['age']
+        painel = request.POST['panel']
+
+        dados = Receiver.objects.create(
+            name=nome,
+            rgct=rgct,
+            position=posicao,
+            abo=abo,
+            age=idade,
+            panel=painel,
+        )
+        dados.save()
+            
+
+    return render(request, 'api/donators.html')
 
 def atualizar_dados(request):
 
