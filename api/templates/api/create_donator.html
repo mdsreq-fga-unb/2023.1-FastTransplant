@@ -1,0 +1,127 @@
+{% extends 'partials/base.html' %}
+{% block headtitle %}Doadores{% endblock %}
+{% block pagetitle %}Adicionar Doador{% endblock %}
+{% block path %}
+<li class="breadcrumb-item">Home</li>
+<li class="breadcrumb-item">Doadores</li>
+<li class="breadcrumb-item active">Adicionar</li>
+{% endblock %}
+{% block content %}
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Formulário</h3>
+              </div>
+              <form>
+                    
+                {% comment %} <div class="card-body">
+                  <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" class="form-control" id="name" placeholder="Digite o nome">
+                  </div> {% endcomment %}
+                  <div class="form-group">
+                    <label for="rgct">RGCT</label>
+                    <input type="text" class="form-control" id="rgct" value="{{ last_rgct }}">
+                  </div>
+                  <div class="form-group">
+                    <label for="date">Data da Oferta</label>
+                    <input type="datetime" class="form-control" id="date" value="{{ last_date }}">
+                  </div>
+                  <div class="form-group">
+                    <label for="location">Localidade</label>
+                    <input type="text" class="form-control" id="location" value="{{ last_location }}">
+                  </div>
+                  <div class="form-group">
+                    <label for="opo">OPO</label>
+                    <input type="text" class="form-control" id="opo" value="{{ last_opo }}">
+                  </div>
+                  <div class="form-group">
+                    <label for="height">Altura</label>
+                    <input type="number" class="form-control" id="height" value="{{ last_height }}">
+                  </div>
+                  <div class="form-group">
+                    <label for="age">Idade</label>
+                    <input type="number" class="form-control" id="age" value="{{ last_age }}">
+                  </div>
+                  <div class="form-group">
+                    <label for="gender">Sexo</label>
+                    <input type="text" class="form-control" id="gender" value="{{ last_gender }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Causa do Óbito</label>
+                    <input type="text" class="form-control" id="death_cause" value="{{ last_death_cause }}">
+                  </div>
+                  {% comment %} <div class="form-group">
+                    <label for="crEntrada">CR Entrada</label>
+                    <input type="text" class="form-control" id="crEntrada" placeholder="Digite o CR Entrada">
+                  </div>
+                  <div class="form-group">
+                    <label for="opo">CR Saída</label>
+                    <input type="text" class="form-control" id="crSaida" placeholder="Digite o CR Saída">
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="hypertension">
+                    <label class="form-check-label" for="hypertension">Hipertensão</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="diabates">
+                    <label class="form-check-label" for="diabetes">Diabetes</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="HBsAG">
+                    <label class="form-check-label" for="HBsAG">HBsAG</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="antihcv">
+                    <label class="form-check-label" for="antihcv">AntiHCV</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="deathAVCH">
+                    <label class="form-check-label" for="deathAVCH">Morte por AVCH</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="chagas">
+                    <label class="form-check-label" for="chagas">Chagas</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="antiHBS">
+                    <label class="form-check-label" for="antiHBS">Anti-HBS</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="hltv">
+                    <label class="form-check-label" for="hltv">HLTV</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="VDRL">
+                    <label class="form-check-label" for="VDRL">VDRL</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="antiHBC">
+                    <label class="form-check-label" for="antiHBC">Anti-HBC</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="HIV">
+                    <label class="form-check-label" for="HIV">HIV</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="toxoplasmosis">
+                    <label class="form-check-label" for="toxoplasmosis">Toxoplasmose</label>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Salvar</button>
+            {% endcomment %}
+                <br>
+                <input type="submit" value="Enviar">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}

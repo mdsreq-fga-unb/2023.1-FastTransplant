@@ -1,0 +1,57 @@
+{% extends 'partials/base.html' %}
+{% block headtitle %}Receptores{% endblock %}
+{% block pagetitle %}Receptores{% endblock %}
+{% block path %}
+<li class="breadcrumb-item">Home</li>
+<li class="breadcrumb-item active">Receptores</li>
+{% endblock %}
+{% block content %}
+<section class="content">
+    <div class="container-fluid">
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <form action="{% url ' upload_pdf_receptores' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="file" id="pdfFile" name="pdfFile" accept=".pdf">
+                        <br>
+                        <input type="submit" value="Enviar">
+                    </form>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                    <h3 class="card-title">Receptores Cadastrados</h3>
+                    </div>
+                    <div class="card-body table-responsive p-0">
+                    <table class="table table-hover text-nowrap">
+                        <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>RGCT</th>
+                            <th>Posição</th>
+                            <th>ABO</th>
+                            <th>Idade</th>
+                            <th>Painel</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for receiver in receivers %}
+                            <tr>
+                                <td>{{ patient.name }}</td>
+                                <td>{{ patient.rgct }}</td>
+                                <td>{{ patient.position }}</td>
+                                <td>{{ patient.abo }}</td>
+                                <td>{{ patient.age }}</td>
+                                <td>{{ patient.panel }}</td>
+                            </tr>
+                            {% endfor %}                  
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
