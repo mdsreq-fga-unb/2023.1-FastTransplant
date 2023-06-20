@@ -30,7 +30,7 @@ theme:
     - Visão do Projeto: visao-do-produto-e-projeto/visao-do-projeto.md
     - Processo de Desenvolvimento: visao-do-produto-e-projeto/processo-de-desenvolvimento.md
     - Lições Aprendidas: visao-do-produto-e-projeto/licoes-aprendidas.md
-    - Registros Reuniões: 
+    - Registros Reuniões: visao-do-produto-e-projeto/ata-e-videos.md
   - Requisitos do Produto: requisitos-do-produto/productbacklog.md
   - Entregas das Unidades: 
     - Unidade 1:
