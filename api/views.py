@@ -63,12 +63,8 @@ def item_edit(request, item_id):
 
 def donator_delete(request, pk):
     row = Donator.objects.get(id=pk)
-    if request.method == 'POST':
-        row.delete()
-        return redirect('item_list')
-    donators = Donator.objects.all()
-    return render(request, 'api/donators.html', {'donators': donators})
-
+    row.delete()
+    return redirect('donators')
 
 # CRUD Patient
 def patient_create(request):
@@ -138,11 +134,9 @@ def receiver_update(request, pk):
     return render(request, 'receiver/receiver_form.html', {'form': form})
 
 def receiver_delete(request, pk):
-    receiver = get_object_or_404(Receiver, pk=pk)
-    if request.method == 'POST':
-        receiver.delete()
-        return redirect('receiver')
-    return render(request, 'receiver/receiver_confirm_delete.html', {'receiver': receiver})
+    row = Receiver.objects.get(id=pk)
+    row.delete()
+    return redirect('receivers')
     
 def dados_receptores(request):
     if request.method == 'POST' and request.FILES['pdfFile']:
@@ -206,62 +200,45 @@ def donator_new(request):
         parsed = re.sub('n', '', parsed)
         
         correspondencia_localidade = re.search(r'Hosp. Notificate: (\w+)', parsed)
+        correspondencia_data = re.search(r'Data: (\d{2}/\d{2}/\d{4})', parsed)
+        correspondencia_rgct = re.search(r'RGCT :(\w+-\w+)', parsed)
+        correspondencia_idade = re.search(r'Idade:(\s+)(\w+)', parsed)
+        correspondencia_sexo = re.search(r'Sexo: (\w+)', parsed)
+        correspondencia_causa = re.search(r'Causa da morte ecefálica: (\w+)', parsed)
+        correspondencia_peso = re.search(r'Peso: (\d+),00', parsed)
+        correspondencia_altura = re.search(r'Altura: (\d+) cm', parsed)
+        correspondencia_opo = re.search(r'OPO(\s+)(\w+\s+\w+)', parsed)
+
         if correspondencia_localidade: localidade = correspondencia_localidade.group(1)
         else: localidade = ""
         
-        correspondencia_data = re.search(r'Data: (\d{2}/\d{2}/\d{4})', parsed)
         if correspondencia_data: data_oferta = datetime.datetime.strptime(correspondencia_data.group(1), '%d/%m/%Y').date()
         else: data_oferta = ""
 
-        correspondencia_rgct = re.search(r'RGCT :(\w+-\w+)', parsed)
         if correspondencia_rgct: rgct = correspondencia_rgct.group(1)
         else: rgct = ""
 
-
-        correspondencia_idade = re.search(r'Idade:(\s+)(\w+)', parsed)
         if correspondencia_idade: idade = correspondencia_idade.group(2)
         else: idade = ""
 
-        correspondencia_sexo = re.search(r'Sexo: (\w+)', parsed)
         if correspondencia_sexo: sexo = correspondencia_sexo.group(1)
         else: sexo = ""
         
-        correspondencia_peso = re.search(r'Peso: (\d+),00', parsed)
         if correspondencia_peso: peso = correspondencia_peso.group(1)
         else: altura = ""
 
-        correspondencia_altura = re.search(r'Altura: (\d+) cm', parsed)
         if correspondencia_altura: altura = correspondencia_altura.group(1)
         else: altura = ""
 
-        correspondencia_opo = re.search(r'OPO(\s+)(\w+\s+\w+)', parsed)
         if correspondencia_opo: opo = correspondencia_opo.group(2)
         else: opo = ""
 
-        correspondencia_causa = re.search(r'Causa da morte ecefálica: (\w+)', parsed)
         if correspondencia_causa: causa_obito = correspondencia_causa.group(1)
         else: causa_obito = ""
 
-        dados_report = OrganReport.objects.create(file=parsed)
-        dados = Donator.objects.create(report=dados_report,opo=opo, rgct=rgct, date=data_oferta, location=localidade, height=altura, age=idade, gender=sexo, death_cause=causa_obito)
-        dados.save()
-
-        teste = Donator.objects.filter(opo=opo).first()
-        print(teste.date)
-
-        last_donator = Donator.objects.filter(opo=opo, rgct=rgct, date=data_oferta, location=localidade, height=altura, age=idade, gender=sexo, death_cause=causa_obito).last()
-        last_opo = last_donator.opo
-        last_rgct = last_donator.rgct
-        last_date = last_donator.date
-        last_location = last_donator.location
-        last_height = last_donator.height
-        last_age = last_donator.age
-        last_gender = last_donator.gender
-        last_death_cause = last_donator.death_cause
-
-        context = {'last_rgct': last_rgct, 'last_opo': last_opo, 'last_date': last_date,
-                   'last_location': last_location, 'last_height': last_height,
-                   'last_age': last_age, 'last_gender': last_gender,'last_death_cause': last_death_cause}
+        context = {'last_rgct': rgct, 'last_opo': opo, 'last_date': data_oferta,
+                   'last_location': localidade, 'last_height': altura,
+                   'last_age': idade, 'last_gender': sexo,'last_death_cause': causa_obito}
         return render(request, 'api/create_donator.html', context)
     else: return render(request, 'api/upload.html')
     
