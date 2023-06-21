@@ -36,7 +36,7 @@
                                 <td>{{ receiver.abo }}</td>
                                 <td>{{ receiver.age }}</td>
                                 <td>{{ receiver.panel }}</td>
-                                <td><a href="">Editar</a> | <a>Excluir</a></td>
+                                <td><a href="{% url 'receiver_delete' receiver.id %}">Excluir</a> | <a href="{% url 'receiver_update' receiver.id %}">Editar</a></td>
                             </tr>
                             {% endfor %}                  
                         </tbody>

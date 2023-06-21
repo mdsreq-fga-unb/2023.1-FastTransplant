@@ -6,7 +6,7 @@ class OrganReport(models.Model):
     file = models.FileField(upload_to='reports/')
 
 class Donator(models.Model):
-    report = models.ForeignKey(OrganReport, on_delete=models.CASCADE)
+    # report = models.ForeignKey(OrganReport, on_delete=models.CASCADE)
     #name = models.CharField(max_length=100, blank=False)
     rgct = models.CharField(blank=False, max_length=100)
     date = models.DateField(blank=False)

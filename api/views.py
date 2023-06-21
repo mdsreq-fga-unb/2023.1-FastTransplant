@@ -40,26 +40,22 @@ def donator_detail(request, pk):
     return render(request, 'donator/donator_detail.html', {'car': car})
 
 def donator_update(request, pk):
-    donator = get_object_or_404(Donator, pk=pk)
+    donator = Donator.objects.get(id=pk)
     if request.method == 'POST':
-        form = DonatorForm(request.POST, instance=donator)
-        if form.is_valid():
-            form.save()
-            return redirect('donator', pk=donator.pk)
-    else:
-        form = DonatorForm(instance=donator)
-    return render(request, 'donator/donator_form.html', {'form': form})
-
-def item_edit(request, item_id):
-    item = Item.objects.get(id=item_id)
-    if request.method == 'POST':
-        # Handle form submission to update the item
-        item.name = request.POST['name']
-        item.description = request.POST['description']
-        item.price = request.POST['price']
-        item.save()
-        return redirect('item_list')
-    return render(request, 'item_edit.html', {'item': item})
+        parsed_date = date_parser.parse(request.POST['date'])
+        
+        donator.rgct = request.POST['rgct']
+        donator.date = parsed_date.strftime('%Y-%m-%d')
+        donator.location = request.POST['location']
+        donator.opo = request.POST['opo']
+        donator.height = request.POST['height']
+        donator.age = request.POST['age']
+        donator.gender = request.POST['gender']
+        donator.death_cause = request.POST['death_cause']
+        
+        donator.save()
+        return redirect("donators")
+    return render(request, 'api/update_donator.html', {'donator': donator})
 
 def donator_delete(request, pk):
     row = Donator.objects.get(id=pk)
@@ -123,15 +119,19 @@ def receiver_detail(request, pk):
     return render(request, 'receiver/receiver_detail.html', {'receiver': receiver})
 
 def receiver_update(request, pk):
-    receiver = get_object_or_404(Receiver, pk=pk)
+    receiver = Receiver.objects.get(id=pk)
     if request.method == 'POST':
-        form = ReceiverForm(request.POST, instance=receiver)
-        if form.is_valid():
-            form.save()
-            return redirect('receiver', pk=receiver.pk)
-    else:
-        form = ReceiverForm(instance=receiver)
-    return render(request, 'receiver/receiver_form.html', {'form': form})
+        receiver.name = request.POST['name']
+        receiver.rgct = request.POST['rgct']
+        receiver.position = request.POST['position']
+        receiver.abo = request.POST['abo']
+        receiver.age = request.POST['age']
+        receiver.panel = request.POST['panel']
+
+        receiver.save()
+        return redirect("receivers")
+    return render(request, 'api/update_receiver.html', {'receiver': receiver})
+
 
 def receiver_delete(request, pk):
     row = Receiver.objects.get(id=pk)
@@ -209,32 +209,15 @@ def donator_new(request):
         correspondencia_altura = re.search(r'Altura: (\d+) cm', parsed)
         correspondencia_opo = re.search(r'OPO(\s+)(\w+\s+\w+)', parsed)
 
-        if correspondencia_localidade: localidade = correspondencia_localidade.group(1)
-        else: localidade = ""
-        
-        if correspondencia_data: data_oferta = datetime.datetime.strptime(correspondencia_data.group(1), '%d/%m/%Y').date()
-        else: data_oferta = ""
-
-        if correspondencia_rgct: rgct = correspondencia_rgct.group(1)
-        else: rgct = ""
-
-        if correspondencia_idade: idade = correspondencia_idade.group(2)
-        else: idade = ""
-
-        if correspondencia_sexo: sexo = correspondencia_sexo.group(1)
-        else: sexo = ""
-        
-        if correspondencia_peso: peso = correspondencia_peso.group(1)
-        else: altura = ""
-
-        if correspondencia_altura: altura = correspondencia_altura.group(1)
-        else: altura = ""
-
-        if correspondencia_opo: opo = correspondencia_opo.group(2)
-        else: opo = ""
-
-        if correspondencia_causa: causa_obito = correspondencia_causa.group(1)
-        else: causa_obito = ""
+        localidade = correspondencia_localidade.group(1) if correspondencia_localidade else ""
+        data_oferta = datetime.datetime.strptime(correspondencia_data.group(1), '%d/%m/%Y').date() if correspondencia_data else ""
+        rgct = correspondencia_rgct.group(1) if correspondencia_rgct else ""
+        idade = correspondencia_idade.group(2) if correspondencia_idade else ""
+        sexo = correspondencia_sexo.group(1) if correspondencia_sexo else ""
+        peso = correspondencia_peso.group(1) if correspondencia_peso else ""
+        altura = correspondencia_altura.group(1) if correspondencia_altura else ""
+        opo = correspondencia_opo.group(2) if correspondencia_opo else ""
+        causa_obito = correspondencia_causa.group(1) if correspondencia_causa else ""
 
         context = {'last_rgct': rgct, 'last_opo': opo, 'last_date': data_oferta,
                    'last_location': localidade, 'last_height': altura,
@@ -255,21 +238,8 @@ def donator_new_confirm(request):
         gender = request.POST['gender']
         death_cause = request.POST['death_cause']
 
-        last_donator = Donator.objects.last()
-        if last_donator and last_donator.report:
-            dados = Donator.objects.create(
-                report=last_donator.report,
-                rgct=rgct,
-                date=formatted_date,
-                location=location,
-                opo=opo,
-                height=height,
-                age=age,
-                gender=gender,
-                death_cause=death_cause
-            )
-            dados.save()
-
+        dados = Donator.objects.create(opo=opo, rgct=rgct, date=formatted_date, location=location, height=height, age=age, gender=gender, death_cause=death_cause)
+        dados.save()
     return render(request, 'api/receiver_create.html')
 
 def receiver_new(request):

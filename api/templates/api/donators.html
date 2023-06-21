@@ -30,7 +30,7 @@
                             <tr>
                                 <td>{{ donator.rgct }}</td>
                                 <td>{{ donator.date }}</td>
-                                <td><a href="{% url 'donator_delete' donator.id %}">Excluir</a> | </td>
+                                <td><a href="{% url 'donator_delete' donator.id %}">Excluir</a> | <a href="{% url 'donator_update' donator.id %}">Editar</a></td>
                             </tr>
                             {% endfor %}                
                         </tbody>
