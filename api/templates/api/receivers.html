@@ -24,17 +24,19 @@
                             <th>ABO</th>
                             <th>Idade</th>
                             <th>Painel</th>
+                            <th>Ações</th>
                         </tr>
                         </thead>
                         <tbody>
                             {% for receiver in receivers %}
                             <tr>
-                                <td>{{ patient.name }}</td>
-                                <td>{{ patient.rgct }}</td>
-                                <td>{{ patient.position }}</td>
-                                <td>{{ patient.abo }}</td>
-                                <td>{{ patient.age }}</td>
-                                <td>{{ patient.panel }}</td>
+                                <td>{{ receiver.name }}</td>
+                                <td>{{ receiver.rgct }}</td>
+                                <td>{{ receiver.position }}</td>
+                                <td>{{ receiver.abo }}</td>
+                                <td>{{ receiver.age }}</td>
+                                <td>{{ receiver.panel }}</td>
+                                <td><a href="">Editar</a> | <a>Excluir</a></td>
                             </tr>
                             {% endfor %}                  
                         </tbody>
