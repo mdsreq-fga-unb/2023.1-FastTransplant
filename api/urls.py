@@ -17,8 +17,9 @@ urlpatterns = [
     path('receivers/create', views.receiver_create, name='receiver_create'),
     path('receivers/update/<int:pk>', views.receiver_update, name='receiver_update'),
     path('receivers/delete/<int:pk>', views.receiver_delete, name='receiver_delete'),
-    path('patients/', upload_pdf, name='upload_pdf'),
+    path('patients', upload_pdf, name='upload_pdf'),
     path('receivers/', dados_receptores, name=' dados_receptores'),
     path('atualizar_dados/', atualizar_dados, name='atualizar_dados'),
     path('recep/', recep, name='recep'),
+    path('new', views.new, name='new'),
 ]
