@@ -1,10 +1,10 @@
 {% extends 'partials/base.html' %}
-{% block headtitle %}Doadores{% endblock %}
-{% block pagetitle %}Adicionar Doador - Confirmação{% endblock %}
+{% block headtitle %}Editar Doador{% endblock %}
+{% block pagetitle %}Editar Doador{% endblock %}
 {% block path %}
 <li class="breadcrumb-item">Home</li>
 <li class="breadcrumb-item">Doadores</li>
-<li class="breadcrumb-item active">Confirmação</li>
+<li class="breadcrumb-item active">Editar Doador</li>
 {% endblock %}
 {% block content %}
     <section class="content">
@@ -17,39 +17,39 @@
               <div class="card-header">
                 <h3 class="card-title">Formulário</h3>
               </div>
-              <form method="post" action="{% url 'donator_new_confirm' %}">
+              <form method="post" action="{% url 'donator_update' donator.id %}">
                 {% csrf_token %}
                   <div class="form-group">
                     <label for="rgct">RGCT</label>
-                    <input type="text" class="form-control" name="rgct" id="rgct" value="{{ last_rgct }}">
+                    <input type="text" class="form-control" name="rgct" id="rgct" value="{{ donator.rgct }}">
                   </div>
                   <div class="form-group">
                     <label for="date">Data da Oferta</label>
-                    <input type="datetime" class="form-control" name="date" id="date" value="{{ last_date }}">
+                    <input type="datetime" class="form-control" name="date" id="date" value="{{ donator.date }}">
                   </div>
                   <div class="form-group">
                     <label for="location">Localidade</label>
-                    <input type="text" class="form-control" name="location" id="location" value="{{ last_location }}">
+                    <input type="text" class="form-control" name="location" id="location" value="{{ donator.location }}">
                   </div>
                   <div class="form-group">
                     <label for="opo">OPO</label>
-                    <input type="text" class="form-control" name="opo" id="opo" value="{{ last_opo }}">
+                    <input type="text" class="form-control" name="opo" id="opo" value="{{ donator.opo }}">
                   </div>
                   <div class="form-group">
                     <label for="height">Altura</label>
-                    <input type="number" class="form-control" name="height" id="height" value="{{ last_height }}">
+                    <input type="number" class="form-control" name="height" id="height" value="{{ donator.height }}">
                   </div>
                   <div class="form-group">
                     <label for="age">Idade</label>
-                    <input type="number" class="form-control" name="age" id="age" value="{{ last_age }}">
+                    <input type="number" class="form-control" name="age" id="age" value="{{ donator.age }}">
                   </div>
                   <div class="form-group">
                     <label for="gender">Sexo</label>
-                    <input type="text" class="form-control" name="gender" id="gender" value="{{ last_gender }}">
+                    <input type="text" class="form-control" name="gender" id="gender" value="{{ donator.gender }}">
                   </div>
                   <div class="form-group">
                     <label>Causa do Óbito</label>
-                    <input type="text" class="form-control" name="death_cause" id="death_cause" value="{{ last_death_cause }}">             
+                    <input type="text" class="form-control" name="death_cause" id="death_cause" value="{{ donator.death_cause }}">             
                   </div>
                   <input type="submit" value="Enviar">
               </form>           

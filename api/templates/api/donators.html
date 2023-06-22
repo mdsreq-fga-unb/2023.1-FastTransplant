@@ -22,6 +22,7 @@
                         <tr>
                             <th>RGCT</th>
                             <th>Date</th>
+                            <th>Ações</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -29,39 +30,9 @@
                             <tr>
                                 <td>{{ donator.rgct }}</td>
                                 <td>{{ donator.date }}</td>
+                                <td><a href="{% url 'donator_delete' donator.id %}">Excluir</a> | <a href="{% url 'donator_update' donator.id %}">Editar</a></td>
                             </tr>
                             {% endfor %}                
-                        </tbody>
-                    </table>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                    <h3 class="card-title">Receptores Cadastrados</h3>
-                    </div>
-                    <div class="card-body table-responsive p-0">
-                    <table class="table table-hover text-nowrap">
-                        <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>RGCT</th>
-                            <th>Posição</th>
-                            <th>ABO</th>
-                            <th>Idade</th>
-                            <th>Painel</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            {% for receiver in receivers %}
-                            <tr>
-                                <td>{{ patient.name }}</td>
-                                <td>{{ patient.rgct }}</td>
-                                <td>{{ patient.position }}</td>
-                                <td>{{ patient.abo }}</td>
-                                <td>{{ patient.age }}</td>
-                                <td>{{ patient.panel }}</td>
-                            </tr>
-                            {% endfor %}                  
                         </tbody>
                     </table>
                     </div>

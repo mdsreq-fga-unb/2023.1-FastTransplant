@@ -2,8 +2,6 @@ import datetime
 import PyPDF2
 import spacy
 import re
-
-
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Donator, Patient, Receiver, OrganReport
 from .forms import DonatorForm, PatientForm, ReceiverForm, OrganReportForm
@@ -42,22 +40,27 @@ def donator_detail(request, pk):
     return render(request, 'donator/donator_detail.html', {'car': car})
 
 def donator_update(request, pk):
-    donator = get_object_or_404(Donator, pk=pk)
+    donator = Donator.objects.get(id=pk)
     if request.method == 'POST':
-        form = DonatorForm(request.POST, instance=donator)
-        if form.is_valid():
-            form.save()
-            return redirect('donator', pk=donator.pk)
-    else:
-        form = DonatorForm(instance=donator)
-    return render(request, 'donator/donator_form.html', {'form': form})
+        parsed_date = date_parser.parse(request.POST['date'])
+        
+        donator.rgct = request.POST['rgct']
+        donator.date = parsed_date.strftime('%Y-%m-%d')
+        donator.location = request.POST['location']
+        donator.opo = request.POST['opo']
+        donator.height = request.POST['height']
+        donator.age = request.POST['age']
+        donator.gender = request.POST['gender']
+        donator.death_cause = request.POST['death_cause']
+        
+        donator.save()
+        return redirect("donators")
+    return render(request, 'api/update_donator.html', {'donator': donator})
 
 def donator_delete(request, pk):
-    donator = get_object_or_404(Donator, pk=pk)
-    if request.method == 'POST':
-        donator.delete()
-        return redirect('donator')
-    return render(request, 'donator/donator_confirm_delete.html', {'donator': donator})
+    row = Donator.objects.get(id=pk)
+    row.delete()
+    return redirect('donators')
 
 # CRUD Patient
 def patient_create(request):
@@ -116,183 +119,24 @@ def receiver_detail(request, pk):
     return render(request, 'receiver/receiver_detail.html', {'receiver': receiver})
 
 def receiver_update(request, pk):
-    receiver = get_object_or_404(Receiver, pk=pk)
+    receiver = Receiver.objects.get(id=pk)
     if request.method == 'POST':
-        form = ReceiverForm(request.POST, instance=receiver)
-        if form.is_valid():
-            form.save()
-            return redirect('receiver', pk=receiver.pk)
-    else:
-        form = ReceiverForm(instance=receiver)
-    return render(request, 'receiver/receiver_form.html', {'form': form})
+        receiver.name = request.POST['name']
+        receiver.rgct = request.POST['rgct']
+        receiver.position = request.POST['position']
+        receiver.abo = request.POST['abo']
+        receiver.age = request.POST['age']
+        receiver.panel = request.POST['panel']
+
+        receiver.save()
+        return redirect("receivers")
+    return render(request, 'api/update_receiver.html', {'receiver': receiver})
+
 
 def receiver_delete(request, pk):
-    receiver = get_object_or_404(Receiver, pk=pk)
-    if request.method == 'POST':
-        receiver.delete()
-        return redirect('receiver')
-    return render(request, 'receiver/receiver_confirm_delete.html', {'receiver': receiver})
-
-# Functions related to file upload
-def upload_report(request):
-    if request.method == 'POST':
-        form = OrganReportForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('report_list')
-    else:
-        form = OrganReportForm()
-    return render(request, 'api/index.html', {'form': form})
-
-
-def upload_pdf(request):
-    if request.method == 'POST' and request.FILES['pdfFile']:
-        pdf_file = request.FILES['pdfFile']
-
-        read_pdf = PyPDF2.PdfReader(pdf_file)
-
-        number_of_pages = len(read_pdf.pages)
-
-        page = read_pdf.pages[0]
-
-        page_content = page.extract_text()
-
-        parsed = ""
-
-        # faz a junção das linhas 
-        parsed = ''.join(page_content)
-
-        # remove as quebras de linha
-        parsed = re.sub('n', '', parsed)
-        print("Após eliminar as quebras")
-        print(parsed)
-
-        # Extrair Nome
-        #correspondencia_nome = re.search(r'Nome:(\s+)(\w+)', parsed)
-        #if correspondencia_nome:
-            #nome = correspondencia_nome.group(2)
-            #print("Nome encontrado:", nome)
-        #else:
-            #nome = ""
-
-
-        # Extrair Localidade
-        correspondencia_localidade = re.search(r'Hosp. Notificate: (\w+)', parsed)
-        if correspondencia_localidade:
-            localidade = correspondencia_localidade.group(1)
-            print("Localidade encontrada:", localidade)
-        else:
-            localidade = ""
-        #donator = Donator()
-        #donator.save_localidade(localidade)
-
-        # Extrair Data da Oferta
-        correspondencia_data = re.search(r'Data: (\d{2}/\d{2}/\d{4})', parsed)
-        if correspondencia_data:
-            data_oferta = datetime.datetime.strptime(correspondencia_data.group(1), '%d/%m/%Y').date()
-            print("Data da Oferta encontrada:", data_oferta)
-        else:
-            data_oferta = ""
-        #donator.save_data_oferta(data_oferta)
-
-        # Extrair RGCT
-        correspondencia_rgct = re.search(r'RGCT :(\w+-\w+)', parsed)
-        if correspondencia_rgct:
-            rgct = correspondencia_rgct.group(1)
-            print("RGCT encontrado:", rgct)
-        else:
-            rgct = ""
-        #donator.save_rgct(rgct)
-
-        # Extrair Idade
-        correspondencia_idade = re.search(r'Idade:(\s+)(\w+)', parsed)
-        if correspondencia_idade:
-            idade = correspondencia_idade.group(2)
-            print("Idade encontrada:", idade)
-        else:
-            idade = ""
-        #donator.save_idade(idade)
-
-        # Extrair Sexo
-        correspondencia_sexo = re.search(r'Sexo: (\w+)', parsed)
-        if correspondencia_sexo:
-            sexo = correspondencia_sexo.group(1)
-            print("Sexo encontrado:", sexo)
-        else:
-            sexo = ""
-        #donator.save_sexo(sexo)
-
-        # Extrair Peso
-        correspondencia_peso = re.search(r'Peso: (\d+),00', parsed)
-        if correspondencia_peso:
-            peso = correspondencia_peso.group(1)
-            print("Peso encontrado:", peso)
-        else:
-            altura = ""
-        #donator.save_peso(peso)
-
-        # Extrair Altura
-        correspondencia_altura = re.search(r'Altura: (\d+) cm', parsed)
-        if correspondencia_altura:
-            altura = correspondencia_altura.group(1)
-            print("Altura encontrada:", altura)
-        else:
-            altura = ""
-        #donator.save_altura(altura)
-
-         # Extrair OPO
-        correspondencia_opo = re.search(r'OPO(\s+)(\w+\s+\w+)', parsed)
-        if correspondencia_opo:
-            opo = correspondencia_opo.group(2)
-            print("OPO encontrado:", opo)
-        else:
-            opo = ""
-        #donator.save_opo(opo)
-
-        # Extrair Causa do Óbito
-        correspondencia_causa = re.search(r'Causa da morte ecefálica: (\w+)', parsed)
-        if correspondencia_causa:
-            causa_obito = correspondencia_causa.group(1)
-            print("Causa do Óbito encontrada:", causa_obito)
-        else:
-            causa_obito = ""
-        #donator.save_causa_obito(causa_obito)
-
-        dados_report = OrganReport.objects.create(file=parsed)
-
-        dados = Donator.objects.create(report=dados_report,opo=opo, rgct=rgct, date=data_oferta, location=localidade, height=altura, age=idade, gender=sexo, death_cause=causa_obito)
-        dados.save()
-
-        teste = Donator.objects.filter(opo=opo).first()
-        print(teste.date)
-
-        last_donator = Donator.objects.filter(opo=opo, rgct=rgct, date=data_oferta, location=localidade, height=altura, age=idade, gender=sexo, death_cause=causa_obito).last()
-        last_opo = last_donator.opo
-        last_rgct = last_donator.rgct
-        last_date = last_donator.date
-        last_location = last_donator.location
-        last_height = last_donator.height
-        last_age = last_donator.age
-        last_gender = last_donator.gender
-        last_death_cause = last_donator.death_cause
-
-
-        return render(request, 'api\create_donator.html',  {'last_rgct': last_rgct,
-                                                            'last_opo': last_opo,
-                                                            'last_date': last_date,
-                                                            'last_location': last_location,
-                                                            'last_height': last_height,
-                                                            'last_age': last_age,
-                                                            'last_gender': last_gender,
-                                                            'last_death_cause': last_death_cause})
-
-
-    
-    return render(request, 'api/donators.html')
-
-           #dados = Donator.objects.filter(name="ana")
-            #dados.update(name="ANA BEATRIZ MASSUH")
-            #dados.delete()
+    row = Receiver.objects.get(id=pk)
+    row.delete()
+    return redirect('receivers')
     
 def dados_receptores(request):
     if request.method == 'POST' and request.FILES['pdfFile']:
@@ -345,28 +189,61 @@ def dados_receptores(request):
     
     return render(request, 'api/index.html')
 
+def donator_new(request):
+    if request.method == 'POST' and request.FILES['pdfFile']:
+        pdf_file = request.FILES['pdfFile']
+        read_pdf = PyPDF2.PdfReader(pdf_file)
+        number_of_pages = len(read_pdf.pages)
+        page = read_pdf.pages[0]
+        page_content = page.extract_text()
+        parsed = "".join(page_content)
+        parsed = re.sub('n', '', parsed)
+        
+        correspondencia_localidade = re.search(r'Hosp. Notificate: (\w+)', parsed)
+        correspondencia_data = re.search(r'Data: (\d{2}/\d{2}/\d{4})', parsed)
+        correspondencia_rgct = re.search(r'RGCT :(\w+-\w+)', parsed)
+        correspondencia_idade = re.search(r'Idade:(\s+)(\w+)', parsed)
+        correspondencia_sexo = re.search(r'Sexo: (\w+)', parsed)
+        correspondencia_causa = re.search(r'Causa da morte ecefálica: (\w+)', parsed)
+        correspondencia_peso = re.search(r'Peso: (\d+),00', parsed)
+        correspondencia_altura = re.search(r'Altura: (\d+) cm', parsed)
+        correspondencia_opo = re.search(r'OPO(\s+)(\w+\s+\w+)', parsed)
 
+        localidade = correspondencia_localidade.group(1) if correspondencia_localidade else ""
+        data_oferta = datetime.datetime.strptime(correspondencia_data.group(1), '%d/%m/%Y').date() if correspondencia_data else ""
+        rgct = correspondencia_rgct.group(1) if correspondencia_rgct else ""
+        idade = correspondencia_idade.group(2) if correspondencia_idade else ""
+        sexo = correspondencia_sexo.group(1) if correspondencia_sexo else ""
+        peso = correspondencia_peso.group(1) if correspondencia_peso else ""
+        altura = correspondencia_altura.group(1) if correspondencia_altura else ""
+        opo = correspondencia_opo.group(2) if correspondencia_opo else ""
+        causa_obito = correspondencia_causa.group(1) if correspondencia_causa else ""
+
+        context = {'last_rgct': rgct, 'last_opo': opo, 'last_date': data_oferta,
+                   'last_location': localidade, 'last_height': altura,
+                   'last_age': idade, 'last_gender': sexo,'last_death_cause': causa_obito}
+        return render(request, 'api/create_donator.html', context)
+    else: return render(request, 'api/upload.html')
     
-
-
-
-
-
-# def my_view(request):
-    
-#     last_donator = Donator.objects.filter(id=id).latest()
-#     last_rgct = last_donator.rgct
-
-#     print(id)
-#     print(last_donator)
-
-#     return render(request, 'api/create_donator.html', {'last_rgct': last_rgct})
-
-def recep(request):
-
-
+def donator_new_confirm(request):
     if request.method == 'POST':
-        # Obtenha os valores enviados pelo formulário
+        rgct = request.POST['rgct']
+        date_string = request.POST['date']
+        parsed_date = date_parser.parse(date_string)
+        formatted_date = parsed_date.strftime('%Y-%m-%d')
+        location = request.POST['location']
+        opo = request.POST['opo']
+        height = request.POST['height']
+        age = request.POST['age']
+        gender = request.POST['gender']
+        death_cause = request.POST['death_cause']
+
+        dados = Donator.objects.create(opo=opo, rgct=rgct, date=formatted_date, location=location, height=height, age=age, gender=gender, death_cause=death_cause)
+        dados.save()
+    return render(request, 'api/receiver_create.html')
+
+def receiver_new(request):
+    if request.method == 'POST':
         nome = request.POST['name']
         rgct = request.POST['rgct']
         posicao = request.POST['position']
@@ -383,54 +260,4 @@ def recep(request):
             panel=painel,
         )
         dados.save()
-            
-
-    return render(request, 'api/donators.html')
-
-def atualizar_dados(request):
-
-
-    if request.method == 'POST':
-        # Obtenha os valores enviados pelo formulário
-        rgct = request.POST['rgct']
-        date_string = request.POST['date']
-        parsed_date = date_parser.parse(date_string)
-        formatted_date = parsed_date.strftime('%Y-%m-%d')
-        location = request.POST['location']
-        opo = request.POST['opo']
-        height = request.POST['height']
-        age = request.POST['age']
-        gender = request.POST['gender']
-        death_cause = request.POST['death_cause']
-
-        # Obtenha o último donator
-        last_donator = Donator.objects.last()
-
-        # Verifique se o último donator existe e possui um report associado
-        if last_donator and last_donator.report:
-            # Use o report do último donator para criar o novo donator
-            dados = Donator.objects.create(
-                report=last_donator.report,
-                rgct=rgct,
-                date=formatted_date,
-                location=location,
-                opo=opo,
-                height=height,
-                age=age,
-                gender=gender,
-                death_cause=death_cause
-            )
-            dados.save()
-            print('Atualização de dados:')
-            print(rgct)
-            print(formatted_date)
-            print(location)
-            print(opo)
-            print(height)
-            print(age)
-            print(gender)
-            print(death_cause)
-        else:
-            print('Não foi possível encontrar um report válido para associar ao donator.')
-
-    return render(request, 'api/receivers.html')
+    return render(request, 'api/index.html')

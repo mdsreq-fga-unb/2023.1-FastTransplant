@@ -1,24 +1,15 @@
 from django.urls import path
 from . import views
-from .views import upload_pdf, dados_receptores, atualizar_dados, recep
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('data', views.data, name='data'),
-    path('panel', views.panel, name='panel'),
-    path('donators', views.donator_list, name='donators'),
-    path('donators', views.receiver_list, name='receiver_list'),
-    path('donators/create', views.donator_create, name='donator_create'),
-    path('patients', views.patient_list, name='patient_list'),
-    path('patients/create', views.patient_create, name='patient_create'),
-    path('patients/update/<int:pk>', views.patient_update, name='patient_update'),
-    path('patients/delete/<int:pk>', views.patient_delete, name='patient_delete'),
-    path('receivers', views.receiver_list, name='receiver_list'),
-    path('receivers/create', views.receiver_create, name='receiver_create'),
-    path('receivers/update/<int:pk>', views.receiver_update, name='receiver_update'),
-    path('receivers/delete/<int:pk>', views.receiver_delete, name='receiver_delete'),
-    path('patients/', upload_pdf, name='upload_pdf'),
-    path('receivers/', dados_receptores, name=' dados_receptores'),
-    path('atualizar_dados/', atualizar_dados, name='atualizar_dados'),
-    path('recep/', recep, name='recep'),
+    path('receivers/', views.receiver_list, name='receivers'),
+    path('receivers/new/', views.receiver_new, name='receiver_new'),
+    path('receivers/delete/<int:pk>/', views.receiver_delete, name='receiver_delete'),
+    path('receivers/update/<int:pk>/', views.receiver_update, name='receiver_update'),
+    path('donators/', views.donator_list, name='donators'),
+    path('donators/new/', views.donator_new, name='donator_new'),
+    path('donators/new/confirm', views.donator_new_confirm, name='donator_new_confirm'),
+    path('donators/delete/<int:pk>/', views.donator_delete, name='donator_delete'),
+    path('donators/update/<int:pk>/', views.donator_update, name='donator_update'),
 ]

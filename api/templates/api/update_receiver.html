@@ -1,0 +1,53 @@
+{% extends 'partials/base.html' %}
+{% block headtitle %}Receptores{% endblock %}
+{% block pagetitle %}Receptores{% endblock %}
+{% block path %}
+<li class="breadcrumb-item">Home</li>
+<li class="breadcrumb-item">Receptores</li>
+<li class="breadcrumb-item active">Editar Receptor</li>
+{% endblock %}
+{% block content %}
+<section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Formulário Receptor</h3>
+              </div>
+              <form method="post" action="{% url 'receiver_update' receiver.id %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Digite o nome" value="{{ receiver.name }}">
+                  </div>
+                  <div class="form-group">
+                    <label for="rgct">RGCT</label>
+                    <input type="text" class="form-control" name="rgct" id="rgct" placeholder="Digite o RGCT" value="{{ receiver.rgct }}">
+                  </div>
+                  <div class="form-group">
+                    <label for="position">Posição</label>
+                    <input type="number" class="form-control" name="position" id="position" placeholder="Digite a posição na fila" value="{{ receiver.position }}">
+                  </div>
+                  <div class="form-group">
+                    <label for="abo">ABO</label>
+                    <input type="text" class="form-control" name="abo" id="abo" placeholder="Digite o tipo sanguíneo" value="{{ receiver.abo }}">
+                  </div>
+                  <div class="form-group">
+                    <label for="age">Idade</label>
+                    <input type="number" class="form-control" name="age" id="age" placeholder="Digite a idade" value="{{ receiver.age }}">
+                  </div>
+                  <div class="form-group">
+                    <label for="panel">Painel</label>
+                    <input type="number" class="form-control" name="panel" id="panel" placeholder="Digite o painel" value="{{ receiver.panel }}">
+                  </div>
+                  <input type="submit" value="Enviar">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}

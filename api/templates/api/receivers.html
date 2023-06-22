@@ -6,20 +6,10 @@
 <li class="breadcrumb-item active">Receptores</li>
 {% endblock %}
 {% block content %}
-{% comment %} <section class="content">
+<section class="content">
     <div class="container-fluid">
-        
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
-                    <form action="{% url 'd' %}" method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <input type="file" id="pdfFile" name="pdfFile" accept=".pdf">
-                        <br>
-                        <input type="submit" value="Enviar">
-                    </form>
-                    </form>
-                </div>
                 <div class="card">
                     <div class="card-header">
                     <h3 class="card-title">Receptores Cadastrados</h3>
@@ -34,17 +24,19 @@
                             <th>ABO</th>
                             <th>Idade</th>
                             <th>Painel</th>
+                            <th>Ações</th>
                         </tr>
                         </thead>
                         <tbody>
                             {% for receiver in receivers %}
                             <tr>
-                                <td>{{ patient.name }}</td>
-                                <td>{{ patient.rgct }}</td>
-                                <td>{{ patient.position }}</td>
-                                <td>{{ patient.abo }}</td>
-                                <td>{{ patient.age }}</td>
-                                <td>{{ patient.panel }}</td>
+                                <td>{{ receiver.name }}</td>
+                                <td>{{ receiver.rgct }}</td>
+                                <td>{{ receiver.position }}</td>
+                                <td>{{ receiver.abo }}</td>
+                                <td>{{ receiver.age }}</td>
+                                <td>{{ receiver.panel }}</td>
+                                <td><a href="{% url 'receiver_delete' receiver.id %}">Excluir</a> | <a href="{% url 'receiver_update' receiver.id %}">Editar</a></td>
                             </tr>
                             {% endfor %}                  
                         </tbody>
@@ -55,49 +47,4 @@
         </div>
     </div>
 </section>
-{% endblock %} {% endcomment %}
-
-<section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <!-- left column -->
-          <div class="col-md-12">
-            <!-- general form elements -->
-            <div class="card card-primary">
-              <div class="card-header">
-                <h3 class="card-title">Formulário Receptor</h3>
-              </div>
-              <form method="post" action="{% url 'recep' %}">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="name">Nome</label>
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Digite o nome">
-                  </div>
-                  <div class="form-group">
-                    <label for="rgct">RGCT</label>
-                    <input type="text" class="form-control" name="rgct" id="rgct" placeholder="Digite o RGCT" >
-                  </div>
-                  <div class="form-group">
-                    <label for="position">Posição</label>
-                    <input type="number" class="form-control" name="position" id="position" placeholder="Digite a posição na fila">
-                  </div>
-                  <div class="form-group">
-                    <label for="abo">ABO</label>
-                    <input type="text" class="form-control" name="abo" id="abo" placeholder="Digite o tipo sanguíneo">
-                  </div>
-                  <div class="form-group">
-                    <label for="age">Idade</label>
-                    <input type="number" class="form-control" name="age" id="age" placeholder="Digite a idade">
-                  </div>
-                  <div class="form-group">
-                    <label for="panel">Painel</label>
-                    <input type="number" class="form-control" name="panel" id="panel" placeholder="Digite o painel">
-                  </div>
-                  <input type="submit" value="Enviar">
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 {% endblock %}

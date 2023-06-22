@@ -1,0 +1,26 @@
+{% extends 'partials/base.html' %}
+{% block headtitle %}Novos pacientes{% endblock %}
+{% block pagetitle %}Novos pacientes{% endblock %}
+{% block path %}
+<li class="breadcrumb-item"><a href="index">Home</a></li>
+<li class="breadcrumb-item">Home</li>
+<li class="breadcrumb-item active">Novos pacientes</li>
+{% endblock %}
+{% block content %}
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <form action="{% url 'donator_new' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" id="pdfFile" name="pdfFile" accept=".pdf">
+                    <br>
+                    <input type="submit" value="Enviar">
+                </form>
+                </div>
+            </div> 
+        </div>
+    </div>
+</section>
+{% endblock %}
