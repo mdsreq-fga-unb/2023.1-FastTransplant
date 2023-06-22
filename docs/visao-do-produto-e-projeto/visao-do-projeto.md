@@ -46,10 +46,10 @@ Fase 3: Prototipação e desenvolvimento 1  (24/05 - 13/06)
 - Ajustar os protótipos
 - Iniciar o desenvolvimento
 
-Fase 4: Finalização do MVP1, validação e testes (14/06 - 19/06)
+Fase 4: Finalização do MVP1, validação (14/06 - 19/06)
 
-- Testar e validar o MVP1 com base nos requisitos e no design
-- Corrigir quaisquer erros ou problemas encontrados durante os testes
+- Validar o MVP1 com base nos requisitos e no design
+- Corrigir quaisquer erros ou problemas encontrados durante as validações
 - Preparar uma apresentação e documentação do MVP1
 
 Fase 5: Prototipação e desenvolvimento 2 (20/06 - 04/07)
@@ -74,7 +74,7 @@ A tabela 2 traz um resumo de cada fase e quais serão os produtos de gerados de 
 | Fase 1   | Definição de requisitos                        | Escopo do projeto e backlog                            | 02/05/23        | 09/05/23     |
 | Fase 2   | Projeto de arquitetura, definição de MVPs e estudo de tecnologias | Arquitetura do sistema, MVPs e equipe capacitada| 10/05/23        | 23/05/23     |
 | Fase 3   | Prototipação e desenvolvimento 1               | Protótipo e produto desenvolvido (primeira metade do MVP1)| 24/05/23        | 13/06/23     |
-| Fase 4   | Finalização do MVP1, validação e testes        | MVP1 desenvolvido, testado e validado                  | 14/06/23        | 19/06/23     |
+| Fase 4   | Finalização do MVP1, validação                 | MVP1 desenvolvido e validado                           | 14/06/23        | 19/06/23     |
 | Fase 5   | Prototipação e desenvolvimento 2               | Protótipo e produto desenvolvido (primeira metade do MVP2)| 20/06/23        | 04/07/23     |
 | Fase 6   | Finalização do MVP2, validação e testes        | MVP1 desenvolvido, testado e validado                  | 05/07/23        | 17/07/23     |
 
