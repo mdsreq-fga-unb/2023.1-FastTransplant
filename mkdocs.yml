@@ -31,7 +31,11 @@ theme:
     - Processo de Desenvolvimento: visao-do-produto-e-projeto/processo-de-desenvolvimento.md
     - Lições Aprendidas: visao-do-produto-e-projeto/licoes-aprendidas.md
     - Registros Reuniões: 
-  - Requisitos do Produto: requisitos-do-produto/productbacklog.md
+  - Requisitos do Produto: 
+    - Definition of Done: requisitos-do-produto/dod.md
+    - Definition of Ready: requisitos-do-produto/dor.md
+    - Critérios de aceitação: requisitos-do-produto/criterios-de-aceitacao.md
+    - Backlog: requisitos-do-produto/productbacklog.md
   - Entregas das Unidades: 
     - Unidade 1:
       - Pitch RAD: entregas/unidade1/pitch-rad.md 
