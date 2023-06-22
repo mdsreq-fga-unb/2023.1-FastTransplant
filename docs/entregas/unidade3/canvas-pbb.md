@@ -48,7 +48,7 @@ A figura 4 possui um setor do canvas que representa as features que serão apres
 
 A figura 5 possui um setor do canvas que representa os itens do backlog, nele possuímos em cinza o steps map, em amarelo as User Stories originadas a partir do Canvas e em azul o BDD.
 
-![Product Backlog Itens](../../assets/entregas/unidade3/canvas-pbb/pbi.png)
+![Product Backlog Itens](../../assets/entregas/unidade3/canvas-pbb/pbi1.png)
 
 <center>
     Figura 5 - Product Backlog Itens
