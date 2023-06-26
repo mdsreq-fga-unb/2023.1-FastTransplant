@@ -16,12 +16,15 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{% url 'logout' %}" class="nav-link">Sair</a>
+      </li>
     </ul>
   </nav>
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="#" class="brand-link">
       <img src="{% static 'dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">FastTransplant</span>
     </a>
     <div class="sidebar">
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -29,11 +32,53 @@
           <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">{{ request.user }}</a>
         </div>
       </div>
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-home"></i>
+              <p>Home</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'donators_list' %}" class="nav-link">
+              <i class="nav-icon fas fa-heart"></i>
+              <p>Doadores</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'receivers_list' %}" class="nav-link">
+              <i class="nav-icon fas fa-book-medical"></i>
+              <p>Receptores</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'compatibility' %}" class="nav-link">
+              <i class="nav-icon fas fa-check"></i>
+              <p>Compatibilidade</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'users' %}" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>Usuários</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'settings' %}" class="nav-link">
+              <i class="nav-icon fas fa-wrench"></i>
+              <p>Configurações</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'log' %}" class="nav-link">
+              <i class="nav-icon fas fa-desktop"></i>
+              <p>Log do Sistema</p>
+            </a>
+          </li>
         </ul>
       </nav>
     </div>

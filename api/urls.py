@@ -17,4 +17,6 @@ urlpatterns = [
     path('receivers/delete/<int:id>', views.receivers_delete, name='receivers_delete'),
     path('compatibility/', views.compatibility, name='compatibility'),
     path('log/', views.log, name='log'),
+    path('users/', views.users, name='users'),
+    path('settings/', views.settings, name='settings'),
 ]

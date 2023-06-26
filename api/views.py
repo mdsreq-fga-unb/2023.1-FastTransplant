@@ -20,10 +20,11 @@ def login_view(request):
     return render(request, 'api/login.html', {'error_message': error_message})
 
 def logout_view(request):
-    logout(request)
     new_log("Logout", f"{request.user} saiu do sistema.", request.user)
+    logout(request)
     return redirect('login')
 
+# Menu Pages
 @login_required(login_url='login')
 def index(request):
     context = {
@@ -31,6 +32,26 @@ def index(request):
         'receivers': Receiver.objects.count(),
     }
     return render(request, 'api/index.html', context)
+
+@login_required(login_url='login')
+def users(request):
+    return render(request, 'api/users.html')
+
+@login_required(login_url='login')
+def settings(request):
+    return render(request, 'api/settings.html')
+
+@login_required(login_url='login')
+def compatibility(request, donator_id, receiver_id):
+    pass
+
+@login_required(login_url='login')
+def log(request):
+    logs = Log.objects.all()
+    if request.method == 'POST':
+        logs.delete()
+        return redirect('log')
+    else: return render(request, 'api/log.html', {'logs': logs})
 
 # CRUD for donators
 @login_required(login_url='login')
@@ -113,14 +134,3 @@ def receivers_delete(request, id):
         new_log("Receptores", f"{request.user} deletou um receptor do sistema.", request.user)
         return redirect('receivers')
     else: return render(request, 'api/receivers_delete.html', {'receiver': receiver})
-
-# Compatibility
-@login_required(login_url='login')
-def compatibility(request, donator_id, receiver_id):
-    pass
-
-# Log
-@login_required(login_url='login')
-def log(request):
-    logs = Log.objects.all()
-    return render(request, 'api/log.html', {'logs': logs})

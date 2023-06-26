@@ -1,0 +1,48 @@
+{% extends 'api/base.html' %}
+{% block title %}Doadores{% endblock %}
+{% block heading %}Doadores{% endblock %}
+{% block path %}
+<li class="breadcrumb-item">Home</li>
+<li class="breadcrumb-item active">Doadores</li>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="callout callout-info">
+            <h5>Sobre</h5>
+            Abaixo encontram-se os doadores registrados no banco de dados. Você pode excluí-los, editá-los, ou consultar informações mais detalhadas sobre eles.
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Registros</h3>
+            </div>
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                    <tr>
+                        <th>DoadorID</th>
+                        <th>RGCT</th>
+                        <th>Data</th>
+                        <th>Localização</th>
+                        <th>Ações</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>0001</td>
+                        <td>123456789</td>
+                        <td>23/06/2023</td>
+                        <td>Brazlândia (Brasília/DF)</td>
+                        <td><i class="fas fa-search"></i> | <i class="fas fa-pencil-alt"></i> | <i class="fas fa-trash"></i></i></td>
+                    </tr>  
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -22,7 +22,10 @@
         <div class="card-tools">
             <div class="input-group input-group-sm">
             <div class="input-group-append">
-                <button type="submit" class="btn btn-warning">Limpar</button>
+                <form action="{% url 'log' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-warning">Limpar</button>
+                </form>
             </div>
             </div>
         </div>
