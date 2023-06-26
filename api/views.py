@@ -1,65 +1,116 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from .models import *
 
 
-# Create your views here.
+# Login and logout
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('index')
+        else: error_message = 'Usuário ou senha inválidos.'
+    else: error_message = None
+    return render(request, 'api/login.html', {'error_message': error_message})
 
+def logout_view(request):
+    logout(request)
+    return redirect('login')
 
+@login_required(login_url='login')
 def index(request):
-    return HttpResponse("Hello, world. You're at the api index.")
+    context = {
+        'donators': Donator.objects.count(),
+        'receivers': Receiver.objects.count(),
+    }
+    return render(request, 'api/index.html', context)
 
 # CRUD for donators
+@login_required(login_url='login')
 def donators_list(request):
     donators = Donator.objects.all()
-    return render(request, 'donators_list.html', {'donators': donators})
+    return render(request, 'api/donators_list.html', {'donators': donators})
 
+@login_required(login_url='login')
 def donators_create(request):
     if request.method == 'POST':
         # rgct = request.POST['rgct']
         donator = Donator.objects.create()
         donator.save()
         return redirect('donators')
-    else: return render(request, 'donator_create.html')
+    else: return render(request, 'api/donator_create.html')
 
+@login_required(login_url='login')
 def donators_read(request, id):
     donator = Donator.objects.get(id=id)
-    return render(request, 'donator.html', {'donator': donator})
+    return render(request, 'api/donator.html', {'donator': donator})
 
+@login_required(login_url='login')
 def donators_update(request, id):
-    pass
+    donator = Donator.objects.get(id=id)
+    if request.method == 'POST':
+        # donator.name = request.POST['name']
+        donator.save()
+        return redirect('donators')
+    return render(request, 'api/donators_update.html', {'donator': donator})
 
+@login_required(login_url='login')
 def donators_delete(request, id):
-    pass
+    donator = Donator.objects.get(id=id)
+    if request.method == 'POST':
+        donator.delete()
+        return redirect('donators')
+    else: return render(request, 'api/donators_delete.html', {'donator': donator})
 
 # CRUD for receivers
+@login_required(login_url='login')
 def receivers_list(request):
     receivers = Receiver.objects.all()
-    return render(request, 'receiver_list.html', {'receivers': receivers})
+    return render(request, 'api/receiver_list.html', {'receivers': receivers})
 
+@login_required(login_url='login')
 def receivers_create(request):
     if request.method == 'POST':
         # rgct = request.POST['rgct']
         receiver = Receiver.objects.create()
         receiver.save()
         return redirect('receivers')
-    else: return render(request, 'receiver_create.html')
+    else: return render(request, 'api/receiver_create.html')
 
+@login_required(login_url='login')
 def receivers_read(request, id):
     receiver = Receiver.objects.get(id=id)
-    return render(request, 'receiver.html', {'receiver': receiver})
+    return render(request, 'api/receiver.html', {'receiver': receiver})
 
+@login_required(login_url='login')
 def receivers_update(request, id):
-    pass
+    receiver = Receiver.objects.get(id=id)
+    if request.method == 'POST':
+        # receiver.name = request.POST['name']
+        receiver.save()
+        return redirect('receivers')
+    return render(request, 'api/receivers_update.html', {'receiver': receiver})
 
+@login_required(login_url='login')
 def receivers_delete(request, id):
-    pass
+    receiver = Receiver.objects.get(id=id)
+    if request.method == 'POST':
+        receiver.delete()
+        return redirect('receivers')
+    else: return render(request, 'api/receivers_delete.html', {'receiver': receiver})
 
 # Compatibility
-def compatibility(request):
+@login_required(login_url='login')
+def compatibility(request, donator_id, receiver_id):
     pass
 
 # Log
+@login_required(login_url='login')
 def log(request):
     logs = Log.objects.all()
     return render(request, 'log.html', {'logs': logs})
