@@ -123,4 +123,4 @@ def compatibility(request, donator_id, receiver_id):
 @login_required(login_url='login')
 def log(request):
     logs = Log.objects.all()
-    return render(request, 'log.html', {'logs': logs})
+    return render(request, 'api/log.html', {'logs': logs})
