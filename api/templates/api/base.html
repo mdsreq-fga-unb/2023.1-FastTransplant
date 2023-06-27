@@ -62,10 +62,27 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{% url 'users' %}" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-users"></i>
-              <p>Usuários</p>
+              <p>
+                Usuários
+                <i class="right fas fa-angle-left"></i>
+              </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'profile' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Seu Perfil</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'users' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Outros Usuários</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="{% url 'settings' %}" class="nav-link">

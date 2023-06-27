@@ -18,5 +18,6 @@ urlpatterns = [
     path('compatibility/', views.compatibility, name='compatibility'),
     path('log/', views.log, name='log'),
     path('users/', views.users, name='users'),
+    path('profile/', views.profile, name='profile'),
     path('settings/', views.settings, name='settings'),
 ]

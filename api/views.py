@@ -37,6 +37,9 @@ def index(request):
 def users(request):
     return render(request, 'api/users.html')
 
+def profile(request):
+    return render(request, 'api/profile.html')
+
 @login_required(login_url='login')
 def settings(request):
     return render(request, 'api/settings.html')
