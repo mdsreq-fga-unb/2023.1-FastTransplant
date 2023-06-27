@@ -37,8 +37,13 @@ def index(request):
 def users(request):
     return render(request, 'api/users.html')
 
+@login_required(login_url='login')
 def profile(request):
     return render(request, 'api/profile.html')
+
+@login_required(login_url='login')
+def search(request):
+    return render(request, 'api/search.html')
 
 @login_required(login_url='login')
 def settings(request):
