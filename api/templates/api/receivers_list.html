@@ -32,13 +32,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>0001</td>
-                        <td>Fulano</td>
-                        <td>314159</td>
-                        <td>1º</td>
-                        <td><i class="fas fa-search"></i> | <i class="fas fa-pencil-alt"></i> | <i class="fas fa-trash"></i></td>
-                    </tr>  
+                        {% for receiver in receivers %}
+                            <tr>
+                                <td>{{ receiver.id }}</td>
+                                <td>{{ receiver.name }}</td>
+                                <td>{{ receiver.rgct }}</td>
+                                <td>{{ receiver.position }}</td>
+                                <td><i class="fas fa-search"></i> | <i class="fas fa-pencil-alt"></i> | <i class="fas fa-trash"></i></td>
+                            </tr>
+                        {% endfor %}        
                     </tbody>
                 </table>
             </div>

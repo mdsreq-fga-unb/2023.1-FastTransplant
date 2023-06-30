@@ -7,7 +7,12 @@ class Donator(models.Model):
     pass
 
 class Receiver(models.Model):
-    pass
+    name = models.CharField(max_length=100, blank=False, default='')
+    rgct = models.BigIntegerField(blank=False, default=0)
+    position = models.IntegerField(blank=False, default=0)
+    abo = models.CharField(max_length=3, blank=False, default='')
+    age = models.IntegerField(blank=False, default=0)
+    panel = models.IntegerField(blank=False, default=0)
 
 class Log(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -1,0 +1,57 @@
+{% extends 'api/base.html' %}
+{% block title %}{{ page }} Receptor{% endblock %}
+{% block heading %}{{ page }} Receptor{% endblock %}
+{% block path %}
+<li class="breadcrumb-item">Home</li>
+<li class="breadcrumb-item">Receptores</li>
+<li class="breadcrumb-item active">{{ page }}</li>
+{% endblock %}
+{% block content %}
+{% if page == "Adicionar" %}
+<form action="{% url 'receivers_create' %}" method="post">
+{% else %}
+<form action="{% url 'receivers_update' %}" method="post">
+{% endif %}
+    {% csrf_token %} 
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">Formulário</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Nome:</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Insira o nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="rgct">RGCT:</label>
+                        <input type="number" class="form-control" id="rgct" name="rgct" placeholder="Insira o RGCT">
+                    </div>
+                    <div class="form-group">
+                        <label for="position">Posição:</label>
+                        <input type="number" class="form-control" id="position" name="position" placeholder="Insira a posição">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="abo">ABO:</label>
+                        <input type="text" class="form-control" id="abo" name="abo" placeholder="Insira o ABO">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Idade:</label>
+                        <input type="number" class="form-control" id="age" name="age" placeholder="Insira a idade">
+                    </div>
+                    <div class="form-group">
+                        <label for="panel">Panel:</label>
+                        <input type="number" class="form-control" id="panel" name="panel" placeholder="Insira o painel">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

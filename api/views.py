@@ -106,17 +106,22 @@ def donators_delete(request, id):
 @login_required(login_url='login')
 def receivers_list(request):
     receivers = Receiver.objects.all()
-    return render(request, 'api/receiver_list.html', {'receivers': receivers})
+    return render(request, 'api/receivers_list.html', {'receivers': receivers})
 
 @login_required(login_url='login')
 def receivers_create(request):
     if request.method == 'POST':
-        # rgct = request.POST['rgct']
-        receiver = Receiver.objects.create()
+        name = request.POST['name']
+        rgct = request.POST['rgct']
+        position = request.POST['position']
+        abo = request.POST['abo']
+        age = request.POST['age']
+        panel = request.POST['panel']
+        receiver = Receiver.objects.create(name=name, rgct=rgct, position=position, abo=abo, age=age, panel=panel)
         receiver.save()
         new_log("Receptores", f"{request.user} registrou um novo receptor.", request.user)
-        return redirect('receivers')
-    else: return render(request, 'api/receiver_create.html')
+        return redirect('receivers_list')
+    else: return render(request, 'api/receivers_form.html', {'page': 'Adicionar'})
 
 @login_required(login_url='login')
 def receivers_read(request, id):
