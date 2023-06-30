@@ -10,7 +10,7 @@
 {% if page == "Adicionar" %}
 <form action="{% url 'receivers_create' %}" method="post">
 {% else %}
-<form action="{% url 'receivers_update' %}" method="post">
+<form action="{% url 'receivers_update' receiver.id %}" method="post">
 {% endif %}
     {% csrf_token %} 
     <div class="card card-default">
@@ -22,35 +22,36 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="name">Nome:</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Insira o nome">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Insira o nome" value="{{ receiver.name }}">
                     </div>
                     <div class="form-group">
                         <label for="rgct">RGCT:</label>
-                        <input type="number" class="form-control" id="rgct" name="rgct" placeholder="Insira o RGCT">
+                        <input type="number" class="form-control" id="rgct" name="rgct" placeholder="Insira o RGCT" value="{{ receiver.rgct }}">
                     </div>
                     <div class="form-group">
                         <label for="position">Posição:</label>
-                        <input type="number" class="form-control" id="position" name="position" placeholder="Insira a posição">
+                        <input type="number" class="form-control" id="position" name="position" placeholder="Insira a posição" value="{{ receiver.position }}">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="abo">ABO:</label>
-                        <input type="text" class="form-control" id="abo" name="abo" placeholder="Insira o ABO">
+                        <input type="text" class="form-control" id="abo" name="abo" placeholder="Insira o ABO" value="{{ receiver.abo }}">
                     </div>
                     <div class="form-group">
                         <label for="age">Idade:</label>
-                        <input type="number" class="form-control" id="age" name="age" placeholder="Insira a idade">
+                        <input type="number" class="form-control" id="age" name="age" placeholder="Insira a idade" value="{{ receiver.age }}">
                     </div>
                     <div class="form-group">
                         <label for="panel">Panel:</label>
-                        <input type="number" class="form-control" id="panel" name="panel" placeholder="Insira o painel">
+                        <input type="number" class="form-control" id="panel" name="panel" placeholder="Insira o painel" value="{{ receiver.panel }}">
                     </div>
                 </div>
             </div>
         </div>
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Salvar</button>
+             <button type="submit" class="btn btn-success float-right">Salvar</button>
+            <a href="{% url 'receivers_list' %}" class="btn btn-warning float-right" style="margin-right: 5px;">Cancelar</a>
         </div>
     </div>
 </form>

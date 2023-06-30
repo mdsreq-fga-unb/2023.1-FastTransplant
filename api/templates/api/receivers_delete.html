@@ -1,0 +1,43 @@
+{% extends 'api/base.html' %}
+{% block title %}Deletar Receptor{% endblock %}
+{% block heading %}Deletar Receptor{% endblock %}
+{% block path %}
+<li class="breadcrumb-item">Home</li>
+<li class="breadcrumb-item">Receptores</li>
+<li class="breadcrumb-item active">Confirmação de Exclusão</li>
+{% endblock %}
+{% block content %}
+<form action="{% url 'receivers_delete' receiver.id %}" method="post">
+    {% csrf_token %} 
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-warning alert-dismissible">
+                <h5><i class="icon fas fa-exclamation-triangle"></i> Atenção!</h5>
+                Tem certeza que deseja deletar o seguinte receptor?
+            </div>
+            <div class="invoice p-3 mb-3">
+                <div class="row">
+                    <div class="col-12">
+                        <h4>
+                        <i class="fas fa-book-medical"></i> Receptores
+                        <small class="float-right">ReceptorID #{{ receiver.id }}</small>
+                        </h4>
+                    </div>
+                </div>
+                <div class="row invoice-info">
+                    <div class="col-sm-4 invoice-col">
+                        <b>Nome: </b>{{ receiver.name }}<br>
+                        <b>RGCT:</b>{{ receiver.rgct }}<br>
+                    </div>
+                </div>
+                <div class="row no-print">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-danger float-right">Deletar</button>
+                        <a href="{% url 'receivers_list' %}" class="btn btn-warning float-right" style="margin-right: 5px;">Cancelar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

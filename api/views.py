@@ -133,11 +133,16 @@ def receivers_read(request, id):
 def receivers_update(request, id):
     receiver = Receiver.objects.get(id=id)
     if request.method == 'POST':
-        # receiver.name = request.POST['name']
+        receiver.name = request.POST['name']
+        receiver.rgct = request.POST['rgct']
+        receiver.position = request.POST['position']
+        receiver.abo = request.POST['abo']
+        receiver.age = request.POST['age']
+        receiver.panel = request.POST['panel']
         receiver.save()
-        new_log("Receptores", f"{request.user} atualizou os dados do receptor {receiver.id}.", request.user)
-        return redirect('receivers')
-    return render(request, 'api/receivers_update.html', {'receiver': receiver})
+        new_log("Receptores", f"{request.user} atualizou os dados do receptor #{receiver.id}.", request.user)
+        return redirect('receivers_list')
+    return render(request, 'api/receivers_form.html', {'receiver': receiver, 'page': 'Atualizar'})
 
 @login_required(login_url='login')
 def receivers_delete(request, id):
@@ -145,5 +150,5 @@ def receivers_delete(request, id):
     if request.method == 'POST':
         receiver.delete()
         new_log("Receptores", f"{request.user} deletou um receptor do sistema.", request.user)
-        return redirect('receivers')
+        return redirect('receivers_list')
     else: return render(request, 'api/receivers_delete.html', {'receiver': receiver})

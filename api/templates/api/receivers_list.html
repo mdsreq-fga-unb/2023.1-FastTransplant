@@ -38,7 +38,7 @@
                                 <td>{{ receiver.name }}</td>
                                 <td>{{ receiver.rgct }}</td>
                                 <td>{{ receiver.position }}</td>
-                                <td><i class="fas fa-search"></i> | <i class="fas fa-pencil-alt"></i> | <i class="fas fa-trash"></i></td>
+                                <td><i class="fas fa-search"></i> | <a href="{% url 'receivers_update' receiver.id %}"><i class="fas fa-pencil-alt"></i></a> | <a href="{% url 'receivers_delete' receiver.id %}"><i class="fas fa-trash"></i></a></td>
                             </tr>
                         {% endfor %}        
                     </tbody>
