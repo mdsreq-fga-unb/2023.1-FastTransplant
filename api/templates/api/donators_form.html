@@ -10,7 +10,7 @@
 {% if page == "Adicionar" %}
 <form action="{% url 'donators_create' %}" method="post">
 {% else %}
-<form action="{% url 'donators_update' donators.id %}" method="post">
+<form action="{% url 'donators_update' donator.id %}" method="post">
 {% endif %}
     {% csrf_token %} 
     <div class="card card-default">
@@ -22,41 +22,41 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="rgct">RGCT:</label>
-                        <input type="number" class="form-control" id="rgct" name="rgct" placeholder="Insira o RGCT">
+                        <input type="number" class="form-control" id="rgct" name="rgct" placeholder="Insira o RGCT" value="{{ donator.rgct }}">
                     </div>
                     <div class="form-group">
                         <label for="age">Idade:</label>
-                        <input type="number" class="form-control" id="age" name="age" placeholder="Insira a idade">
+                        <input type="number" class="form-control" id="age" name="age" placeholder="Insira a idade" value="{{ donator.age }}">
                     </div>
                     <div class="form-group">
                         <label for="gender">Sexo:</label>
-                        <select class="form-control" id="gender" name="gender">
+                        <select class="form-control" id="gender" name="gender" value="{{ donator.gender }}">
                         <option>Selecione</option>
-                        <option>Masculino</option>
-                        <option>Feminino</option>
+                        <option value="M" {% if donator.gender == 'M'%} selected {% endif %}>Masculino</option>
+                        <option value="F" {% if donator.gender == 'F'%} selected {% endif %}>Feminino</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="death_cause">Causa do Óbito:</label>
-                        <textarea class="form-control" id="death_cause" name="death_cause" rows="5" placeholder="Insira a causa do óbito"></textarea>
+                        <textarea class="form-control" id="death_cause" name="death_cause" rows="5" placeholder="Insira a causa do óbito">{{ donator.death_cause }}</textarea>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="date">Data de oferta:</label>
-                        <input type="date" class="form-control" id="date" name="date">
+                        <input type="date" class="form-control" id="date" name="date" value="{{ donator.date }}">
                     </div>
                     <div class="form-group">
                         <label for="location">Localidade:</label>
-                        <input type="text" class="form-control" id="location" name="location" placeholder="Insira a localidade">
+                        <input type="text" class="form-control" id="location" name="location" placeholder="Insira a localidade" value="{{ donator.location }}">
                     </div>
                     <div class="form-group">
                         <label for="opo">OPO:</label>
-                        <input type="text" class="form-control" id="opo" name="opo" placeholder="Insira a OPO">
+                        <input type="text" class="form-control" id="opo" name="opo" placeholder="Insira a OPO" value="{{ donator.opo }}">
                     </div>
                     <div class="form-group">
                         <label for="height">Altura:</label>
-                        <input type="number" class="form-control" id="height" name="height" placeholder="Insira a altura">
+                        <input type="number" class="form-control" id="height" name="height" placeholder="Insira a altura" value="{{ donator.height }}">
                     </div>
                 </div>
             </div>

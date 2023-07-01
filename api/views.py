@@ -95,11 +95,18 @@ def donators_read(request, id):
 def donators_update(request, id):
     donator = Donator.objects.get(id=id)
     if request.method == 'POST':
-        # donator.name = request.POST['name']
+        donator.rgct = request.POST['rgct']
+        donator.age = request.POST['age']
+        donator.gender = request.POST['gender']
+        donator.date = request.POST['date']
+        donator.location = request.POST['location']
+        donator.opo = request.POST['opo']
+        donator.height = request.POST['height']
         donator.save()
-        new_log("Doadores", f"{request.user} atualizou os dados do doador {donator.id}.", request.user)
-        return redirect('donators')
-    return render(request, 'api/donators_update.html', {'donator': donator})
+        new_log("Doadores", f"{request.user} atualizou os dados do doador #{donator.id}.", request.user)
+        return redirect('donators_list')
+    return render(request, 'api/donators_form.html', {'donator': donator, 'page': 'Atualizar'})
+
 
 @login_required(login_url='login')
 def donators_delete(request, id):
@@ -107,7 +114,7 @@ def donators_delete(request, id):
     if request.method == 'POST':
         donator.delete()
         new_log("Doadores", f"{request.user} deletou um doador do sistema.", request.user)
-        return redirect('donators')
+        return redirect('donators_list')
     else: return render(request, 'api/donators_delete.html', {'donator': donator})
     
 # CRUD for receivers
