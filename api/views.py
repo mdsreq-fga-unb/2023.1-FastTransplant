@@ -46,10 +46,6 @@ def search(request):
     return render(request, 'api/search.html')
 
 @login_required(login_url='login')
-def settings(request):
-    return render(request, 'api/settings.html')
-
-@login_required(login_url='login')
 def compatibility(request, donator_id, receiver_id):
     pass
 
@@ -84,6 +80,10 @@ def donators_create(request):
         new_log("Doadores", f"{request.user} registrou um novo doador.", request.user)
         return redirect('donators_list')
     else: return render(request, 'api/donators_form.html', {'page': 'Adicionar'})
+
+@login_required(login_url='login')
+def donators_create_pdf(request):
+    pass
 
 @login_required(login_url='login')
 def donators_read(request, id):
@@ -137,6 +137,10 @@ def receivers_create(request):
         new_log("Receptores", f"{request.user} registrou um novo receptor.", request.user)
         return redirect('receivers_list')
     else: return render(request, 'api/receivers_form.html', {'page': 'Adicionar'})
+
+@login_required(login_url='login')
+def receivers_create_pdf(request):
+    pass
 
 @login_required(login_url='login')
 def receivers_read(request, id):

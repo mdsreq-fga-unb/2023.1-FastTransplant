@@ -44,22 +44,85 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{% url 'donators_list' %}" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-heart"></i>
-              <p>Doadores</p>
+              <p>
+                Doadores
+                <i class="right fas fa-angle-left"></i>
+              </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'donators_list' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Consultar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'donators_create' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Adicionar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'donators_create_pdf' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Adicionar via PDF</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="{% url 'receivers_list' %}" class="nav-link">
               <i class="nav-icon fas fa-book-medical"></i>
-              <p>Receptores</p>
+              <p>
+                Receptores
+                <i class="right fas fa-angle-left"></i>
+              </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'receivers_list' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Consultar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'receivers_create' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Adicionar</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'receivers_create_pdf' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Adicionar via PDF</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
-            <a href="{% url 'compatibility' %}" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-check"></i>
-              <p>Compatibilidade</p>
+              <p>
+                Compatibilidade
+                <i class="right fas fa-angle-left"></i>
+              </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'compatibility' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Realizar teste</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Consultar Resultados</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="{% url 'search' %}" class="nav-link">
@@ -89,12 +152,6 @@
                 </a>
               </li>
             </ul>
-          </li>
-          <li class="nav-item">
-            <a href="{% url 'settings' %}" class="nav-link">
-              <i class="nav-icon fas fa-wrench"></i>
-              <p>Configurações</p>
-            </a>
           </li>
           <li class="nav-item">
             <a href="{% url 'log' %}" class="nav-link">
