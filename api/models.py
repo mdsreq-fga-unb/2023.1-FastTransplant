@@ -4,7 +4,17 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 class Donator(models.Model):
-    pass
+    gender_choices = ('M', 'Masculino'), ('F', 'Feminino')
+
+    report = models.FileField(upload_to='reports/', blank=True, default='')
+    rgct = models.BigIntegerField(blank=False, default=0)
+    date = models.CharField(blank=False, default='', max_length=10)
+    location  = models.CharField(max_length=100, blank=False, default='')
+    opo = models.CharField(max_length=100, blank=False, default='')
+    height = models.FloatField(blank=False, default=0)
+    age = models.IntegerField(blank=False, default=0)
+    gender = models.CharField(max_length=1, choices=gender_choices, blank=False, default='M')
+    death_cause = models.TextField(blank=False, default='')
 
 class Receiver(models.Model):
     name = models.CharField(max_length=100, blank=False, default='')

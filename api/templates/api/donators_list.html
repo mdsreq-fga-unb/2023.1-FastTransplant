@@ -32,13 +32,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>0001</td>
-                        <td>123456789</td>
-                        <td>23/06/2023</td>
-                        <td>Brazlândia (Brasília/DF)</td>
-                        <td><i class="fas fa-search"></i> | <i class="fas fa-pencil-alt"></i> | <i class="fas fa-trash"></i></td>
-                    </tr>  
+                        {% for donator in donators %}
+                            <tr>
+                                <td>{{ donator.id }}</td>
+                                <td>{{ donator.rgct }}</td>
+                                <td>{{ donator.date }}</td>
+                                <td>{{ donator.location }}</td>
+                                <td><i class="fas fa-search"></i> | <a href="{% url 'donators_update' donator.id %}"><i class="fas fa-pencil-alt"></i></a> | <a href="{% url 'donators_delete' donator.id %}"><i class="fas fa-trash"></i></a></td>
+                            </tr>
+                        {% endfor %}      
                     </tbody>
                 </table>
             </div>

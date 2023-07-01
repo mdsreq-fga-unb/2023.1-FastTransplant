@@ -70,12 +70,20 @@ def donators_list(request):
 @login_required(login_url='login')
 def donators_create(request):
     if request.method == 'POST':
-        # rgct = request.POST['rgct']
-        donator = Donator.objects.create()
+        rgct = request.POST['rgct']
+        age = request.POST['age']
+        gender = request.POST['gender']
+        death_cause = request.POST['death_cause']
+        date = request.POST['date']
+        location = request.POST['location']
+        opo = request.POST['opo']
+        height = request.POST['height']
+
+        donator = Donator.objects.create(report='', rgct=rgct, age=age, gender=gender, death_cause=death_cause, date=date, location=location, opo=opo, height=height)
         donator.save()
         new_log("Doadores", f"{request.user} registrou um novo doador.", request.user)
-        return redirect('donators')
-    else: return render(request, 'api/donator_create.html')
+        return redirect('donators_list')
+    else: return render(request, 'api/donators_form.html', {'page': 'Adicionar'})
 
 @login_required(login_url='login')
 def donators_read(request, id):
@@ -101,7 +109,7 @@ def donators_delete(request, id):
         new_log("Doadores", f"{request.user} deletou um doador do sistema.", request.user)
         return redirect('donators')
     else: return render(request, 'api/donators_delete.html', {'donator': donator})
-
+    
 # CRUD for receivers
 @login_required(login_url='login')
 def receivers_list(request):
