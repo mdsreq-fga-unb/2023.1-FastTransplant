@@ -138,5 +138,9 @@ def test(file):
 
     print("causa_da_morte_encefalica =", causa_da_morte_encefalica)
 
+# import 
 
-test("doador.pdf")
+
+def search(term):
+    # Tables = donators, receivers, log
+    pass

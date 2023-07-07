@@ -8,8 +8,9 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
   <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}">
+  <script src="{% static 'extra/js/scripts.js' %}"></script>
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini" onload="selectPage('{{ request.path }}')">
 <div class="wrapper">
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <ul class="navbar-nav">
@@ -38,13 +39,13 @@
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-item">
-            <a href="{% url 'index' %}" class="nav-link">
+            <a href="{% url 'index' %}" class="nav-link" id="home">
               <i class="nav-icon fas fa-home"></i>
               <p>Home</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item" id="donators_li">
+            <a href="#" class="nav-link" id="donators_a">
               <i class="nav-icon fas fa-heart"></i>
               <p>
                 Doadores
@@ -53,27 +54,27 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{% url 'donators_list' %}" class="nav-link">
+                <a href="{% url 'donators_list' %}" class="nav-link" id="donators_list">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Consultar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{% url 'donators_create' %}" class="nav-link">
+                <a href="{% url 'donators_create' %}" class="nav-link" id="donators_create">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Adicionar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{% url 'donators_create_pdf' %}" class="nav-link">
+                <a href="{% url 'donators_create_pdf' %}" class="nav-link" id="donators_create_pdf">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Adicionar via PDF</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="{% url 'receivers_list' %}" class="nav-link">
+          <li class="nav-item" id="receivers_li">
+            <a href="{% url 'receivers_list' %}" class="nav-link" id="receivers_a">
               <i class="nav-icon fas fa-book-medical"></i>
               <p>
                 Receptores
@@ -82,19 +83,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{% url 'receivers_list' %}" class="nav-link">
+                <a href="{% url 'receivers_list' %}" class="nav-link" id="receivers_list">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Consultar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{% url 'receivers_create' %}" class="nav-link">
+                <a href="{% url 'receivers_create' %}" class="nav-link" id="receivers_create">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Adicionar</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{% url 'receivers_create_pdf' %}" class="nav-link">
+                <a href="{% url 'receivers_create_pdf' %}" class="nav-link" id="receivers_create_pdf">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Adicionar via PDF</p>
                 </a>
@@ -125,7 +126,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{% url 'search' %}" class="nav-link">
+            <a href="{% url 'search' %}" class="nav-link" id="search">
               <i class="nav-icon fas fa-search"></i>
               <p>Pesquisar</p>
             </a>
@@ -154,7 +155,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{% url 'log' %}" class="nav-link">
+            <a href="{% url 'log' %}" class="nav-link" id="log">
               <i class="nav-icon fas fa-desktop"></i>
               <p>Log do Sistema</p>
             </a>

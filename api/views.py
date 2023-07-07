@@ -83,7 +83,9 @@ def donators_create(request):
 
 @login_required(login_url='login')
 def donators_create_pdf(request):
-    pass
+    if request.method == 'POST':
+        pass
+    else: return render(request, 'api/donators_form_pdf.html')
 
 @login_required(login_url='login')
 def donators_read(request, id):
