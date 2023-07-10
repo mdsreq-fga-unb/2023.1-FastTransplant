@@ -56,8 +56,10 @@ def search(request):
     return render(request, 'api/search.html')
 
 @login_required(login_url='login')
-def compatibility(request, donator_id, receiver_id):
-    pass
+def compatibility(request):
+    if request.method == 'POST':
+        pass
+    else: return render(request, 'api/compatibility.html')
 
 @login_required(login_url='login')
 def log(request):
@@ -186,3 +188,7 @@ def receivers_delete(request, id):
 
 def error(request):
     return render(request, 'api/404.html')
+
+@login_required(login_url='login')
+def reports(request):
+    return render(request, 'api/reports.html')
