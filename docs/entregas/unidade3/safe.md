@@ -6,48 +6,53 @@ O SAFe é um framework complexo de gestão de empresas, para esta disciplina ire
 
 ## Tema
 
-Coleta, gestão e armazenamento de dados relacionados ao transplante de rins
+Gestão, análise e armazenamento de dados de receptores, doadores e transplantes de rins
 
 ## Épicos
 
-- EP 01 - Coleta de dados
-- EP 02 - Gestão de dados
+- EP01 - Gestão de Dados
+- EP02 - Análise de Dados
 
-## Funcionalidade
+## Capacidades
 
-### EP01 - Coleta de dados
+| **Épico** | **Capacidade 1**                   | **Capacidade 2**             | **Capacidade 3**                |  
+|:---------:|:----------------------------------:|:----------------------------:|:-------------------------------:|
+| EP01      | CP01 - Coleta de dados             | CP02 - Manipulação de dados  | CP03 - Registro de dados        |
+| EP02      | CP04 - Análise automática de dados | CP05 - Visualização de dados | -                               |
 
-- Extração de dados de um PDF
-- Inserção manual de dados
+## Funcionalidades
 
-### EP02 - Gestão de dados
-
-- Leitura de dados
-- Manipulação de dados e sistema
+| **Épico** | **Capacidade**                     | **Funcionalidade 1**            | **Funcionalidade 2**                     |
+|:---------:|:----------------------------------:|:-------------------------------:|:----------------------------------------:|
+| EP01      | CP01 - Coleta de dados             | F01 - Extração de dados de PDF  | F02 - Inserção de dados                  |
+| EP01      | CP02 - Manipulação de dados        | F03 - Atualização de dados      | F04 - Exclusão de dados                  |
+| EP01      | CP03 - Registro de dados           | F05 - Registro de transplantes  | F06 - Registro de autorizações           |
+| EP02      | CP04 - Análise automática de dados | F07 - Busca por compatibilidade | F08 - Cálculo de grau de compatibilidade |
+| EP02      | CP05 - Visualização de dados       | F09 - Apresentação de dados     | F10 - Download dos dados                 |
 
 ## Histórias de usuário
 
-### EP01
-
-#### F01 - Extração de dados de um PDF
-
-- US01 - Eu como médico, desejo enviar um documento pdf para extração de dados, para que eu possa colocar os dados no sistema com mais agilidade
-- US02 - Eu como médico, desejo editar os dados extraídos do pdf, para que eu possa preencher dados retirados incorretamente ou preencher o que falta
-- US03 - Eu como médico, desejo definir se os dados extraídos é de um paciente na fila de transplante ou um rim para ser transplantado, para que possa organizar melhor os dados
-
-#### F02 - Inserção manual de dados
-
-- US04 - Eu como médico, desejo preencher os dados manualmente, para que eu possa garantir o cadastro caso não haja um pdf
-- US05 - Eu como médico, desejo poder alterar os dados de um paciente ou rim já cadastrado, para que eu possa ajustar problemas encontrados
-
-### EP02
-
-#### F03 - Leitura de dados
-
-- US06 - Eu como médico chefe, desejo visualizar quais são os transplantes aprovados, para que eu possa manter um acompanhamento do estado do paciente e do programa de transplantes
-- US07 - Eu como médico chefe, desejo visualizar graficamente os dados de pacientes, acompanhamento de rins e número de transplantes com sucesso ou não, para que eu possa manter um acompanhamento do programa de transplantes
-
-#### F04 - Manipulação de dados e sistema
-
-- US08 - Eu como médico, desejo que a aplicação faça cálculos com os dados inseridos no sistema, para que facilite a tomada de decisão se um transplante deve ser realizado ou não.
-- US09 - Eu como médico chefe, desejo definir quem pode utilizar a aplicação e quem pode decidir sobre os transplantes, para que eu possa ter um controle sobre o uso da aplicação
+| **Épico** | **Capacidade** | **Funcionalidade** | **História de usuário**                     |
+|:---------:|:--------------:|:------------------:|:-------------------------------------------:|
+| EP01      | CP01           | F01                | Eu como médico, gostaria de extrair os dados a partir de um arquivo PDF, para que possa agilizar o processo |
+| EP01      | CP01           | F01                | Eu como médico, gostaria de editar os dados extraídos de um arquivo PDF, para que eu faça correções caso necessário |
+| EP01      | CP01           | F02                | Eu como médico, gostaria de registrar um receptor no sistema, para que o sistema armazene os dados para mim |
+| EP01      | CP01           | F02                | Eu como médico, gostaria de registrar um doador no sistema, para que o sistema armazene os dados para mim |
+| EP01      | CP02           | F03                | Eu como médico, gostaria de alterar os dados de um receptor, para caso haja alterações nos seus dados |
+| EP01      | CP02           | F03                | Eu como médico, gostaria de alterar os dados de um doador, para caso haja alterações nos seus dados |
+| EP01      | CP02           | F03                | Eu como médico, gostaria de aprovar um transplante, para que o transplante seja autorizado a ser feito |
+| EP01      | CP02           | F04                | Eu como médico, gostaria de deletar os dados de um receptor, para caso os dados estejam desatualizados e não serão utilizados|
+| EP01      | CP02           | F04                | Eu como médico, gostaria de deletar os dados de um receptor, para caso os dados estejam desatualizados e não serão utilizados|
+| EP01      | CP03           | F05                | Eu como médico chefe, gostaria de registrar todos os transplantes que foram efetuados, para que eu possa manter o controle do programa de transplantes |
+| EP01      | CP03           | F05                | Eu como médico chefe, gostaria de registrar todos os transplantes que foram aprovados, para que eu possa manter o controle do programa de transplantes |
+| EP01      | CP03           | F05                | Eu como médico chefe, gostaria de registrar o grau de sucesso de todos os transplantes, para que eu possa manter o controle do programa de transplantes |
+| EP01      | CP03           | F06                | Eu como médico chefe, gostaria de registrar quem que aprovou cada transplante, para que eu possa manter a gestão de médicos cirurgiões |
+| EP01      | CP03           | F06                | Eu como médico chefe, gostaria de registrar o grau de sucesso de transplantes aprovados por cada médico, para que eu possa manter a gestão de médicos cirurgiões |
+| EP02      | CP04           | F07                | Eu como médico, gostaria que o sistema avaliasse a compatibilidade doador-receptor, para que me ajude a tomar uma decisão baseada em dados |
+| EP02      | CP04           | F07                | Eu como médico, gostaria de fazer uma busca por receptores compatíveis com um rim específico, para que eu possa fazer uma escolha orientada |
+| EP02      | CP04           | F08                | Eu como médico, gostaria que o sistema realizasse os cálculos necessários para identificar a compatibilidade de transplante, para que eu possa fazer um escolha orientada |
+| EP02      | CP04           | F08                | Eu como médico, gostaria que o sistema realizasse uma pré-aprovação caso os cálculos estejam corretos, para que me ajude a fazer um trabalho de maneira mais eficiente |
+| EP02      | CP05           | F09                | Eu como médico, gostaria que os dados de receptores fossem apresentados para mim em formato de gráficos e tabelas, para que eu possa ver e analisar os registros |
+| EP02      | CP05           | F09                | Eu como médico, gostaria que os dados de doadores fossem apresentados para mim em formato de gráficos e tabelas, para que eu possa ver e analisar os registros |
+| EP02      | CP05           | F10                | Eu como médico, gostaria de baixar os dados de receptores e doadores em formato PDF, para que eu possa enviar facilmente para minha equipe |
+| EP02      | CP05           | F10                | Eu como médico chefe, gostaria de baixar os dados dos registros em formato PDF, para que eu possa enviar facilmente para minha equipe |
