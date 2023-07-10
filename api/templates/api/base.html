@@ -103,8 +103,8 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item" id="compatibility_li">
+            <a href="#" class="nav-link" id="compatibility_a">
               <i class="nav-icon fas fa-check"></i>
               <p>
                 Compatibilidade
@@ -113,13 +113,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{% url 'compatibility' %}" class="nav-link">
+                <a href="{% url 'compatibility' %}" class="nav-link" id="compatibility">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Realizar teste</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{% url 'results' %}" class="nav-link" id="results">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Consultar Resultados</p>
                 </a>
@@ -132,8 +132,8 @@
               <p>Pesquisar</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item" id="users_li">
+            <a href="#" class="nav-link" id="users_a">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Usuários
@@ -142,18 +142,24 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{% url 'profile' %}" class="nav-link">
+                <a href="{% url 'profile' %}" class="nav-link" id="profile">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Seu Perfil</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{% url 'users' %}" class="nav-link">
+                <a href="{% url 'users' %}" class="nav-link" id="other_users">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Outros Usuários</p>
                 </a>
               </li>
             </ul>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'reports' %}" class="nav-link" id="reports">
+              <i class="nav-icon fas fa-file"></i>
+              <p>Relatórios</p>
+            </a>
           </li>
           <li class="nav-item">
             <a href="{% url 'log' %}" class="nav-link" id="log">

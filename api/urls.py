@@ -23,6 +23,7 @@ urlpatterns = [
     path('receivers/delete/<int:id>', views.receivers_delete, name='receivers_delete'),
     path('recover/', views.recover, name='recover'),
     path('reports/', views.reports, name='reports'),
+    path('results/', views.results, name='results'),
     path('search/', views.search, name='search'),
     path('users/', views.users, name='users'),
 ]

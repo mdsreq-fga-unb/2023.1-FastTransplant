@@ -192,3 +192,7 @@ def error(request):
 @login_required(login_url='login')
 def reports(request):
     return render(request, 'api/reports.html')
+
+@login_required(login_url='login')
+def results(request):
+    return render(request, 'api/results.html')
