@@ -5,6 +5,9 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 from .util import new_log
 
+def error_404(request, exception):
+    return render(request, 'api/404.html')
+
 # Login and logout
 def login_view(request):
     if request.method == 'POST':
