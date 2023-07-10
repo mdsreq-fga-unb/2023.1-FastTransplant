@@ -173,3 +173,6 @@ def receivers_delete(request, id):
         new_log("Receptores", f"{request.user} deletou um receptor do sistema.", request.user)
         return redirect('receivers_list')
     else: return render(request, 'api/receivers_delete.html', {'receiver': receiver})
+
+def error(request):
+    return render(request, 'api/404.html')

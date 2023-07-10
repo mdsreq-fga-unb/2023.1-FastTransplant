@@ -22,4 +22,5 @@ urlpatterns = [
     path('users/', views.users, name='users'),
     path('profile/', views.profile, name='profile'),
     path('search/', views.search, name='search'),
+    path('error/', views.error, name='error'),
 ]

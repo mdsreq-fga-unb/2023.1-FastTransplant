@@ -1,0 +1,15 @@
+{% extends 'api/base.html' %}
+{% block title %}404{% endblock %}
+{% block heading %}Erro 404{% endblock %}
+{% block path %}
+{% endblock %}
+{% block content %}
+<div class="error-page">
+    <h2 class="headline text-warning">404</h2>
+    <div class="error-content">
+        <h3><i class="fas fa-exclamation-triangle text-warning"></i> Página não encontrada.</h3>
+        <p>Desculpe, não conseguimos encontrar a página que você estava procurando :(<br>
+            Enquanto isso, você pode voltar à <a href="{% url 'index' %}">página inicial</a> ou consultar algum dos itens do menu à esquerda.</p>
+    </div>
+</div>
+{% endblock %}
