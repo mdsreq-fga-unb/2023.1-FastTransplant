@@ -5,8 +5,15 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 from .util import new_log
 
+# 404 error handler
 def error_404(request, exception):
     return render(request, 'api/404.html')
+
+# Password recovery
+def recover(request):
+    if request.method == 'POST':
+        pass
+    else: return render(request, 'api/recover.html')
 
 # Login and logout
 def login_view(request):
@@ -145,7 +152,7 @@ def receivers_create(request):
 
 @login_required(login_url='login')
 def receivers_create_pdf(request):
-    pass
+    return render(request, 'api/receivers_form_pdf.html')
 
 @login_required(login_url='login')
 def receivers_read(request, id):

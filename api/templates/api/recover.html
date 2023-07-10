@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FastTransplant | Login</title>
+  <title>FastTransplant | Recuperar Senha</title>
   {% load static %}
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}">
@@ -17,37 +17,26 @@
   </div>
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Entre para iniciar a sessão</p>
-      <form action="{% url 'login' %}" method="post">
+      <p class="login-box-msg">Esqueceu sua senha? Insira seu email para recuperá-la.</p>
+      <form action="{% url 'recover' %}" method="post">
         {% csrf_token %}
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Nome de usuário" name="username" id="username">
+          <input type="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-user"></span>
-            </div>
-          </div>
-        </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Senha" name="password" id="password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
+              <span class="fas fa-envelope"></span>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-8">
-            <p class="mb-1">
-              <a href="{% url 'recover' %}">Esqueci minha senha</a>
-            </p>
-          </div>
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary btn-block">Solicitar</button>
           </div>
         </div>
       </form>
-      <div class="social-auth-links text-center mb-3"></div>
+      <p class="mt-3 mb-1">
+        <a href="{% url 'login' %}">Login</a>
+      </p>
     </div>
   </div>
 </div>
