@@ -91,6 +91,17 @@ Para melhor visualização dos requisitos, podem ser vistos no nosso [mural](htt
 | RNF09 | Requisito de Implementação | O sistema de banco de dados deve ser modelado utilizando o MongoDB |
 
 
+## Backlog do MVP2 replanejado 
+| Épico | US | Descrição da User Story |
+| --- | --- | --- |
+| EP02 | US17 | Como um médico, quero poder registrar minha decisão de aceitar ou rejeitar o órgão para transplante no sistema, para que outros membros da equipe médica possam ter acesso a essa informação e tomar decisões baseadas nela.
+| EP03 | US01 | Como médico responsável pela decisão final de aceitação ou rejeição de um órgão para transplante, eu quero utilizar o software para avaliar as informações do paciente e do órgão doador e tomar uma decisão informada e precisa, a fim de garantir o sucesso do transplante e a segurança do paciente receptor.
+| EP03 | US07 | Como médico que realiza transplantes de rim, eu quero que o sistema produza uma resposta preliminar sobre a aceitação ou não do rim para o paciente receptor, para que eu possa tomar uma decisão rápida e eficiente sobre o transplante.
+| EP04 | US23 | Como um médico chefe, necessito que seja possível gerar relatórios semestrais e anuais de aceite ou recusa de rins, para que consiga manter um controle diante da postura dos médicos da minha equipe.
+| EP02 | US13 | Como um médico chefe do sistema, eu quero poder acessar a base de dados para visualizar informações estatísticas sobre os transplantes de rim realizados, para que eu possa avaliar a efetividade do sistema e identificar possíveis áreas de melhoria.
+|      | USX  | Como médico, eu quero entrar na plataforma com login e senha para que eu possa acessar a plataforma de forma segura.
+
+
 
 ## Histórico de revisão
 | Versão | Data | Descrição | Autor |
@@ -98,3 +109,4 @@ Para melhor visualização dos requisitos, podem ser vistos no nosso [mural](htt
 |  `1.0`   | 23/05/2023 | Criação inicial do documento. | [Bruno Martins](https://github.com/gitbmvb) |
 |  `1.1`   | 23/05/2023 | Reorganização das tabelas dos MVPs 1, 2, e incremento. | [Bruno Martins](https://github.com/gitbmvb) |
 |  `1.2`   | 24/05/2023 | Adicionando mais RNFs. | [Bruno Martins](https://github.com/gitbmvb) |
+|  `1.3`   | 11/07/2023 | Mudança escopo | Ana Beatriz Wanderley Massuh|
