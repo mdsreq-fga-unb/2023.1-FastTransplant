@@ -120,7 +120,7 @@ A escolha pelo Django tem como objetivo simplificar a integração e melhorar a 
 ### Próximos Passos:
 #### Ajustes na Equipe:
 
-Será necessário redistribuir as responsabilidades entre os membros da equipe, levando em consideração a desistência de [Nome do Membro].
+Será necessário redistribuir as responsabilidades entre os membros da equipe, levando em consideração a desistência de um dos membros.
 Será realizado um levantamento das habilidades e conhecimentos dos membros para definir novas atribuições.
 
 #### Integração do Django:
@@ -138,3 +138,71 @@ Será mantida uma comunicação regular entre os membros da equipe para comparti
 Os membros da equipe se comprometeram a apoiar uns aos outros no aprendizado do Django e na resolução de problemas relacionados ao desenvolvimento.
 
 ## [Vídeo reunião 19/06 (validação MVP1)](https://youtu.be/BrrRnM34xC4)
+
+## Ata reunião 27/06
+
+#### Atualização das atividades:
+Durante a reunião, discutimos as atividades planejadas e em andamento. Identificamos que o foco principal será o desenvolvimento do recurso de login, devido a problemas enfrentados anteriormente para realizar as funcionalidades que deveriam ter sido entregues no MVP passado devido à falta do login.
+
+### Decisões tomadas:
+Durante a reunião, foram tomadas as seguintes decisões que devem ser registradas na ata:
+
+Foco principal no desenvolvimento do recurso de login.
+Designar a equipe de desenvolvimento para trabalhar especificamente no login.
+Priorizar o login como a funcionalidade principal a ser entregue no próximo MVP.
+
+### Próximos passos:
+Após esta reunião, os próximos passos a serem tomados são:
+
+A equipe de desenvolvimento iniciará o desenvolvimento do recurso de login, seguindo as prioridades definidas.
+Realizar reuniões periódicas para acompanhar o progresso do desenvolvimento do login.
+Definir prazos para as etapas-chave do desenvolvimento do login e revisá-los regularmente para garantir o cumprimento dos prazos.
+Na próxima reunião serão discutidos os avanços no desenvolvimento do login e revisados os prazos definidos.
+
+## Ata reunião 29/06
+
+#### Atualização das atividades:
+Durante a reunião, discutimos as atividades planejadas e em andamento. Após uma conversa com o professor, decidimos refatorar o backlog do projeto e remover as User Stories 11 e 12 para a entrega do MVP 2.
+
+### Decisões tomadas:
+Durante a reunião, a seguinte decisão foi tomada e precisa ser registrada na ata:
+
+Refatoração do backlog, removendo as User Stories 11 e 12 para a entrega do MVP 2.
+
+### Próximos passos:
+
+Após esta reunião, os próximos passos a serem tomados são:
+
+Atualizar o backlog do projeto, removendo as User Stories 11 e 12.
+Comunicar a equipe de desenvolvimento sobre a decisão tomada.
+Revisar e ajustar as prioridades das demais User Stories para a entrega do MVP 2.
+Na próxima reunião  serão discutidos os avanços nas atividades e a revisão do backlog.
+
+## Ata reunião 06/07
+
+#### Atualização das atividades:
+Durante a reunião, discutimos as atividades planejadas e em andamento. Decidimos atribuir as seguintes atividades para cada membro da equipe:
+
+Ana Beatriz: Prototipação
+João: Atualização das páginas
+Bruno: Adiantar o desenvolvimento do front-end
+
+#### Discussão sobre recursos e suporte:
+Durante a reunião, não foram identificadas necessidades de recursos adicionais para concluir as atividades planejadas.
+
+Não foram discutidos obstáculos que requerem suporte adicional.
+
+#### Decisões tomadas:
+Durante a reunião, as seguintes decisões foram tomadas e precisam ser registradas na ata:
+
+Ana Beatriz será responsável pela prototipação.
+João ficará encarregado de atualizar as páginas do projeto.
+Bruno terá a tarefa de adiantar o desenvolvimento do front-end.
+
+#### Próximos passos:
+Após esta reunião, os próximos passos a serem tomados são:
+
+Ana Beatriz iniciará a prototipação, seguindo as diretrizes definidas.
+João começará a atualização das páginas do projeto, revisando e melhorando a experiência do usuário.
+Bruno adiantará o desenvolvimento do front-end, garantindo que as funcionalidades estejam prontas para integração com o back-end.
+A próxima reunião ficou agendada para [data da próxima reunião], onde serão discutidos os avanços nas atividades atribuídas a cada membro da equipe.
