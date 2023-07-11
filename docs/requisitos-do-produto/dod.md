@@ -6,18 +6,12 @@ A seguinte lista de critérios deve ser atendida para que um item de trabalho se
 
 1. **Implementação concluida**: A implementação do requisito está finalizada, atendendo aos critérios de aceitação definidos.
 
-2. **Testes unitários passados**: Os testes unitários foram executados e passaram com sucesso, garantindo a funcionalidade correta do requisito.
+2. **Código revisado**: O código fonte foi revisado por pares ou por um revisor designado, seguindo as práticas de revisão de código protegido.
 
-3. **Testes de integração concluídos**: Os testes de integração foram realizados e os componentes ou módulos relacionados estão funcionando corretamente juntos.
+3. **Padrões de codificação seguidos**: O código está em conformidade com os padrões de ingestão pela equipe ou pela organização.
 
-4. **Testes de aprovados**: Os testes de aprovados foram executados e aprovados pelo Product Owner ou pelo cliente, validando o atendimento aos requisitos.
+4. **Não há defeitos críticos**: Não existem defeitos críticos conhecidos ou problemas que impeçam a funcionalidade adequada do requisito.
 
-5. **Código revisado**: O código fonte foi revisado por pares ou por um revisor designado, seguindo as práticas de revisão de código protegido.
+5. **Integração contínua**: O código foi integrado ao repositório central, passando pelas etapas de integração contínua, quando aplicável.
 
-6. **Padrões de codificação seguidos**: O código está em conformidade com os padrões de ingestão pela equipe ou pela organização.
-
-7. **Não há defeitos críticos**: Não existem defeitos críticos conhecidos ou problemas que impeçam a funcionalidade adequada do requisito.
-
-8. **Integração contínua**: O código foi integrado ao repositório central, passando pelas etapas de integração contínua, quando aplicável.
-
-9. **Pronto para liberação**: O requisito está pronto para ser liberado para produção ou para a próxima fase do projeto, sem causar efeitos negativos aos demais requisitos ou projeto.
+6. **Pronto para liberação**: O requisito está pronto para ser liberado para produção ou para a próxima fase do projeto, sem causar efeitos negativos aos demais requisitos ou projeto.
