@@ -6,6 +6,7 @@
 |:--------:|:----------:|:----------------------------------------------------------:|:---------------------------------------:|
 | 25/04    | 1.0        | Criação das seções de visão geral do produto e do projeto. | Ana Beatriz, Bruno, Gabriel, João Pedro |
 | 24/05    | 1.1        | Alterações de acordo com os feedbacks recebidos.           | João Pedro                              |
+| 10/07    | 1.2        | Alterações responsáveis.           | Ana Beatriz                              |
 
 ## Organização do Projeto
 
@@ -15,11 +16,11 @@ A tabela 1 possui os principais papeis e quem serão os responsáveis por garant
 
 | **Papel**                        | **Atribuições**                                                                                                                                                                   | **Responsável** | **Participantes** |
 |:--------------------------------:|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------:|:-----------------:|
-| Analista de Requisitos           | Identificar os requisitos do produto, garantir a clareza e precisão destes e certificar-se de que sejam compreendidos pela equipe de desenvolvimento.                             | Ana Beatriz | Bruno, Gabriel, João e Vera  |
-| Designer de Interface de Usuário | Criar uma interface de usuário atraente, intuitiva e fácil de usar, garantir a consistência do design em todo o produto e atualizar o design conforme as necessidades do usuário. | Gabriel | Ana Beatriz, Bruno, João e Vera |
-| Desenvolvedor de Software        | Desenvolver o software de acordo com os requisitos do projeto, garantir a modularidade e escalabilidade para permitir futuras alterações e fácil manutenção.                      | Bruno | Ana Beatriz, Gabriel, João e Vera |
-| Testador de Qualidade            | Garantir que o software desenvolvido esteja livre de defeitos e atenda aos requisitos do projeto, criar casos de teste e cenários para validar o software.                        | Vera | Ana Beatriz, Bruno, Gabriel e João |
-| Gerente de Projeto               | Coordenar as atividades do projeto, garantir o cumprimento do prazo e do orçamento e fornecer os recursos necessários para a equipe de desenvolvimento.                           | João Pedro | Ana Beatriz, Bruno, Gabriel e Vera |
+| Analista de Requisitos           | Identificar os requisitos do produto, garantir a clareza e precisão destes e certificar-se de que sejam compreendidos pela equipe de desenvolvimento.                             | Ana Beatriz | Bruno e João  |
+| Designer de Interface de Usuário | Criar uma interface de usuário atraente, intuitiva e fácil de usar, garantir a consistência do design em todo o produto e atualizar o design conforme as necessidades do usuário. | Bruno | Ana Beatriz e João |
+| Desenvolvedor de Software        | Desenvolver o software de acordo com os requisitos do projeto, garantir a modularidade e escalabilidade para permitir futuras alterações e fácil manutenção.                      | Bruno | Ana Beatriz e João |
+| Testador de Qualidade            | Garantir que o software desenvolvido esteja livre de defeitos e atenda aos requisitos do projeto, criar casos de teste e cenários para validar o software.                        | Ana Beatriz | Brunol e João |
+| Gerente de Projeto               | Coordenar as atividades do projeto, garantir o cumprimento do prazo e do orçamento e fornecer os recursos necessários para a equipe de desenvolvimento.                           | João Pedro | Ana Beatriz e Bruno |
 
 Tabela 1 - Organização de papeis (Fonte: Autor, 2023)
 
