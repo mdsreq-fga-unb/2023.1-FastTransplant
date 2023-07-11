@@ -96,9 +96,11 @@ O produto é encomendado por um cliente e desenvolvido por um fornecedor para es
 
 ## RAD (Rapid Application Development)
 
-Levando em consideração o resultado do GUPTA e as características das Facetas do Processo de Engenharia de Requisitos que se enquadram no projeto e utilizando as configurações citadas por Martin Glin³, escolhemos o RAD para trabalhar ao longo do desenvolvimento.</br></br>
+Levando em consideração o resultado do GUPTA e as características das Facetas do Processo de Engenharia de Requisitos que se enquadram no projeto e utilizando as configurações citadas por Martin Glin³, escolhemos o RAD para trabalhar ao longo do desenvolvimento. Porém, levando em consideração as entregas da disciplina, o RAD foi adaptado para que haja o melhor funcionamento do método de desenvolvimento e manter as entregas com um nível de qualidade aceitável.</br></br>
 
-RAD é uma estratégia de desenvolvimento ágil que prioriza a velocidade da execução do desenvolvimento de produto, busca minimizar a fase de planejamento e enfatizar o desenvolvimento de protótipos com a validação do o cliente, os requisitos são tratados como variáveis, na figura 2 observa-se como funciona o RAD.
+RAD é uma estratégia de desenvolvimento ágil que prioriza a velocidade da execução do desenvolvimento de produto, busca minimizar a fase de planejamento e enfatizar o desenvolvimento de protótipos com a validação do o cliente, os requisitos são tratados como variáveis, na figura 2 observa-se como funciona o RAD.</br></br>
+
+A adaptação está relacionada com a utilização de RAD duas vezes, uma para a entrega do MVP1 e a segunda para o MVP2, além de fazer as etapas de User Design e Construction ao mesmo tempo, dessa maneira a prototipação e validação acontece ao mesmo tempo com o desenvolvimento da aplicação, dessa maneira há tempo hábil para o design e validação do protótipo com o cliente e o desenvolvimento inicial do backend das User Stories.
 
 <center>
 
@@ -108,17 +110,27 @@ Figura 2 - Rapid Application Development (Fonte: [Kissflow](https://kissflow.com
 
 </center>
 
-## Etapa 1
+## Etapas do RAD
+
+### Etapa 1 - Planejamento dos requisitos
+
+Na etapa de planejamento dos requisitos, fazemos uma análise completa do cenário e elicitamos os requisitos, nesse projeto nós seguimos o material do Professor George Marsicano(2023), por isso nós seguimos os pontos, Descoberta e elicitação de requisitos, Análise e consenso de requisitos, Declaração de requisitos, Verificação e Validação e por último a Organização e atualização.
 
 <center>
 
-| **Etapa**               | **Método** | **Ferramenta**  | **Entrega**            |
-|:-----------------------:|:----------:|:---------------:|:----------------------:|
-| Definição de Requisitos | Kanban     | GitHub Projects | Conjunto de Requisitos |
+| **Atividade**                         | **Método**                    | **Ferramenta**  | **Entrega**                        |
+|:-------------------------------------:|:-----------------------------:|:---------------:|:----------------------------------:|
+| Descoberta e elicitação de requisitos | Diagrama de causa e 5 porquês | Mural           | Backlog de requisitos não validado |
+| Análise e consenso de requisitos      | Análise de viabilidade        | Discord         | Backlog de requisitos validados    |
+| Declaração                          | Épicos, Features e User Stories | Mural           | User Stories não validado          |
+| Verificação e Validação               | Feedback                      | Google Meet     | User Stories validados             |
+| Organização e Atualização             | MoSCoW e Kanban               | Mural, Github Projects | Definição de prioridades(MVP1 e MVP2) |
 
 </center>
 
-## Etapa 2
+### Etapa 2 - User Design
+
+Na etapa de User Design, é feito a prototipação da aplicação, no caso é feito o protótipo equivalente aos User Stories relacionados ao MVP1 na terceira unidade e ao MVP2 na quarta unidade.
 
 <center>
 
@@ -128,7 +140,9 @@ Figura 2 - Rapid Application Development (Fonte: [Kissflow](https://kissflow.com
 
 </center>
 
-## Etapa 3
+### Etapa 3 - Desenvolvimento
+
+Na etapa de desenvolvimento é onde é feito o projeto e seu código é desenvolvido, esta etapa irá ocorrer ao mesmo tempo que a etapa de User Design, com isso, o desenvolvimento ocorrerá ao mesmo tempo com a prototipação.
 
 <center>
 
@@ -138,7 +152,9 @@ Figura 2 - Rapid Application Development (Fonte: [Kissflow](https://kissflow.com
 
 </center>
 
-## Etapa 4
+### Etapa 4 - Testes
+
+Na etapa de testagem será feito os testes de todas as funcionalidades da aplicação.
 
 <center>
 
@@ -150,6 +166,7 @@ Figura 2 - Rapid Application Development (Fonte: [Kissflow](https://kissflow.com
 
 ## Referências Bibliográficas
 
-> ¹ GUPTA, S. Managing Iterative Software Development Projects. Auerbach Publications, 2008.</br>
-> ² INTERNATIONAL REQUIREMENTS ENGINEERING BOARD. Handbook IREB CPRE Foundation Level, Version 1.1.0, september 2022. [S.l.]: International Requirements Engineering Board, 2022.</br>
-> ³ GLIN, Martin. Requirements Engineering I – Part II: RE Practices. [S.l.]: Martin Glin, 2019.
+> 1. GUPTA, S. Managing Iterative Software Development Projects. Auerbach Publications, 2008.</br>
+> 2. INTERNATIONAL REQUIREMENTS ENGINEERING BOARD. Handbook IREB CPRE Foundation Level, Version 1.1.0, september 2022. [S.l.]: International Requirements Engineering Board, 2022.</br>
+> 3. GLIN, Martin. Requirements Engineering I – Part II: RE Practices. [S.l.]: Martin Glin, 2019.
+> 4. MARSICANO, George. Slides: Escolhas da Engenharia de Software. 2023. Disponível em: [link](https://aprender3.unb.br/pluginfile.php/2518488/mod_folder/content/0/Unidade%201%20-%20Aula%20-%20Escolhas%20da%20ESW.pdf)
