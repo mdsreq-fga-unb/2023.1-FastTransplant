@@ -6,92 +6,57 @@
 <li class="breadcrumb-item active">Teste de Compatibilidade</li>
 {% endblock %}
 {% block content %}
-<div class="row">
-  <div class="col-md-6">
-    <div class="card card-primary">
-      <div class="card-header">
-        <h3 class="card-title">Doador</h3>
-      </div>
-      <form>
+<form action="{% url 'compatibility' %}" method="post">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card card-primary">
+        <div class="card-header">
+          <h3 class="card-title">Doador</h3>
+        </div>
         <div class="card-body">
           <div class="form-group">
-            <label for="exampleSelectBorder">Selecione dentre as opções abaixo</label>
-            <select class="custom-select form-control-border" id="exampleSelectBorder">
-              <option>Selecione</option>
-              <option>Todos</option>
-              <option>DoadorID 0001</option>
-              <option>DoadorID 0002</option>
+            <label for="donators">Selecione dentre as opções abaixo</label>
+            <select class="custom-select form-control-border" id="donators" name="donators">
+              <option value="">Selecione</option>
+              {% if available_donators %}<option value="all">Todos</option>{% endif %}
+              {% for avail_donator in available_donators %}
+                <option value="{{ avail_donator.id }}">DoadorID {{ avail_donator.id }}</option>
+              {% endfor %}
             </select>
           </div>
         </div>
-      </form>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="card card-success">
-      <div class="card-header">
-        <h3 class="card-title">Receptor</h3>
       </div>
-      <form>
+    </div>
+    <div class="col-md-6">
+      <div class="card card-success">
+        <div class="card-header">
+          <h3 class="card-title">Receptor</h3>
+        </div>
         <div class="card-body">
           <div class="form-group">
-            <label for="exampleSelectBorder">Selecione dentre as opções abaixo</label>
-            <select class="custom-select form-control-border" id="exampleSelectBorder">
-              <option>Selecione</option>
-              <option>Todos</option>
-              <option>ReceptorID 0001</option>
-              <option>ReceptorID 0002</option>
+            <label for="receivers">Selecione dentre as opções abaixo</label>
+            <select class="custom-select form-control-border" id="receivers" name="receivers">
+              <option value="">Selecione</option>
+              {% if available_receivers %}<option value="all">Todos</option>{% endif %}
+              {% for avail_receiver in available_receivers %}
+                <option value="{{ avail_receiver.id }}">ReceptorID {{ avail_receiver.id }}</option>
+              {% endfor %}
             </select>
           </div>
         </div>
-      </form>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-lg-12">
-    <div class="card">
-      <div class="card-body">
-        <a href="#" class="btn btn-primary">Pesquisar</a>
       </div>
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-12">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="card-title">Resultados</h3>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <button type="submit" class="btn btn-primary">Pesquisar</button>
+          <!-- <a href="#" class="btn btn-primary">Pesquisar</a> -->
+        </div>
       </div>
-      <div class="card-body table-responsive p-0">
-        <table class="table table-hover text-nowrap">
-          <thead>
-            <tr>
-              <th>DoadorID</th>
-              <th>ReceptorID</th>
-              <th>Resultado</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1234</td>
-              <td>5678</td>
-              <td><label class="text-success">COMPATÍVEL</label></td>
-              <td><a href="#">Detalhar</a></td>
-            </tr>  
-            <tr>
-              <td>1234</td>
-              <td>2718</td>
-              <td><label class="text-danger">INCOMPATÍVEL</label></td>
-              <td><a href="#">Detalhar</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <!-- /.card-body -->
     </div>
-    <!-- /.card -->
   </div>
-</div>
+</form>
 {% endblock %}

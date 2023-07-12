@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import *
-from .util import new_log
+from .util import new_log, check_compatibility
 
 # 404 error handler
 def error_404(request, exception):
@@ -58,8 +58,16 @@ def search(request):
 @login_required(login_url='login')
 def compatibility(request):
     if request.method == 'POST':
-        pass
-    else: return render(request, 'api/compatibility.html')
+        donators = request.POST['donators']
+        receivers = request.POST['receivers']
+        results = check_compatibility(donators, receivers)
+        return render(request, 'api/compatibility.html', {'results': results})
+    else: 
+        context = {
+            'available_donators': Donator.objects.all(),
+            'available_receivers': Receiver.objects.all(),
+        }
+        return render(request, 'api/compatibility.html', context)
 
 @login_required(login_url='login')
 def log(request):
