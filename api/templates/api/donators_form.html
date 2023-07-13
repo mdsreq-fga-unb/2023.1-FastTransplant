@@ -51,8 +51,14 @@
                         <input type="text" class="form-control" id="location" name="location" placeholder="Insira a localidade" value="{{ donator.location }}">
                     </div>
                     <div class="form-group">
-                        <label for="opo">OPO:</label>
-                        <input type="text" class="form-control" id="opo" name="opo" placeholder="Insira a OPO" value="{{ donator.opo }}">
+                        <label for="abo">ABO:</label>
+                         <select class="custom-select form-control-border" id="abo" name="abo" value="{{ donator.abo }}" required>
+                            <option value="">Selecione</option>
+                            <option value="AB">AB</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="O">O</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="height">Altura:</label>

@@ -57,16 +57,18 @@ def search(request):
 
 @login_required(login_url='login')
 def compatibility(request):
+    context = {
+        'available_donators': Donator.objects.all(),
+        'available_receivers': Receiver.objects.all(),
+    }
     if request.method == 'POST':
         donators = request.POST['donators']
         receivers = request.POST['receivers']
-        results = check_compatibility(donators, receivers)
-        return render(request, 'api/compatibility.html', {'results': results})
+        context["results"] = check_compatibility(donators, receivers)
+        context["selected_donator"] = donators
+        context["selected_receiver"] = receivers
+        return render(request, 'api/compatibility.html', context)
     else: 
-        context = {
-            'available_donators': Donator.objects.all(),
-            'available_receivers': Receiver.objects.all(),
-        }
         return render(request, 'api/compatibility.html', context)
 
 @login_required(login_url='login')
@@ -92,10 +94,10 @@ def donators_create(request):
         death_cause = request.POST['death_cause']
         date = request.POST['date']
         location = request.POST['location']
-        opo = request.POST['opo']
+        abo = request.POST['abo']
         height = request.POST['height']
 
-        donator = Donator.objects.create(report='', rgct=rgct, age=age, gender=gender, death_cause=death_cause, date=date, location=location, opo=opo, height=height)
+        donator = Donator.objects.create(report='', rgct=rgct, age=age, gender=gender, death_cause=death_cause, date=date, location=location, abo=abo, height=height)
         donator.save()
         new_log("Doadores", f"{request.user} registrou um novo doador.", request.user)
         return redirect('donators_list')
@@ -122,7 +124,7 @@ def donators_update(request, id):
         donator.gender = request.POST['gender']
         donator.date = request.POST['date']
         donator.location = request.POST['location']
-        donator.opo = request.POST['opo']
+        donator.abo = request.POST['abo']
         donator.height = request.POST['height']
         donator.save()
         new_log("Doadores", f"{request.user} atualizou os dados do doador #{donator.id}.", request.user)

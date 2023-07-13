@@ -36,7 +36,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="abo">ABO:</label>
-                        <input type="text" class="form-control" id="abo" name="abo" placeholder="Insira o ABO" value="{{ receiver.abo }}">
+                         <select class="custom-select form-control-border" id="abo" name="abo" value="{{ receiver.abo }}" required>
+                            <option value="">Selecione</option>
+                            <option value="AB">AB</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="O">O</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="age">Idade:</label>
