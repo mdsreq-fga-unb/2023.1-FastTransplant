@@ -10,7 +10,7 @@
 {% block content %}
 <div class="card">
     <div class="card-header">
-      <h3 class="card-title">Regitros</h3>
+      <h3 class="card-title">Registros</h3>
     </div>
     <div class="card-body p-0">
       <table class="table table-striped projects">
@@ -24,12 +24,13 @@
               </tr>
           </thead>
           <tbody>
-              <tr>
-                  <td>#0001</td>
-                  <td><a>Bruno Martins</a><br><small>@brunomartins</small>
+            {% for user in users %}
+            <tr>
+                  <td>#{{ user.id }}</td>
+                  <td><a>{{ user.first_name}} {{ user.last_name}}</a><br><small>@{{ user.username}}</small>
                   </td>
-                  <td>27 jun 2023</td>
-                  <td>bruno.martval@gmail.com</td>
+                  <td>{{ user.last_login }}</td>
+                  <td>{{ user.email }}</td>
                   <td class="project-actions text-right">
                       <a class="btn btn-primary btn-sm" href="#">
                           <i class="fas fa-folder"></i>
@@ -41,7 +42,7 @@
                       </a>
                   </td>
               </tr>
-              
+            {% endfor %}             
           </tbody>
       </table>
     </div>

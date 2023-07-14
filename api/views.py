@@ -45,11 +45,28 @@ def index(request):
 
 @login_required(login_url='login')
 def users(request):
-    return render(request, 'api/users.html')
+    context = {
+        'users': User.objects.all(),
+    }
+    return render(request, 'api/users.html', context)
 
 @login_required(login_url='login')
 def profile(request):
-    return render(request, 'api/profile.html')
+    context = {
+        'user': request.user,
+    }
+    if request.method == 'POST':
+        request.user.first_name = request.POST['first_name']
+        request.user.last_name = request.POST['last_name']
+        request.user.email = request.POST['email']
+        request.user.username = request.POST['username']
+        request.user.job = request.POST['job']
+        request.user.education = request.POST['education']
+        request.user.location = request.POST['location']
+        request.user.save()
+        new_log("Perfil", f"{request.user} atualizou seu perfil.", request.user)
+        return redirect('profile')
+    else: return render(request, 'api/profile.html', context)
 
 @login_required(login_url='login')
 def search(request):

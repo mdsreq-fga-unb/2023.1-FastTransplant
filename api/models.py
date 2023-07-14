@@ -1,7 +1,15 @@
 from django.db import models
-from django.contrib.auth import get_user_model
+# from django.contrib.auth import get_user_model
+from django.contrib.auth.models import AbstractUser
 
-User = get_user_model()
+class User(AbstractUser):
+    job = models.CharField(max_length=100, blank=False, default='')
+    education = models.CharField(max_length=100, blank=False, default='')
+    location = models.CharField(max_length=100, blank=False, default='')
+    class Meta:
+        db_table = 'auth_user'
+
+# User = get_user_model()
 
 class Donator(models.Model):
     gender_choices = ('M', 'Masculino'), ('F', 'Feminino')
