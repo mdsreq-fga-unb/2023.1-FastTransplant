@@ -1,0 +1,53 @@
+site_name: FastTransplant
+site_url: https://mdsreq-fga-unb.github.io/2023.1-FastTransplant/
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+  language: pt-BR
+  palette: 
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+  features:
+    - navigation.instant
+    - navigation.section
+    - navigation.path
+    - navigation.top
+    - tabs
+
+  nav:
+  - Home: index.md
+  - Visão do Produto e Projeto:
+    - Visão do Produto: visao-do-produto-e-projeto/visao-do-produto.md
+    - Visão do Projeto: visao-do-produto-e-projeto/visao-do-projeto.md
+    - Processo de Desenvolvimento: visao-do-produto-e-projeto/processo-de-desenvolvimento.md
+    - Lições Aprendidas: visao-do-produto-e-projeto/licoes-aprendidas.md
+    - Registros Reuniões: visao-do-produto-e-projeto/ata-e-videos.md
+  - Requisitos do Produto: 
+    - Definition of Done: requisitos-do-produto/dod.md
+    - Definition of Ready: requisitos-do-produto/dor.md
+    - Critérios de aceitação: requisitos-do-produto/criterios-de-aceitacao.md
+    - Backlog: requisitos-do-produto/productbacklog.md
+  - Entregas das Unidades: 
+    - Unidade 1:
+      - Pitch RAD: entregas/unidade1/pitch-rad.md 
+      - Diagrama de Ishikawa: entregas/unidade1/ishiwaka.md 
+      - Processo de ER: entregas/unidade1/processo-ER.md
+    - Unidade 2:
+      - Mural: entregas/unidade2/mural.md
+      - Tabela priorização de US: entregas/unidade2/tabela priorizacao.md
+    - Unidade 3:
+      - Canvas PBB: entregas/unidade3/canvas-pbb.md
+      - SAFe: entregas/unidade3/safe.md
+    - Vídeos: entregas/videos/videos.md
+
+    
+
