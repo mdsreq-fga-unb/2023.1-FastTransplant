@@ -1,0 +1,50 @@
+{% extends 'api/base.html' %}
+{% block title %}Resultados{% endblock %}
+{% block heading %}Aceitação e Recusa de Órgãos{% endblock %}
+{% block path %}
+<li class="breadcrumb-item">Home</li>
+<li class="breadcrumb-item active">Aceitação e Recusa de Órgãos</li>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="callout callout-info">
+            <h5>Sobre</h5>
+            Abaixo encontram-se as decisões tomadas pelos médicos durante o teste de compatibilidade entre um determinado doador e um receptor.
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Registros</h3>
+            </div>
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                    <tr>
+                        <th>Usuário</th>
+                        <th>DoadorID</th>
+                        <th>ReceptorID</th>
+                        <th>Data</th>
+                        <th>Decisão</th>
+                        <th>Ações</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Afonso</td>
+                            <td>#0011</td>
+                            <td>##1100</td>
+                            <td>13 jul 2023</td>
+                            <td>Recusado</td>
+                            <td><i class="fas fa-search"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

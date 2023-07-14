@@ -1,57 +1,40 @@
 from django.db import models
-from django.utils import timezone
+from django.contrib.auth import get_user_model
 
-class OrganReport(models.Model):
-    uploaded_at = models.DateTimeField(default=timezone.now)
-    file = models.FileField(upload_to='reports/')
+User = get_user_model()
 
 class Donator(models.Model):
-    # report = models.ForeignKey(OrganReport, on_delete=models.CASCADE)
-    #name = models.CharField(max_length=100, blank=False)
-    rgct = models.CharField(blank=False, max_length=100)
-    date = models.DateField(blank=False)
-    location  = models.CharField(max_length=100, blank=False)
-    opo = models.CharField(max_length=100, blank=False)
-    height = models.FloatField(blank=False)
-    age = models.IntegerField(blank=False)
-    gender = models.CharField(blank=False, max_length=100)
-    death_cause = models.TextField(blank=False)
-    #cr_in = models.CharField(max_length=100, blank=False)
-    #cr_out = models.CharField(max_length=100, blank=False)
-    #hypertension = models.BooleanField(blank=False)
-    #diabetes = models.BooleanField(blank=False)
-    #hbsag = models.BooleanField(blank=False)
-    #anti_hcv = models.BooleanField(blank=False)
-    #avch_death = models.BooleanField(blank=False)
-    #chagas = models.BooleanField(blank=False)
-    #anti_hbs = models.BooleanField(blank=False)
-    #hltv = models.BooleanField(blank=False)
-    #vdrl = models.BooleanField(blank=False)
-    #anti_hbc = models.BooleanField(blank=False)
-    #hiv = models.BooleanField(blank=False)
-    #toxoplasmosis = models.BooleanField(blank=False)
-    #age_50_60 = models.BooleanField(blank=False)
-    #cr_in_greater_than_15 = models.BooleanField(blank=False)
+    gender_choices = ('M', 'Masculino'), ('F', 'Feminino')
+    abo_choices = ('A', 'A'), ('B', 'B'), ('AB', 'AB'), ('O', 'O')
 
-class Patient(models.Model):
-    name = models.CharField(max_length=100, blank=False)
-    rgct = models.BigIntegerField(blank=False)
-    position = models.IntegerField(blank=False)
-    abo = models.CharField(max_length=3 ,blank=False)
-    age = models.IntegerField(blank=False)
-    panel = models.IntegerField(blank=False)
+    report = models.FileField(upload_to='reports/', blank=True, default='')
+    rgct = models.BigIntegerField(blank=False, default=0)
+    date = models.CharField(blank=False, default='', max_length=10)
+    location  = models.CharField(max_length=100, blank=False, default='')
+    abo = models.CharField(max_length=2, choices=abo_choices, blank=False, default='A')
+    height = models.FloatField(blank=False, default=0)
+    age = models.IntegerField(blank=False, default=0)
+    gender = models.CharField(max_length=1, choices=gender_choices, blank=False, default='M')
+    death_cause = models.TextField(blank=False, default='')
 
 class Receiver(models.Model):
-    name = models.CharField(max_length=100, blank=False)
-    rgct = models.BigIntegerField(blank=False)
-    position = models.IntegerField(blank=False)
-    abo = models.CharField(max_length=3, blank=False)
-    age = models.IntegerField(blank=False)
-    panel = models.IntegerField(blank=False)
+    abo_choices = ('A', 'A'), ('B', 'B'), ('AB', 'AB'), ('O', 'O')
 
-# MVP2
-class User(models.Model):
-    name = models.CharField(max_length=100, blank=False)
-    email = models.EmailField(max_length=100, blank=False)
-    password = models.CharField(max_length=100, blank=False)
-    crm = models.CharField(max_length=9, blank=False)
+    name = models.CharField(max_length=100, blank=False, default='')
+    rgct = models.BigIntegerField(blank=False, default=0)
+    position = models.IntegerField(blank=False, default=0)
+    abo = models.CharField(max_length=2, choices=abo_choices, blank=False, default='A')
+    age = models.IntegerField(blank=False, default=0)
+    panel = models.IntegerField(blank=False, default=0)
+
+class Log(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    page = models.CharField(max_length=100)
+    description = models.CharField(max_length=100)
+
+class Acceptance(models.Model):
+    donator = models.ForeignKey(Donator, on_delete=models.CASCADE)
+    receiver = models.ForeignKey(Receiver, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    description = models.CharField(max_length=100)

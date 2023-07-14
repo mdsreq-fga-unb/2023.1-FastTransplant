@@ -1,0 +1,141 @@
+{% extends 'api/base.html' %}
+{% load static %}
+{% block title %}Seu Perfil{% endblock %}
+{% block heading %}Seu Perfil{% endblock %}
+{% block path %}
+<li class="breadcrumb-item">Home</li>
+<li class="breadcrumb-item">Usuários</li>
+<li class="breadcrumb-item active">Seu Perfil</li>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+                <div class="text-center">
+                <img class="profile-user-img img-fluid img-circle"
+                        src="{% static 'dist/img/user4-128x128.jpg' %}"
+                        alt="User profile picture">
+                </div>
+                <h3 class="profile-username text-center">Afonso da Silva</h3>
+                <p class="text-muted text-center">@dasilva | Biomédico</p>
+                <ul class="list-group list-group-unbordered mb-3">
+                <li class="list-group-item">
+                    <b>UsuárioID</b> <a class="float-right">#0001</a>
+                </li>
+                <li class="list-group-item">
+                    <b>Cadastro</b> <a class="float-right">27 jun 2023</a>
+                </li>
+                <li class="list-group-item">
+                    <b>Último Acesso</b> <a class="float-right">30 jun 2023</a>
+                </li>
+                <li class="list-group-item">
+                    <strong>Formação</strong>
+                    <p class="text-muted">
+                        M.S. em Biomedicina pela USP (2007)
+                    </p>
+                </li>
+                <li class="list-group-item">
+                    <strong>Localização</strong>
+                    <p class="text-muted">
+                        Noroeste, Brasília-DF
+                    </p>
+                </li>
+                </ul>
+            </div>
+            </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+        <div class="card-header p-2">
+            <ul class="nav nav-pills">
+            <li class="nav-item"><a class="nav-link active" href="#data" data-toggle="tab">Dados Pessoais</a></li>
+            <li class="nav-item"><a class="nav-link" href="#passwords" data-toggle="tab">Senhas</a></li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <div class="tab-content">
+            <div class="active tab-pane" id="data">
+                <form class="form-horizontal">
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-2 col-form-label">Nome:</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" id="name" placeholder="Nome">
+                    </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="surname" class="col-sm-2 col-form-label">Sobrenome:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="surname" placeholder="Sobrenome">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="username" class="col-sm-2 col-form-label">Username:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="username" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="email" class="col-sm-2 col-form-label">Email:</label>
+                        <div class="col-sm-10">
+                        <input type="email" class="form-control" id="email" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="job" class="col-sm-2 col-form-label">Profissão:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="job" placeholder="Profissão">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="career" class="col-sm-2 col-form-label">Formação:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="career" placeholder="Formação">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="location" class="col-sm-2 col-form-label">Localização:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="location" placeholder="Localização">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                    </div>
+                    </form>
+            </div>
+            <div class="tab-pane" id="passwords">
+                <form class="form-horizontal">
+                    <div class="form-group row">
+                        <label for="current_password" class="col-sm-2 col-form-label">Senha atual:</label>
+                        <div class="col-sm-10">
+                        <input type="password" class="form-control" id="current_password" placeholder="Senha atual">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="new_password" class="col-sm-2 col-form-label">Nova Senha:</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="new_password" placeholder="Nova Senha">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="new_password_again" class="col-sm-2 col-form-label">Confirme:</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="new_password_again" placeholder="Repita a nova senha">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                    </div>
+                    </form>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

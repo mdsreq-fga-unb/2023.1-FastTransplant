@@ -1,0 +1,100 @@
+{% extends 'api/base.html' %}
+{% block title %}Compatibilidade{% endblock %}
+{% block heading %}Teste de Compatibilidade{% endblock %}
+{% block path %}
+<li class="breadcrumb-item">Home</li>
+<li class="breadcrumb-item active">Teste de Compatibilidade</li>
+{% endblock %}
+{% block content %}
+<form action="{% url 'compatibility' %}" method="post">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card card-primary">
+        <div class="card-header">
+          <h3 class="card-title">Doador</h3>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="donators">Selecione dentre as opções abaixo</label>
+            <select class="custom-select form-control-border" id="donators" name="donators" required>
+              <option value="">Selecione</option>
+              {% if available_donators %}<option value="all" {% if selected_donator|slugify == 'all' %}selected{% endif %}>Todos</option>{% endif %}
+              {% for avail_donator in available_donators %}
+                <option value="{{ avail_donator.id }}" {% if selected_donator|slugify == avail_donator.id|slugify %}selected{% endif %}>DoadorID {{ avail_donator.id}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card card-success">
+        <div class="card-header">
+          <h3 class="card-title">Receptor</h3>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label for="receivers">Selecione dentre as opções abaixo</label>
+            <select class="custom-select form-control-border" id="receivers" name="receivers" required>
+              <option value="">Selecione</option>
+              {% if available_receivers %}<option value="all" {% if selected_receiver|slugify == 'all' %}selected{% endif %}>Todos</option>{% endif %}
+              {% for avail_receiver in available_receivers %}
+                <option value="{{ avail_receiver.id }}" {% if selected_receiver|slugify == avail_receiver.id|slugify %}selected{% endif %}>ReceptorID {{ avail_receiver.id}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <button type="submit" class="btn btn-primary">Pesquisar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+{% if results %}
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">Resultados</h3>
+      </div>
+      <div class="card-body table-responsive p-0">
+        <table class="table table-hover text-nowrap">
+          <thead>
+            <tr>
+              <th>DoadorID</th>
+              <th>ReceptorID</th>
+              <th>Resultado</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for result in results %}
+              <tr>
+                <td>{{ result.donator.id }}</td>
+                <td>{{ result.receiver.id }}</td>
+                <td>
+                  {% if result.compat %}
+                    <label class="text-success">COMPATÍVEL</label>
+                  {% else %}
+                    <label class="text-danger">INCOMPATÍVEL</label>
+                  {% endif %}
+                </td>
+                <td><a href="#">Detalhar</a></td>
+              </tr>
+            {% endfor %}  
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

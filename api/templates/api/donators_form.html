@@ -1,0 +1,76 @@
+{% extends 'api/base.html' %}
+{% block title %}{{ page }} Doador{% endblock %}
+{% block heading %}{{ page }} Doador{% endblock %}
+{% block path %}
+<li class="breadcrumb-item">Home</li>
+<li class="breadcrumb-item">Doadores</li>
+<li class="breadcrumb-item active">{{ page }}</li>
+{% endblock %}
+{% block content %}
+{% if page == "Adicionar" %}
+<form action="{% url 'donators_create' %}" method="post">
+{% else %}
+<form action="{% url 'donators_update' donator.id %}" method="post">
+{% endif %}
+    {% csrf_token %} 
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">Formulário</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="rgct">RGCT:</label>
+                        <input type="number" class="form-control" id="rgct" name="rgct" placeholder="Insira o RGCT" value="{{ donator.rgct }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Idade:</label>
+                        <input type="number" class="form-control" id="age" name="age" placeholder="Insira a idade" value="{{ donator.age }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Sexo:</label>
+                        <select class="form-control" id="gender" name="gender" value="{{ donator.gender }}">
+                        <option>Selecione</option>
+                        <option value="M" {% if donator.gender == 'M'%} selected {% endif %}>Masculino</option>
+                        <option value="F" {% if donator.gender == 'F'%} selected {% endif %}>Feminino</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="death_cause">Causa do Óbito:</label>
+                        <textarea class="form-control" id="death_cause" name="death_cause" rows="5" placeholder="Insira a causa do óbito">{{ donator.death_cause }}</textarea>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="date">Data de oferta:</label>
+                        <input type="date" class="form-control" id="date" name="date" value="{{ donator.date }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Localidade:</label>
+                        <input type="text" class="form-control" id="location" name="location" placeholder="Insira a localidade" value="{{ donator.location }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="abo">ABO:</label>
+                         <select class="custom-select form-control-border" id="abo" name="abo" value="{{ donator.abo }}" required>
+                            <option value="">Selecione</option>
+                            <option value="AB">AB</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="O">O</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="height">Altura:</label>
+                        <input type="number" class="form-control" id="height" name="height" placeholder="Insira a altura" value="{{ donator.height }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+             <button type="submit" class="btn btn-success float-right">Salvar</button>
+            <a href="{% url 'donators_list' %}" class="btn btn-warning float-right" style="margin-right: 5px;">Cancelar</a>
+        </div>
+    </div>
+</form>
+{% endblock %}

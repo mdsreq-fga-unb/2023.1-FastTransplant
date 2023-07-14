@@ -1,0 +1,76 @@
+{% extends 'api/base.html' %}
+{% block title %}Log{% endblock %}
+{% block heading %}Log{% endblock %}
+{% block path %}
+<li class="breadcrumb-item">Home</li>
+<li class="breadcrumb-item active">Log do Sistema</li>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+    <div class="callout callout-info">
+        <h5>Sobre</h5>
+        Aqui você pode encontrar as principais atividades realizadas pelos usuários do sistema, para se manter ciente de tudo o que está acontecendo.
+    </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+    <div class="card">
+        <div class="card-header">
+        <h3 class="card-title">Registros</h3>
+        <div class="card-tools">
+            <div class="input-group input-group-sm">
+            <div class="input-group-append">
+                <form action="{% url 'log' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-warning">Limpar</button>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="card-body table-responsive p-0">
+        <table class="table table-hover text-nowrap">
+            <thead>
+            <tr>
+                <th>LogID</th>
+                <th>Usuário</th>
+                <th>Data</th>
+                <th>Página</th>
+                <th>Descrição</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for log in logs %}
+                    <tr>
+                        <td>{{ log.id }}</td>
+                        <td>{{ log.user }}</td>
+                        <td>{{ log.date }}</td>
+                        <td>{{ log.page }}</td>
+                        <td>{{ log.description }}</td>
+                    </tr>
+                {% endfor %}
+            <!-- <tr>
+                <td>0001</td>
+                <td>Bruno Martins</td>
+                <td>23/06/2023</td>
+                <td>Doadores</td>
+                <td>O usuário "Bruno Martins" inseriu um novo doador através de um arquivo PDF.</td>
+            </tr>
+            <tr>
+                <td>0002</td>
+                <td>Bruno Martins</td>
+                <td>23/06/2023</td>
+                <td>Receptores</td>
+                <td>O usuário "Bruno Martins" deletou um registro do banco de receptores.</td>
+            </tr> -->
+            </tbody>
+        </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+    </div>
+</div>
+{% endblock %}
