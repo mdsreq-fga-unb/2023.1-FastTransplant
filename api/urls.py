@@ -27,4 +27,5 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     path('users/', views.users, name='users'),
     path('users/create/', views.users_create, name='users_create'),
+    path('password_reset/', views.password_reset, name='password_reset')
 ]

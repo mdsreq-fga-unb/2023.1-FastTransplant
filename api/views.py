@@ -4,6 +4,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import *
 from .util import new_log, check_compatibility
+from django.core.mail import send_mail
+from django.conf import settings
+from django.urls import reverse
 
 # 404 error handler
 def error_404(request, exception):
@@ -233,6 +236,16 @@ def users_create(request):
         user = User.objects.create_user(first_name=name, email=email, category=category, username=username, password='0011')
         user.save()
         new_log("Usuários", f"{request.user} registrou um novo usuário.", request.user)
-        
+
+        url = request.build_absolute_uri(reverse('password_reset')) + username + "/"
+        # print(url)
+        send_mail("Bem-vindo ao sistema FastTransplant!",
+                f"Prezado(a) {name},\n\nVocê foi adicionado recentemente ao sistema FastTransplant.\nSeu username é: {username}\nClique no link abaixo para definir a sua senha:{url}",
+                "settings.EMAIL_HOST_USER",
+                ["bruno.martval@gmail.com"],
+                fail_silently=False)
         return redirect('users')
     else: return render(request, 'api/users_form.html')
+
+def password_reset(request, username):
+    return render(request, 'api/password_reset.html')

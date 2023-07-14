@@ -1,5 +1,4 @@
 from django.db import models
-# from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
@@ -9,8 +8,6 @@ class User(AbstractUser):
     category = models.IntegerField(blank=False, default=1)
     class Meta:
         db_table = 'auth_user'
-
-# User = get_user_model()
 
 class Donator(models.Model):
     gender_choices = ('M', 'Masculino'), ('F', 'Feminino')
@@ -43,7 +40,12 @@ class Log(models.Model):
     description = models.CharField(max_length=100)
 
 class Acceptance(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     donator = models.ForeignKey(Donator, on_delete=models.CASCADE)
     receiver = models.ForeignKey(Receiver, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
     description = models.CharField(max_length=100)
+
+class FirstAccess(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    is_allowed = models.BooleanField(default=True)
