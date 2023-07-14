@@ -1,6 +1,6 @@
 {% extends 'api/base.html' %}
 {% block title %}Home{% endblock %}
-{% block heading %}Bem-vindo, {{ request.user }}{% endblock %}
+{% block heading %}Bem-vindo, {{ request.user.first_name }}!{% endblock %}
 {% block path %}
 <li class="breadcrumb-item active">Home</li>
 {% endblock %}

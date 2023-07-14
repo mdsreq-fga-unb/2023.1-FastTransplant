@@ -17,29 +17,25 @@
                         src="{% static 'dist/img/user4-128x128.jpg' %}"
                         alt="User profile picture">
                 </div>
-                <h3 class="profile-username text-center">Afonso da Silva</h3>
-                <p class="text-muted text-center">@dasilva | Biomédico</p>
+                <h3 class="profile-username text-center">{{ user.first_name }} {{ user.last_name }}</h3>
+                <p class="text-muted text-center">@{{ user.username }} | {{ user.job }}</p>
                 <ul class="list-group list-group-unbordered mb-3">
                 <li class="list-group-item">
-                    <b>UsuárioID</b> <a class="float-right">#0001</a>
+                    <b>UsuárioID</b> <a class="float-right">#{{ user.id }}</a>
                 </li>
                 <li class="list-group-item">
-                    <b>Cadastro</b> <a class="float-right">27 jun 2023</a>
+                    <b>Cadastro</b> <a class="float-right">{{ user.join_date }}</a>
                 </li>
                 <li class="list-group-item">
-                    <b>Último Acesso</b> <a class="float-right">30 jun 2023</a>
+                    <b>Último Acesso</b> <a class="float-right">{{ user.last_login }}</a>
                 </li>
                 <li class="list-group-item">
                     <strong>Formação</strong>
-                    <p class="text-muted">
-                        M.S. em Biomedicina pela USP (2007)
-                    </p>
+                    <p class="text-muted">{{ user.education }}</p>
                 </li>
                 <li class="list-group-item">
                     <strong>Localização</strong>
-                    <p class="text-muted">
-                        Noroeste, Brasília-DF
-                    </p>
+                    <p class="text-muted">{{ user.location }}</p>
                 </li>
                 </ul>
             </div>
@@ -56,52 +52,53 @@
         <div class="card-body">
             <div class="tab-content">
             <div class="active tab-pane" id="data">
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="{% url 'profile' %}" method="post">
+                    {% csrf_token %}
                     <div class="form-group row">
                         <label for="name" class="col-sm-2 col-form-label">Nome:</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" id="name" placeholder="Nome">
+                        <input type="text" class="form-control" id="name" name="first_name" placeholder="Nome" value="{{ user.first_name }}">
                     </div>
                     </div>
                     <div class="form-group row">
                         <label for="surname" class="col-sm-2 col-form-label">Sobrenome:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="surname" placeholder="Sobrenome">
+                            <input type="text" class="form-control" id="surname" name="last_name" placeholder="Sobrenome" value="{{ user.last_name}}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="username" class="col-sm-2 col-form-label">Username:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="username" placeholder="Username">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="{{ user.username}}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="email" class="col-sm-2 col-form-label">Email:</label>
                         <div class="col-sm-10">
-                        <input type="email" class="form-control" id="email" placeholder="Email">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ user.email }}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="job" class="col-sm-2 col-form-label">Profissão:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="job" placeholder="Profissão">
+                            <input type="text" class="form-control" id="job" name="job" placeholder="Profissão" value="{{ user.job }}">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="career" class="col-sm-2 col-form-label">Formação:</label>
+                        <label for="education" class="col-sm-2 col-form-label">Formação:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="career" placeholder="Formação">
+                            <input type="text" class="form-control" id="education" name="education" placeholder="Formação" value="{{ user.education }}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="location" class="col-sm-2 col-form-label">Localização:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="location" placeholder="Localização">
+                            <input type="text" class="form-control" id="location" name="location" placeholder="Localização" value="{{ user.location }}">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-2">
-                        <button type="submit" class="btn btn-success">Salvar</button>
+                            <button type="submit" class="btn btn-success">Salvar</button>
                         </div>
                     </div>
                     </form>
