@@ -26,4 +26,5 @@ urlpatterns = [
     path('results/', views.results, name='results'),
     path('search/', views.search, name='search'),
     path('users/', views.users, name='users'),
+    path('users/create/', views.users_create, name='users_create'),
 ]

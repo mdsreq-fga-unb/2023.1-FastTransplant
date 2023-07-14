@@ -6,6 +6,7 @@ class User(AbstractUser):
     job = models.CharField(max_length=100, blank=False, default='')
     education = models.CharField(max_length=100, blank=False, default='')
     location = models.CharField(max_length=100, blank=False, default='')
+    category = models.IntegerField(blank=False, default=1)
     class Meta:
         db_table = 'auth_user'
 

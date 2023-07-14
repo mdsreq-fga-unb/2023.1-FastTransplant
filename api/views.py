@@ -223,3 +223,16 @@ def reports(request):
 @login_required(login_url='login')
 def results(request):
     return render(request, 'api/results.html')
+
+def users_create(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        email = request.POST['email']
+        category = request.POST['category']
+        username = request.POST['username']
+        user = User.objects.create_user(first_name=name, email=email, category=category, username=username, password='0011')
+        user.save()
+        new_log("Usuários", f"{request.user} registrou um novo usuário.", request.user)
+        
+        return redirect('users')
+    else: return render(request, 'api/users_form.html')

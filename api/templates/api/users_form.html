@@ -1,0 +1,58 @@
+{% extends 'api/base.html' %}
+{% block title %}Adicionar Usuário{% endblock %}
+{% block heading %}Adicionar Usuário{% endblock %}
+{% block path %}
+<li class="breadcrumb-item">Home</li>
+<li class="breadcrumb-item">Usuários</li>
+<li class="breadcrumb-item active">Novo</li>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+    <div class="callout callout-warning">
+        <h5>Aviso</h5>
+        O usuário criado receberá em seu email cadastrado um link para alterar sua senha do primeiro acesso, bem como outras informações relevantes tais como formação, educação, localização, etc. Por padrão, os usuários recebem a senha "0011".
+    </div>
+    </div>
+</div>
+<form action="{% url 'users_create' %}" method="post">
+    {% csrf_token %} 
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">Formulário</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="name">Nome:</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Insira o nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Insira o email" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Insira o username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Categoria:</label>
+                        <select class="form-control" id="category" name="category" required>
+                        <option value="">Selecione</option>
+                        <option value="1">Médico</option>
+                        <option value="2">Médico-chefe</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+             <button type="submit" class="btn btn-success float-right">Criar</button>
+            <a href="{% url 'users' %}" class="btn btn-warning float-right" style="margin-right: 5px;">Cancelar</a>
+        </div>
+    </div>
+</form>
+{% endblock %}
