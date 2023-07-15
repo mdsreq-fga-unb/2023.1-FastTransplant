@@ -1,1 +1,1 @@
-web: gunicorn fasttransplant.wsgi 
+web: gunicorn FastTransplant.wsgi 
