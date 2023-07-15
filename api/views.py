@@ -23,7 +23,7 @@ def recover(request):
         send_mail("FastTransplant - Recuperação de senha",
                 f"Prezado(a) {user.first_name},\n\nVocê solicitou a recuperação de senha no sistema FastTransplant.\nClique no link abaixo para redefini-la:{url}",
                 "settings.EMAIL_HOST_USER",
-                ["bruno.martval@gmail.com"],
+                [email],
                 fail_silently=False)
         return redirect('recover')
     else: return render(request, 'api/recover.html')
@@ -53,15 +53,16 @@ def index(request):
     context = {
         'donators': Donator.objects.count(),
         'receivers': Receiver.objects.count(),
+        'users': User.objects.count(),
     }
     return render(request, 'api/index.html', context)
 
 @login_required(login_url='login')
-def users(request):
+def users_list(request):
     context = {
         'users': User.objects.all(),
     }
-    return render(request, 'api/users.html', context)
+    return render(request, 'api/users_list.html', context)
 
 @login_required(login_url='login')
 def profile(request):
@@ -80,10 +81,6 @@ def profile(request):
         new_log("Perfil", f"{request.user} atualizou seu perfil.", request.user)
         return redirect('profile')
     else: return render(request, 'api/profile.html', context)
-
-@login_required(login_url='login')
-def search(request):
-    return render(request, 'api/search.html')
 
 @login_required(login_url='login')
 def compatibility(request):
@@ -253,9 +250,9 @@ def users_create(request):
         send_mail("Bem-vindo ao sistema FastTransplant!",
                 f"Prezado(a) {name},\n\nVocê foi adicionado recentemente ao sistema FastTransplant.\nSeu username é: {username}\nClique no link abaixo para definir a sua senha:{url}",
                 "settings.EMAIL_HOST_USER",
-                ["bruno.martval@gmail.com"],
+                [email],
                 fail_silently=False)
-        return redirect('users')
+        return redirect('users_list')
     else: return render(request, 'api/users_form.html')
 
 def password_reset(request, username):
@@ -274,3 +271,18 @@ def password_reset(request, username):
             new_log("Usuários", f"{user.first_name} redefiniu a sua senha", user)
             return redirect('login')
     else: return render(request, 'api/password_reset.html', context)
+
+@login_required(login_url='login')
+def users_read(request, id):
+    user = User.objects.get(id=id)
+    new_log("Usuários", f"{request.user.first_name} consultou os dados do usuário #{user.id}.", request.user)
+    return render(request, 'api/users_read.html', {'user': user})
+
+@login_required(login_url='login')
+def users_delete(request, id):
+    user = User.objects.get(id=id)
+    if request.method == 'POST':
+        user.delete()
+        new_log("Usuários", f"{request.user.first_name} deletou um usuário do sistema.", request.user)
+        return redirect('users_list')
+    else: return render(request, 'api/users_delete.html', {'user': user})
