@@ -13,15 +13,22 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Fast</b>Transplant</a>
+    <a href="#"><b>Fast</b>Transplant</a>
   </div>
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Esqueceu sua senha? Insira seu email para recuperá-la.</p>
+      <p class="login-box-msg">
+        Esqueceu sua senha? Insira seu email para recuperá-la.
+        {% if messages %}
+          {% for message in messages %}
+            <br><label class="text-info">{{ message }}</label>
+          {% endfor %}
+        {% endif %}
+      </p>
       <form action="{% url 'recover' %}" method="post">
         {% csrf_token %}
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email" name="email">
+          <input type="email" class="form-control" placeholder="Email" name="email" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>

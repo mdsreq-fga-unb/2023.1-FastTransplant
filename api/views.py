@@ -8,6 +8,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.urls import reverse
 from django.views import View
+from django.contrib import messages
 
 # 404 error handler
 def error_404(request, exception):
@@ -17,15 +18,18 @@ def error_404(request, exception):
 def recover(request):
     if request.method == 'POST':
         email = request.POST['email']
-        user = User.objects.get(email=email)
-        url = request.build_absolute_uri(reverse('password_reset', args=[user.username]))
-        user_request = PasswordChangeRequest.objects.create(user=user)
-        user_request.save()
-        send_mail("FastTransplant - Recuperação de senha",
-                f"Prezado(a) {user.first_name},\n\nVocê solicitou a recuperação de senha no sistema FastTransplant.\nClique no link abaixo para redefini-la:{url}",
-                "settings.EMAIL_HOST_USER",
-                [email],
-                fail_silently=False)
+        user = User.objects.filter(email=email).first()
+        if user is not None:
+            url = request.build_absolute_uri(reverse('password_reset', args=[user.username]))
+            user_request = PasswordChangeRequest.objects.create(user=user)
+            user_request.save()
+            send_mail("FastTransplant - Recuperação de senha",
+                    f"Prezado(a) {user.first_name},\n\nVocê solicitou a recuperação de senha no sistema FastTransplant.\nClique no link abaixo para redefini-la:{url}\n\nAtenciosamente,\nEquipe 0011.",
+                    "settings.EMAIL_HOST_USER",
+                    [email],
+                    fail_silently=False)
+            messages.success(request, 'E-mail enviado com sucesso.')
+        else: messages.error(request, 'E-mail não cadastrado.')
         return redirect('recover')
     else: return render(request, 'api/recover.html')
 
@@ -39,9 +43,10 @@ def login_view(request):
             login(request, user)
             new_log("Index", f"{request.user} entrou no sistema.", request.user)
             return redirect('index')
-        else: error_message = 'Usuário ou senha inválidos.'
-    else: error_message = None
-    return render(request, 'api/login.html', {'error_message': error_message})
+        else:
+            messages.error(request, 'Usuário ou senha inválidos.')
+            return redirect('login')
+    else: return render(request, 'api/login.html')
 
 def logout_view(request):
     new_log("Logout", f"{request.user} saiu do sistema.", request.user)
@@ -305,21 +310,3 @@ def users_delete(request, id):
         new_log("Usuários", f"{request.user.first_name} deletou um usuário do sistema.", request.user)
         return redirect('users_list')
     else: return render(request, 'api/users_delete.html', {'user': user})
-
-data = {
-	"donators": Donator.objects.all(),
-	"receivers": Receiver.objects.all(),
-    "users": User.objects.all(),
-    "acceptances": Acceptance.objects.all(),
-}
-
-class ViewPDF(View):
-    def get(self, donators, receivers, transplants, users, *args, **kwargs):
-        data = {
-            "donators": donators,
-            "receivers": receivers,
-            "transplants": transplants,
-            "users": users,
-        }
-        pdf = render_to_pdf('api/pdf_template.html', data)
-        return HttpResponse(pdf, content_type='application/pdf')

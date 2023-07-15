@@ -24,7 +24,6 @@ urlpatterns = [
     path('receivers/delete/<int:id>', views.receivers_delete, name='receivers_delete'),
     path('recover/', views.recover, name='recover'),
     path('reports/', views.reports, name='reports'),
-    path('reports/pdf/', views.ViewPDF.as_view(), name="reports_pdf"),
     path('results/', views.results, name='results'),
     path('users/', views.users_list, name='users_list'),
     path('users/create/', views.users_create, name='users_create'),
