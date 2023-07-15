@@ -6,5 +6,42 @@
 <li class="breadcrumb-item active">Relatórios de Movimentação</li>
 {% endblock %}
 {% block content %}
-
+<div class="col-md-6">
+    <div class="card card-secondary">
+        <div class="card-header">
+            <h3 class="card-title">Selecione</h3>
+        </div>
+        <div class="card-body">
+            <form action="#" method="post">
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="donators" name="donators">
+                        <label class="custom-control-label" for="donators">Doadores</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="receivers" name="receivers">
+                        <label class="custom-control-label" for="receivers">Receptores</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="transplants" name="transplants">
+                        <label class="custom-control-label" for="transplants">Transplantes</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="users">
+                        <label class="custom-control-label" for="users">Usuários</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer">
+             <button type="submit" class="btn btn-success float-right">Gerar</button>
+        </div>
+    </div>
+</div>
 {% endblock %}

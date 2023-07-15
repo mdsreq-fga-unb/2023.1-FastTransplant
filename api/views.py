@@ -3,10 +3,11 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import *
-from .util import new_log, check_compatibility
+from .util import new_log, check_compatibility, render_to_pdf
 from django.core.mail import send_mail
 from django.conf import settings
 from django.urls import reverse
+from django.views import View
 
 # 404 error handler
 def error_404(request, exception):
@@ -54,6 +55,7 @@ def index(request):
         'donators': Donator.objects.count(),
         'receivers': Receiver.objects.count(),
         'users': User.objects.count(),
+        'acceptance': Receiver.objects.filter(acceptance=True).count(),
     }
     return render(request, 'api/index.html', context)
 
@@ -228,11 +230,15 @@ def error(request):
 
 @login_required(login_url='login')
 def reports(request):
-    return render(request, 'api/reports.html')
+    if request.method == 'POST':
+            pass
+    else: return render(request, 'api/reports.html')
 
 @login_required(login_url='login')
 def results(request):
-    return render(request, 'api/results.html')
+    if request.method == 'POST':
+            pass
+    else: return render(request, 'api/results.html')
 
 @login_required(login_url='login')
 def users_create(request):
@@ -286,3 +292,24 @@ def users_delete(request, id):
         new_log("Usuários", f"{request.user.first_name} deletou um usuário do sistema.", request.user)
         return redirect('users_list')
     else: return render(request, 'api/users_delete.html', {'user': user})
+
+data = {
+	"donators": Donator.objects.all(),
+	"receivers": Receiver.objects.all(),
+    "users": User.objects.all(),
+    "acceptances": Acceptance.objects.all(),
+}
+
+class ViewPDF(View):
+	def get(self, request, *args, **kwargs):
+		pdf = render_to_pdf('api/pdf_template.html', data)
+		return HttpResponse(pdf, content_type='application/pdf')
+
+class DownloadPDF(View):
+	def get(self, request, *args, **kwargs):
+		pdf = render_to_pdf('api/pdf_template.html', data)
+		response = HttpResponse(pdf, content_type='application/pdf')
+		filename = "report.pdf"
+		content = "attachment; filename='%s'" %(filename)
+		response['Content-Disposition'] = content
+		return response
