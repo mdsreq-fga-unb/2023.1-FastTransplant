@@ -237,6 +237,7 @@ def reports(request):
 def results(request):
     return render(request, 'api/results.html')
 
+@login_required(login_url='login')
 def users_create(request):
     if request.method == 'POST':
         name = request.POST['name']
@@ -245,10 +246,10 @@ def users_create(request):
         username = request.POST['username']
         user = User.objects.create_user(first_name=name, email=email, category=category, username=username, password='0011')
         user.save()
-        new_acess = PasswordChangeRequest.objects.create(user=user)
-        new_acess.save()
+        user_request = PasswordChangeRequest.objects.create(user=user)
+        user_request.save()
         new_log("Usuários", f"{request.user} registrou um novo usuário.", request.user)
-        url = request.build_absolute_uri(reverse('password_reset')) + username + "/"
+        url = request.build_absolute_uri(reverse('password_reset', args=[user.username]))
         send_mail("Bem-vindo ao sistema FastTransplant!",
                 f"Prezado(a) {name},\n\nVocê foi adicionado recentemente ao sistema FastTransplant.\nSeu username é: {username}\nClique no link abaixo para definir a sua senha:{url}",
                 "settings.EMAIL_HOST_USER",
