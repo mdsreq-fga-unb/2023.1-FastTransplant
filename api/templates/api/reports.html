@@ -11,8 +11,9 @@
         <div class="card-header">
             <h3 class="card-title">Selecione</h3>
         </div>
+        <form action="{% url 'reports' %}" method="post" target="_blank">
+        {% csrf_token %}
         <div class="card-body">
-            <form action="#" method="post">
                 <div class="form-group">
                     <div class="custom-control custom-switch">
                         <input type="checkbox" class="custom-control-input" id="donators" name="donators">
@@ -33,15 +34,15 @@
                 </div>
                 <div class="form-group">
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="users">
+                        <input type="checkbox" class="custom-control-input" id="users" name="users">
                         <label class="custom-control-label" for="users">Usuários</label>
                     </div>
                 </div>
-            </form>
-        </div>
-        <div class="card-footer">
-             <button type="submit" class="btn btn-success float-right">Gerar</button>
-        </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-success float-right">Gerar</button>
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}

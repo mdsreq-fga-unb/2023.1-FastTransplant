@@ -231,7 +231,20 @@ def error(request):
 @login_required(login_url='login')
 def reports(request):
     if request.method == 'POST':
-            pass
+        donators = request.POST.get('donators', False)
+        receivers = request.POST.get('receivers', False)
+        transplants = request.POST.get('transplants', False)
+        users = request.POST.get('users', False)
+
+        data = {
+            "donators": Donator.objects.all() if donators else False,
+            "receivers": Receiver.objects.all() if receivers else False,
+            "transplants": Acceptance.objects.all() if transplants else False,
+            "users": User.objects.all() if users else False,
+            }
+        pdf = render_to_pdf('api/pdf_template.html', data)
+        return HttpResponse(pdf, content_type='application/pdf')
+        # return redirect('reports_pdf', args=[donators, receivers, transplants, users])
     else: return render(request, 'api/reports.html')
 
 @login_required(login_url='login')
@@ -301,15 +314,12 @@ data = {
 }
 
 class ViewPDF(View):
-	def get(self, request, *args, **kwargs):
-		pdf = render_to_pdf('api/pdf_template.html', data)
-		return HttpResponse(pdf, content_type='application/pdf')
-
-class DownloadPDF(View):
-	def get(self, request, *args, **kwargs):
-		pdf = render_to_pdf('api/pdf_template.html', data)
-		response = HttpResponse(pdf, content_type='application/pdf')
-		filename = "report.pdf"
-		content = "attachment; filename='%s'" %(filename)
-		response['Content-Disposition'] = content
-		return response
+    def get(self, donators, receivers, transplants, users, *args, **kwargs):
+        data = {
+            "donators": donators,
+            "receivers": receivers,
+            "transplants": transplants,
+            "users": users,
+        }
+        pdf = render_to_pdf('api/pdf_template.html', data)
+        return HttpResponse(pdf, content_type='application/pdf')
