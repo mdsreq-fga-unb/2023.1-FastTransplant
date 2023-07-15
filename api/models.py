@@ -46,6 +46,6 @@ class Acceptance(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     description = models.CharField(max_length=100)
 
-class FirstAccess(models.Model):
+class PasswordChangeRequest(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     is_allowed = models.BooleanField(default=True)

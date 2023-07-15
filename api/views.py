@@ -18,6 +18,8 @@ def recover(request):
         email = request.POST['email']
         user = User.objects.get(email=email)
         url = request.build_absolute_uri(reverse('password_reset', args=[user.username]))
+        user_request = PasswordChangeRequest.objects.create(user=user)
+        user_request.save()
         send_mail("FastTransplant - Recuperação de senha",
                 f"Prezado(a) {user.first_name},\n\nVocê solicitou a recuperação de senha no sistema FastTransplant.\nClique no link abaixo para redefini-la:{url}",
                 "settings.EMAIL_HOST_USER",
@@ -243,7 +245,7 @@ def users_create(request):
         username = request.POST['username']
         user = User.objects.create_user(first_name=name, email=email, category=category, username=username, password='0011')
         user.save()
-        new_acess = FirstAccess.objects.create(user=user)
+        new_acess = PasswordChangeRequest.objects.create(user=user)
         new_acess.save()
         new_log("Usuários", f"{request.user} registrou um novo usuário.", request.user)
         url = request.build_absolute_uri(reverse('password_reset')) + username + "/"
@@ -256,12 +258,18 @@ def users_create(request):
     else: return render(request, 'api/users_form.html')
 
 def password_reset(request, username):
+    context = {
+        'username': request.path.split('/')[-1]
+    }
     if request.method == 'POST':
-        pass
-        # password = request.POST['password']
-        # user = User.objects.get(username=username)
-        # user.set_password(password)
-        # user.save()
-        # new_log("Usuários", f"{request.user} definiu a senha do usuário {user.username}.", request.user)
-        # return redirect('users')
-    else: return render(request, 'api/password_reset.html')
+        password = request.POST['password']
+        password_confirm = request.POST['password_confirm']
+        user = User.objects.get(username=username)
+        if password == password_confirm:
+            user.set_password(password)
+            user.save()
+            user_request = PasswordChangeRequest.objects.get(user=user)
+            user_request.delete()
+            new_log("Usuários", f"{user.first_name} redefiniu a sua senha", user)
+            return redirect('login')
+    else: return render(request, 'api/password_reset.html', context)
