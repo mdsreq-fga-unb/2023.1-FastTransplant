@@ -1,0 +1,50 @@
+{% extends 'api/base.html' %}
+{% block title %}Registrar Parecer{% endblock %}
+{% block heading %}Registrar Parecer{% endblock %}
+{% block path %}
+<li class="breadcrumb-item">Home</li>
+<li class="breadcrumb-item">Compatibilidade</li>
+<li class="breadcrumb-item active">Registrar Parecer</li>
+{% endblock %}
+{% block content %}
+<form action="{% url 'transplant' donator_id receiver_id %}" method="post">
+    {% csrf_token %} 
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">Formulário</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="donatorID">DoadorID:</label>
+                        <input type="number" class="form-control" id="donatorID" name="donatorID" value="{{ donator_id }}" required disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="receiverID">ReceptorID:</label>
+                        <input type="number" class="form-control" id="receiverID" name="receiverID" value="{{ receiver_id }}" required disabled>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="decision">Decisão para o transplante:</label>
+                         <select class="custom-select form-control-border" id="decision" name="decision" required>
+                            <option value="">Selecione</option>
+                            <option value="Aceito">Aceitar</option>
+                            <option value="Recusado">Recusar</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Descrição:</label>
+                        <textarea class="form-control" id="description" name="description" rows="5" placeholder="Digite a razão para o aceite ou recusa." required></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+             <button type="submit" class="btn btn-success float-right">Salvar</button>
+            <a href="{% url 'compatibility' %}" class="btn btn-warning float-right" style="margin-right: 5px;">Cancelar</a>
+        </div>
+    </div>
+</form>
+{% endblock %}

@@ -25,6 +25,7 @@ urlpatterns = [
     path('recover/', views.recover, name='recover'),
     path('reports/', views.reports, name='reports'),
     path('results/', views.results, name='results'),
+    path('transplant/<int:donator_id>/<int:receiver_id>/', views.transplant, name='transplant'),
     path('users/', views.users_list, name='users_list'),
     path('users/create/', views.users_create, name='users_create'),
     path('users/<int:id>', views.users_read, name='users_read'),

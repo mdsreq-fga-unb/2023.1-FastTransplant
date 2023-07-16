@@ -324,3 +324,24 @@ def users_delete(request, id):
         new_log("Usuários", f"{request.user.first_name} deletou um usuário do sistema.", request.user)
         return redirect('users_list')
     else: return render(request, 'api/users_delete.html', {'user': user})
+
+@login_required(login_url='login')
+def transplant(request, donator_id, receiver_id):
+    context = {
+        "donator_id": donator_id,
+        "receiver_id": receiver_id,
+    }
+    if request.method == 'POST':
+        decision = request.POST['decision']
+        description = request.POST['description']
+        new_transplant = Acceptance.objects.create(
+            user=request.user,
+            donator=Donator.objects.filter(id=donator_id).first(),
+            receiver=Receiver.objects.filter(id=receiver_id).first(),
+            decision=decision,
+            description=description)
+        new_transplant.save()
+        new_log("Compatibilidade/Transplantes", f"{request.user.first_name} {request.user.last_name} registrou um novo transplante ({decision}).", request.user)
+        messages.success(request, 'Transplante registrado com sucesso!')
+        return redirect('compatibility')
+    else: return render(request, 'api/transplant.html', context)
