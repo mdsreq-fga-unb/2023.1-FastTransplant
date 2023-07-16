@@ -52,7 +52,7 @@
                     </div>
                     <div class="form-group">
                         <label for="abo">ABO:</label>
-                         <select class="custom-select form-control-border" id="abo" name="abo" value="{{ donator.abo }}" required>
+                         <select class="custom-select form-control-border" id="abo" name="abo" required>
                             <option value="">Selecione</option>
                             <option value="AB" {% if donator.abo == "AB" %}selected{% endif %}>AB</option>
                             <option value="A" {% if donator.abo == "A" %}selected{% endif %}>A</option>

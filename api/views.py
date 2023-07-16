@@ -151,7 +151,7 @@ def donators_create_pdf(request):
 @login_required(login_url='login')
 def donators_read(request, id):
     donator = Donator.objects.get(id=id)
-    new_log("Doadores", f"{request.user} consultou os dados do doador {donator.id}.", request.user)
+    new_log("Doadores", f"{request.user.first_name} {request.user.last_name} consultou os dados do doador {donator.id}.", request.user)
     return render(request, 'api/donator.html', {'donator': donator})
 
 @login_required(login_url='login')
@@ -171,13 +171,12 @@ def donators_update(request, id):
         return redirect('donators_list')
     return render(request, 'api/donators_form.html', {'donator': donator, 'page': 'Atualizar'})
 
-
 @login_required(login_url='login')
 def donators_delete(request, id):
     donator = Donator.objects.get(id=id)
     if request.method == 'POST':
         donator.delete()
-        new_log("Doadores", f"{request.user} deletou um doador do sistema.", request.user)
+        new_log("Doadores", f"{request.user.first_name} {request.user.last_name} deletou um doador do sistema.", request.user)
         messages.success(request, 'Doador deletado com sucesso.')
         return redirect('donators_list')
     else: return render(request, 'api/donators_delete.html', {'donator': donator})
@@ -199,7 +198,8 @@ def receivers_create(request):
         panel = request.POST['panel']
         receiver = Receiver.objects.create(name=name, rgct=rgct, position=position, abo=abo, age=age, panel=panel)
         receiver.save()
-        new_log("Receptores", f"{request.user} registrou um novo receptor.", request.user)
+        new_log("Receptores", f"{request.user.first_name} {request.user.last_name} registrou um novo receptor.", request.user)
+        messages.success(request, 'Receptor cadastrado com sucesso.')
         return redirect('receivers_list')
     else: return render(request, 'api/receivers_form.html', {'page': 'Adicionar'})
 
@@ -210,7 +210,7 @@ def receivers_create_pdf(request):
 @login_required(login_url='login')
 def receivers_read(request, id):
     receiver = Receiver.objects.get(id=id)
-    new_log("Receptores", f"{request.user} consultou os dados do receptor {receiver.id}.", request.user)
+    new_log("Receptores", f"{request.user.first_name} {request.user.last_name} consultou os dados do receptor {receiver.id}.", request.user)
     return render(request, 'api/receiver.html', {'receiver': receiver})
 
 @login_required(login_url='login')
@@ -224,7 +224,8 @@ def receivers_update(request, id):
         receiver.age = request.POST['age']
         receiver.panel = request.POST['panel']
         receiver.save()
-        new_log("Receptores", f"{request.user} atualizou os dados do receptor #{receiver.id}.", request.user)
+        new_log("Receptores", f"{request.user.first_name} {request.user.last_name} atualizou os dados do receptor #{receiver.id}.", request.user)
+        messages.success(request, 'Receptor atualizado com sucesso.')
         return redirect('receivers_list')
     return render(request, 'api/receivers_form.html', {'receiver': receiver, 'page': 'Atualizar'})
 
@@ -233,7 +234,8 @@ def receivers_delete(request, id):
     receiver = Receiver.objects.get(id=id)
     if request.method == 'POST':
         receiver.delete()
-        new_log("Receptores", f"{request.user} deletou um receptor do sistema.", request.user)
+        new_log("Receptores", f"{request.user.first_name} {request.user.last_name} deletou um receptor do sistema.", request.user)
+        messages.success(request, 'Receptor deletado com sucesso.')
         return redirect('receivers_list')
     else: return render(request, 'api/receivers_delete.html', {'receiver': receiver})
 
