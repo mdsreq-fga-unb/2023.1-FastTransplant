@@ -141,7 +141,7 @@
                   <p>Seu Perfil</p>
                 </a>
               </li>
-              {% if user.category == 2 %}
+              {% if request.user.category == 2 %}
                 <li class="nav-item">
                   <a href="{% url 'users_list' %}" class="nav-link" id="other_users">
                     <i class="far fa-circle nav-icon"></i>
@@ -151,7 +151,7 @@
               {% endif %}
             </ul>
           </li>
-          {% if user.category == 2 %}
+          {% if request.user.category == 2 %}
             <li class="nav-item">
               <a href="{% url 'reports' %}" class="nav-link" id="reports">
                 <i class="nav-icon fas fa-file"></i>

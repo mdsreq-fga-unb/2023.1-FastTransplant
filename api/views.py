@@ -137,7 +137,8 @@ def donators_create(request):
 
         donator = Donator.objects.create(report='', rgct=rgct, age=age, gender=gender, death_cause=death_cause, date=date, location=location, abo=abo, height=height)
         donator.save()
-        new_log("Doadores", f"{request.user} registrou um novo doador.", request.user)
+        new_log("Doadores", f"{request.user.first_name} {request.user.last_name} registrou um novo doador.", request.user)
+        messages.success(request, 'Doador cadastrado com sucesso.')
         return redirect('donators_list')
     else: return render(request, 'api/donators_form.html', {'page': 'Adicionar'})
 
@@ -165,7 +166,8 @@ def donators_update(request, id):
         donator.abo = request.POST['abo']
         donator.height = request.POST['height']
         donator.save()
-        new_log("Doadores", f"{request.user} atualizou os dados do doador #{donator.id}.", request.user)
+        new_log("Doadores", f"{request.user.first_name} {request.user.last_name} atualizou os dados do doador #{donator.id}.", request.user)
+        messages.success(request, 'Doador atualizado com sucesso.')
         return redirect('donators_list')
     return render(request, 'api/donators_form.html', {'donator': donator, 'page': 'Atualizar'})
 
@@ -176,6 +178,7 @@ def donators_delete(request, id):
     if request.method == 'POST':
         donator.delete()
         new_log("Doadores", f"{request.user} deletou um doador do sistema.", request.user)
+        messages.success(request, 'Doador deletado com sucesso.')
         return redirect('donators_list')
     else: return render(request, 'api/donators_delete.html', {'donator': donator})
     
