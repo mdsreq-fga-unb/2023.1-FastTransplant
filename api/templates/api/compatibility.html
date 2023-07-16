@@ -98,7 +98,9 @@
                     <label class="text-danger">INCOMPATÍVEL</label>
                   {% endif %}
                 </td>
-                <td><a href="{% url 'transplant' result.donator.id result.receiver.id %}">Registrar Parecer</a></td>
+                <td>
+                  <a  href="{% url 'transplant' result.donator.id result.receiver.id result.compat %}">Registrar Parecer</a>
+                </td>
               </tr>
             {% endfor %}  
           </tbody>

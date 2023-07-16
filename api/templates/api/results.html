@@ -40,7 +40,7 @@
                             <td>#{{ t.receiver.id }}</td>
                             <td>{{ t.date }}</td>
                             <td>{{ t.decision }}</td>
-                            <td><i class="fas fa-search"></i></td>
+                            <td><a href="{% url 'results_read' t.id %}"><i class="fas fa-search"></i></a></td>
                         </tr>
                         {% endfor %}
                     </tbody>

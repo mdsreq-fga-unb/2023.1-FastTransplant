@@ -1,0 +1,41 @@
+{% extends 'api/base.html' %}
+{% block title %}Detalhes do Transplante{% endblock %}
+{% block heading %}Detalhes do Transplante{% endblock %}
+{% block path %}
+<li class="breadcrumb-item">Home</li>
+<li class="breadcrumb-item">Compatibilidade</li>
+<li class="breadcrumb-item">Consultar Resultados</li>
+<li class="breadcrumb-item active">Detalhar</li>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="invoice p-3 mb-3">
+            <div class="row">
+                <div class="col-12">
+                    <h4>
+                    <i class="fas fa-microscope"></i> Transplantes
+                    <small class="float-right">TransplanteID #{{ acceptance.id }}</small>
+                    </h4>
+                </div>
+            </div>
+            <div class="row invoice-info">
+                <div class="col-sm-4 invoice-col">
+                    <b>Realizado por: </b>{{ acceptance.user.first_name }} {{ acceptance.user.last_name}}<br>
+                    <b>DoadorID: </b>#{{ acceptance.donator.id }}<br>
+                    <b>ReceptorID: </b>#{{ acceptance.receiver.id }}<br>
+                    <b>Resposta Prévia: </b>{% if acceptance.compatibility %}COMPATÍVEL{% else %}INCOMPATÍVEL{% endif %}<br>
+                    <b>Decisão: </b>{{ acceptance.decision }}<br>
+                    <b>Descrição: </b>{{ acceptance.description }}<br>
+                    <b>Data: </b>{{ acceptance.date }}<br>
+                </div>
+            </div>
+            <div class="row no-print">
+                <div class="col-12">
+                    <a href="{% url 'results' %}" class="btn btn-info float-right" style="margin-right: 5px;">Voltar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

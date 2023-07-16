@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('compatibility/', views.compatibility, name='compatibility'),
+    path('compatibility/transplant/<int:donator_id>/<int:receiver_id>/<str:compatibility>', views.transplant, name='transplant'),
     path('donators/', views.donators_list, name='donators_list'),
     path('donators/create/', views.donators_create, name='donators_create'),
     path('donators/create/pdf', views.donators_create_pdf, name='donators_create_pdf'),
@@ -25,7 +26,7 @@ urlpatterns = [
     path('recover/', views.recover, name='recover'),
     path('reports/', views.reports, name='reports'),
     path('results/', views.results, name='results'),
-    path('transplant/<int:donator_id>/<int:receiver_id>/', views.transplant, name='transplant'),
+    path('results/<int:id>', views.results_read, name='results_read'),
     path('users/', views.users_list, name='users_list'),
     path('users/create/', views.users_create, name='users_create'),
     path('users/<int:id>', views.users_read, name='users_read'),

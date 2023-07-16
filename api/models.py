@@ -41,12 +41,15 @@ class Log(models.Model):
 
 class Acceptance(models.Model):
     decision_choices = ('A', 'Aceito'), ('R', 'Rejeitado')
+    # compatibility_choices = ('C', 'Compatível'), ('I', 'Incompatível')
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     donator = models.ForeignKey(Donator, on_delete=models.CASCADE)
     receiver = models.ForeignKey(Receiver, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
-    decision = models.CharField(max_length=2, choices=decision_choices, blank=False, default='A')
+    compatibility = models.BooleanField(default=True)
+    # compatibility = models.CharField(max_length=1, choices=compatibility_choices, blank=False, default='C')
+    decision = models.CharField(max_length=1, choices=decision_choices, blank=False, default='A')
     description = models.CharField(max_length=100)
 
 class PasswordChangeRequest(models.Model):

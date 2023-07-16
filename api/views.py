@@ -62,7 +62,7 @@ def index(request):
         'donators': Donator.objects.count(),
         'receivers': Receiver.objects.count(),
         'users': User.objects.count(),
-        'acceptance': Receiver.objects.filter(acceptance=True).count(),
+        'acceptance': Acceptance.objects.filter(decision="Aceito").count(),
     }
     return render(request, 'api/index.html', context)
 
@@ -263,9 +263,17 @@ def reports(request):
 
 @login_required(login_url='login')
 def results(request):
+    context = {
+        "transplants": Acceptance.objects.all(),
+    }
     if request.method == 'POST':
             pass
-    else: return render(request, 'api/results.html')
+    else: return render(request, 'api/results.html', context)
+
+@login_required(login_url='login')
+def results_read(request, id):
+    acceptance = Acceptance.objects.get(id=id)
+    return render(request, 'api/results_read.html', {'acceptance': acceptance})
 
 @login_required(login_url='login')
 def users_create(request):
@@ -326,10 +334,11 @@ def users_delete(request, id):
     else: return render(request, 'api/users_delete.html', {'user': user})
 
 @login_required(login_url='login')
-def transplant(request, donator_id, receiver_id):
+def transplant(request, donator_id, receiver_id, compatibility):
     context = {
         "donator_id": donator_id,
         "receiver_id": receiver_id,
+        "compatibility": compatibility,
     }
     if request.method == 'POST':
         decision = request.POST['decision']
@@ -338,6 +347,7 @@ def transplant(request, donator_id, receiver_id):
             user=request.user,
             donator=Donator.objects.filter(id=donator_id).first(),
             receiver=Receiver.objects.filter(id=receiver_id).first(),
+            compatibility=compatibility,
             decision=decision,
             description=description)
         new_transplant.save()
