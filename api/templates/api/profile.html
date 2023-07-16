@@ -9,6 +9,19 @@
 {% endblock %}
 {% block content %}
 <div class="row">
+    <div class="col-12">
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-info alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-info"></i> Aviso</h5>
+                {{message}}
+            </div>
+          {% endfor %}
+        {% endif %}
+    </div>
+</div>
+<div class="row">
     <div class="col-md-4">
         <div class="card card-primary card-outline">
             <div class="card-body box-profile">
@@ -39,7 +52,7 @@
                 </li>
                 </ul>
             </div>
-            </div>
+        </div>
     </div>
     <div class="col-md-8">
         <div class="card">
@@ -57,43 +70,43 @@
                     <div class="form-group row">
                         <label for="name" class="col-sm-2 col-form-label">Nome:</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" id="name" name="first_name" placeholder="Nome" value="{{ user.first_name }}">
+                        <input type="text" class="form-control" id="name" name="first_name" placeholder="Nome" value="{{ user.first_name }}" required>
                     </div>
                     </div>
                     <div class="form-group row">
                         <label for="surname" class="col-sm-2 col-form-label">Sobrenome:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="surname" name="last_name" placeholder="Sobrenome" value="{{ user.last_name}}">
+                            <input type="text" class="form-control" id="surname" name="last_name" placeholder="Sobrenome" value="{{ user.last_name}}" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="username" class="col-sm-2 col-form-label">Username:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="{{ user.username}}">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username" value="{{ user.username}}" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="email" class="col-sm-2 col-form-label">Email:</label>
                         <div class="col-sm-10">
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ user.email }}">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ user.email }}" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="job" class="col-sm-2 col-form-label">Profissão:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="job" name="job" placeholder="Profissão" value="{{ user.job }}">
+                            <input type="text" class="form-control" id="job" name="job" placeholder="Profissão" value="{{ user.job }}" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="education" class="col-sm-2 col-form-label">Formação:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="education" name="education" placeholder="Formação" value="{{ user.education }}">
+                            <input type="text" class="form-control" id="education" name="education" placeholder="Formação" value="{{ user.education }}" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="location" class="col-sm-2 col-form-label">Localização:</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="location" name="location" placeholder="Localização" value="{{ user.location }}">
+                            <input type="text" class="form-control" id="location" name="location" placeholder="Localização" value="{{ user.location }}" required>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -108,19 +121,19 @@
                     <div class="form-group row">
                         <label for="current_password" class="col-sm-2 col-form-label">Senha atual:</label>
                         <div class="col-sm-10">
-                        <input type="password" class="form-control" id="current_password" placeholder="Senha atual">
+                        <input type="password" class="form-control" id="current_password" placeholder="Senha atual" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="new_password" class="col-sm-2 col-form-label">Nova Senha:</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="new_password" placeholder="Nova Senha">
+                            <input type="password" class="form-control" id="new_password" placeholder="Nova Senha" required>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="new_password_again" class="col-sm-2 col-form-label">Confirme:</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="new_password_again" placeholder="Repita a nova senha">
+                            <input type="password" class="form-control" id="new_password_again" placeholder="Repita a nova senha" required>
                         </div>
                     </div>
                     <div class="form-group row">

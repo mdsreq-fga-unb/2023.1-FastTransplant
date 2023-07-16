@@ -41,7 +41,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            new_log("Index", f"{request.user} entrou no sistema.", request.user)
+            new_log("Index", f"{request.user.first_name} {request.user.last_name} entrou no sistema.", request.user)
             return redirect('index')
         else:
             messages.error(request, 'Usuário ou senha inválidos.')
@@ -49,7 +49,7 @@ def login_view(request):
     else: return render(request, 'api/login.html')
 
 def logout_view(request):
-    new_log("Logout", f"{request.user} saiu do sistema.", request.user)
+    new_log("Logout", f"{request.user.first_name} {request.user.last_name} saiu do sistema.", request.user)
     logout(request)
     return redirect('login')
 
@@ -85,7 +85,8 @@ def profile(request):
         request.user.education = request.POST['education']
         request.user.location = request.POST['location']
         request.user.save()
-        new_log("Perfil", f"{request.user} atualizou seu perfil.", request.user)
+        new_log("Perfil", f"{request.user.first_name} {request.user.last_name} atualizou seu perfil.", request.user)
+        messages.success(request, 'Perfil atualizado com sucesso.')
         return redirect('profile')
     else: return render(request, 'api/profile.html', context)
 
@@ -110,6 +111,7 @@ def log(request):
     logs = Log.objects.all()
     if request.method == 'POST':
         logs.delete()
+        messages.success(request, 'Log apagado com sucesso.')
         return redirect('log')
     else: return render(request, 'api/log.html', {'logs': logs})
 
@@ -248,8 +250,8 @@ def reports(request):
             "users": User.objects.all() if users else False,
             }
         pdf = render_to_pdf('api/pdf_template.html', data)
+        new_log("Relatórios", f"{request.user.first_name} {request.user.last_name} gerou um relatório.", request.user)
         return HttpResponse(pdf, content_type='application/pdf')
-        # return redirect('reports_pdf', args=[donators, receivers, transplants, users])
     else: return render(request, 'api/reports.html')
 
 @login_required(login_url='login')
