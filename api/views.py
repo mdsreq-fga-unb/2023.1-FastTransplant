@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import *
@@ -21,17 +21,19 @@ def recover(request):
         user = User.objects.filter(email=email).first()
         if user is not None:
             url = request.build_absolute_uri(reverse('password_reset', args=[user.username]))
-            user_request = PasswordChangeRequest.objects.create(user=user)
-            user_request.save()
-            send_mail("FastTransplant - Recuperação de senha",
-                    f"Prezado(a) {user.first_name},\n\nVocê solicitou a recuperação de senha no sistema FastTransplant.\nClique no link abaixo para redefini-la:{url}\n\nAtenciosamente,\nEquipe 0011.",
-                    "settings.EMAIL_HOST_USER",
-                    [email],
-                    fail_silently=False)
-            messages.success(request, 'E-mail enviado com sucesso.')
+            if PasswordChangeRequest.objects.filter(user=user).first() is None:
+                user_request = PasswordChangeRequest.objects.create(user=user)
+                user_request.save()
+                send_mail("FastTransplant - Recuperação de senha",
+                        f"Prezado(a) {user.first_name},\n\nVocê solicitou a recuperação de senha no sistema FastTransplant.\nClique no link abaixo para redefini-la:{url}\n\nAtenciosamente,\nEquipe 0011.",
+                        "settings.EMAIL_HOST_USER",
+                        [email],
+                        fail_silently=False)
+                messages.success(request, 'E-mail enviado com sucesso.')
+            else: messages.error(request, 'E-mail já enviado.')
         else: messages.error(request, 'E-mail não cadastrado.')
         return redirect('recover')
-    else: return render(request, 'api/recover.html')
+    return render(request, 'api/recover.html')
 
 # Login and logout
 def login_view(request):
@@ -288,14 +290,19 @@ def password_reset(request, username):
     if request.method == 'POST':
         password = request.POST['password']
         password_confirm = request.POST['password_confirm']
-        user = User.objects.get(username=username)
-        if password == password_confirm:
+        user = User.objects.filter(username=username).first()
+        if password == password_confirm and user is not None:
             user.set_password(password)
             user.save()
             user_request = PasswordChangeRequest.objects.get(user=user)
             user_request.delete()
-            new_log("Usuários", f"{user.first_name} redefiniu a sua senha", user)
+            new_log("Usuários", f"{user.first_name} {user.last_name} redefiniu a sua senha", user)
+            messages.success(request, 'Senha redefinida com sucesso!')
             return redirect('login')
+        else: 
+            messages.error(request, 'As senhas não coincidem!')
+            previous_page = request.META.get('HTTP_REFERER')
+            return HttpResponseRedirect(previous_page)
     else: return render(request, 'api/password_reset.html', context)
 
 @login_required(login_url='login')
