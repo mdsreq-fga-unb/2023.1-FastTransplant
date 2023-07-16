@@ -8,6 +8,15 @@
 {% block content %}
 <div class="row">
     <div class="col-12">
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-info alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-info"></i> Aviso</h5>
+                {{message}}
+            </div>
+          {% endfor %}
+        {% endif %}
         <div class="callout callout-info">
             <h5>Sobre</h5>
             Abaixo encontram-se os receptores registrados no banco de dados. Você pode excluí-los, editá-los, ou consultar informações mais detalhadas sobre eles.

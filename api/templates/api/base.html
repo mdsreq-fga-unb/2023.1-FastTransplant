@@ -34,7 +34,7 @@
           <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">{{ request.user }}</a>
+          <a href="#" class="d-block">{{ request.user.first_name }} {{ request.user.last_name }}</a>
         </div>
       </div>
       <nav class="mt-2">
@@ -126,12 +126,6 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="{% url 'search' %}" class="nav-link" id="search">
-              <i class="nav-icon fas fa-search"></i>
-              <p>Pesquisar</p>
-            </a>
-          </li>
           <li class="nav-item" id="users_li">
             <a href="#" class="nav-link" id="users_a">
               <i class="nav-icon fas fa-users"></i>
@@ -147,20 +141,24 @@
                   <p>Seu Perfil</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{% url 'users' %}" class="nav-link" id="other_users">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Outros Usuários</p>
-                </a>
-              </li>
+              {% if request.user.category == 2 %}
+                <li class="nav-item">
+                  <a href="{% url 'users_list' %}" class="nav-link" id="other_users">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Outros Usuários</p>
+                  </a>
+                </li>
+              {% endif %}
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="{% url 'reports' %}" class="nav-link" id="reports">
-              <i class="nav-icon fas fa-file"></i>
-              <p>Relatórios</p>
-            </a>
-          </li>
+          {% if request.user.category == 2 %}
+            <li class="nav-item">
+              <a href="{% url 'reports' %}" class="nav-link" id="reports">
+                <i class="nav-icon fas fa-file"></i>
+                <p>Relatórios</p>
+              </a>
+            </li>
+          {% endif %}
           <li class="nav-item">
             <a href="{% url 'log' %}" class="nav-link" id="log">
               <i class="nav-icon fas fa-desktop"></i>
@@ -181,8 +179,6 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
                 {% block path %}{% endblock %}
-                <!-- <li class="breadcrumb-item">Home</li>
-                <li class="breadcrumb-item active">[Caminho]</li> -->
             </ol>
           </div>
         </div>
@@ -196,7 +192,7 @@
   </div>
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
-      <b>Versão</b> 1.0.0
+      <b>Versão</b> 2.0.0
     </div>
     <strong>REQ@Equipe 0011 - UnB/FGA</strong>
   </footer>

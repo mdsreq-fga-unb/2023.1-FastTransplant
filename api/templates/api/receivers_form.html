@@ -22,35 +22,35 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="name">Nome:</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Insira o nome" value="{{ receiver.name }}">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Insira o nome" value="{{ receiver.name }}" required>
                     </div>
                     <div class="form-group">
                         <label for="rgct">RGCT:</label>
-                        <input type="number" class="form-control" id="rgct" name="rgct" placeholder="Insira o RGCT" value="{{ receiver.rgct }}">
+                        <input type="number" class="form-control" id="rgct" name="rgct" placeholder="Insira o RGCT" value="{{ receiver.rgct }}" required>
                     </div>
                     <div class="form-group">
                         <label for="position">Posição:</label>
-                        <input type="number" class="form-control" id="position" name="position" placeholder="Insira a posição" value="{{ receiver.position }}">
+                        <input type="number" class="form-control" id="position" name="position" placeholder="Insira a posição" value="{{ receiver.position }}" required>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="abo">ABO:</label>
-                         <select class="custom-select form-control-border" id="abo" name="abo" value="{{ receiver.abo }}" required>
+                         <select class="custom-select form-control-border" id="abo" name="abo" required>
                             <option value="">Selecione</option>
-                            <option value="AB">AB</option>
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="O">O</option>
+                            <option value="AB" {% if receiver.abo == "AB" %}selected{% endif %}>AB</option>
+                            <option value="A" {% if receiver.abo == "A" %}selected{% endif %}>A</option>
+                            <option value="B" {% if receiver.abo == "B" %}selected{% endif %}>B</option>
+                            <option value="O" {% if receiver.abo == "O" %}selected{% endif %}>O</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="age">Idade:</label>
-                        <input type="number" class="form-control" id="age" name="age" placeholder="Insira a idade" value="{{ receiver.age }}">
+                        <input type="number" class="form-control" id="age" name="age" placeholder="Insira a idade" value="{{ receiver.age }}" required>
                     </div>
                     <div class="form-group">
                         <label for="panel">Panel:</label>
-                        <input type="number" class="form-control" id="panel" name="panel" placeholder="Insira o painel" value="{{ receiver.panel }}">
+                        <input type="number" class="form-control" id="panel" name="panel" placeholder="Insira o painel" value="{{ receiver.panel }}" required>
                     </div>
                 </div>
             </div>

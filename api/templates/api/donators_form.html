@@ -22,11 +22,11 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="rgct">RGCT:</label>
-                        <input type="number" class="form-control" id="rgct" name="rgct" placeholder="Insira o RGCT" value="{{ donator.rgct }}">
+                        <input type="number" class="form-control" id="rgct" name="rgct" placeholder="Insira o RGCT" value="{{ donator.rgct }}" required>
                     </div>
                     <div class="form-group">
                         <label for="age">Idade:</label>
-                        <input type="number" class="form-control" id="age" name="age" placeholder="Insira a idade" value="{{ donator.age }}">
+                        <input type="number" class="form-control" id="age" name="age" placeholder="Insira a idade" value="{{ donator.age }}" required>
                     </div>
                     <div class="form-group">
                         <label for="gender">Sexo:</label>
@@ -38,31 +38,31 @@
                     </div>
                     <div class="form-group">
                         <label for="death_cause">Causa do Óbito:</label>
-                        <textarea class="form-control" id="death_cause" name="death_cause" rows="5" placeholder="Insira a causa do óbito">{{ donator.death_cause }}</textarea>
+                        <textarea class="form-control" id="death_cause" name="death_cause" rows="5" placeholder="Insira a causa do óbito" required>{{ donator.death_cause }}</textarea>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="date">Data de oferta:</label>
-                        <input type="date" class="form-control" id="date" name="date" value="{{ donator.date }}">
+                        <input type="date" class="form-control" id="date" name="date" value="{{ donator.date }}" required>
                     </div>
                     <div class="form-group">
                         <label for="location">Localidade:</label>
-                        <input type="text" class="form-control" id="location" name="location" placeholder="Insira a localidade" value="{{ donator.location }}">
+                        <input type="text" class="form-control" id="location" name="location" placeholder="Insira a localidade" value="{{ donator.location }}" required>
                     </div>
                     <div class="form-group">
                         <label for="abo">ABO:</label>
-                         <select class="custom-select form-control-border" id="abo" name="abo" value="{{ donator.abo }}" required>
+                         <select class="custom-select form-control-border" id="abo" name="abo" required>
                             <option value="">Selecione</option>
-                            <option value="AB">AB</option>
-                            <option value="A">A</option>
-                            <option value="B">B</option>
-                            <option value="O">O</option>
+                            <option value="AB" {% if donator.abo == "AB" %}selected{% endif %}>AB</option>
+                            <option value="A" {% if donator.abo == "A" %}selected{% endif %}>A</option>
+                            <option value="B" {% if donator.abo == "B" %}selected{% endif %}>B</option>
+                            <option value="O" {% if donator.abo == "O" %}selected{% endif %}>O</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="height">Altura:</label>
-                        <input type="number" class="form-control" id="height" name="height" placeholder="Insira a altura" value="{{ donator.height }}">
+                        <input type="number" class="form-control" id="height" name="height" placeholder="Insira a altura" value="{{ donator.height }}" required>
                     </div>
                 </div>
             </div>

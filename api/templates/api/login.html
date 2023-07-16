@@ -13,15 +13,22 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Fast</b>Transplant</a>
+    <a href="#"><b>Fast</b>Transplant</a>
   </div>
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Entre para iniciar a sessão</p>
+      <p class="login-box-msg">
+        Entre para iniciar a sessão
+        {% if messages %}
+          {% for message in messages %}
+            <br><label class="text-info">{{ message }}</label>
+          {% endfor %}
+        {% endif %}
+      </p>
       <form action="{% url 'login' %}" method="post">
         {% csrf_token %}
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Nome de usuário" name="username" id="username">
+          <input type="text" class="form-control" placeholder="Nome de usuário" name="username" id="username" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -29,7 +36,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Senha" name="password" id="password">
+          <input type="password" class="form-control" placeholder="Senha" name="password" id="password" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>

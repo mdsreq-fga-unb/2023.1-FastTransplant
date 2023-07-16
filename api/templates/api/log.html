@@ -8,10 +8,19 @@
 {% block content %}
 <div class="row">
     <div class="col-12">
-    <div class="callout callout-info">
-        <h5>Sobre</h5>
-        Aqui você pode encontrar as principais atividades realizadas pelos usuários do sistema, para se manter ciente de tudo o que está acontecendo.
-    </div>
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-info alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-info"></i> Aviso</h5>
+                {{message}}
+            </div>
+          {% endfor %}
+        {% endif %}
+        <div class="callout callout-info">
+            <h5>Sobre</h5>
+            Aqui você pode encontrar as principais atividades realizadas pelos usuários do sistema, para se manter ciente de tudo o que está acontecendo.
+        </div>
     </div>
 </div>
 <div class="row">
@@ -24,7 +33,9 @@
             <div class="input-group-append">
                 <form action="{% url 'log' %}" method="post">
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-warning">Limpar</button>
+                    {% if user.category == 2 %}
+                        <button type="submit" class="btn btn-warning">Limpar</button>
+                    {% endif %}
                 </form>
             </div>
             </div>
@@ -35,7 +46,7 @@
             <thead>
             <tr>
                 <th>LogID</th>
-                <th>Usuário</th>
+                <th>Username</th>
                 <th>Data</th>
                 <th>Página</th>
                 <th>Descrição</th>
@@ -51,26 +62,10 @@
                         <td>{{ log.description }}</td>
                     </tr>
                 {% endfor %}
-            <!-- <tr>
-                <td>0001</td>
-                <td>Bruno Martins</td>
-                <td>23/06/2023</td>
-                <td>Doadores</td>
-                <td>O usuário "Bruno Martins" inseriu um novo doador através de um arquivo PDF.</td>
-            </tr>
-            <tr>
-                <td>0002</td>
-                <td>Bruno Martins</td>
-                <td>23/06/2023</td>
-                <td>Receptores</td>
-                <td>O usuário "Bruno Martins" deletou um registro do banco de receptores.</td>
-            </tr> -->
             </tbody>
         </table>
         </div>
-        <!-- /.card-body -->
     </div>
-    <!-- /.card -->
     </div>
 </div>
 {% endblock %}

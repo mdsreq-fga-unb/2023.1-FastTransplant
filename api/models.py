@@ -1,7 +1,13 @@
 from django.db import models
-from django.contrib.auth import get_user_model
+from django.contrib.auth.models import AbstractUser
 
-User = get_user_model()
+class User(AbstractUser):
+    job = models.CharField(max_length=100, blank=False, default='')
+    education = models.CharField(max_length=100, blank=False, default='')
+    location = models.CharField(max_length=100, blank=False, default='')
+    category = models.IntegerField(blank=False, default=1)
+    class Meta:
+        db_table = 'auth_user'
 
 class Donator(models.Model):
     gender_choices = ('M', 'Masculino'), ('F', 'Feminino')
@@ -34,7 +40,18 @@ class Log(models.Model):
     description = models.CharField(max_length=100)
 
 class Acceptance(models.Model):
+    decision_choices = ('A', 'Aceito'), ('R', 'Rejeitado')
+    # compatibility_choices = ('C', 'Compatível'), ('I', 'Incompatível')
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     donator = models.ForeignKey(Donator, on_delete=models.CASCADE)
     receiver = models.ForeignKey(Receiver, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
+    compatibility = models.BooleanField(default=True)
+    # compatibility = models.CharField(max_length=1, choices=compatibility_choices, blank=False, default='C')
+    decision = models.CharField(max_length=1, choices=decision_choices, blank=False, default='A')
     description = models.CharField(max_length=100)
+
+class PasswordChangeRequest(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    is_allowed = models.BooleanField(default=True)

@@ -1,0 +1,46 @@
+{% extends 'api/base.html' %}
+{% load static %}
+{% block title %}Detalhar Usuário{% endblock %}
+{% block heading %}Informações sobre {{user.first_name }}{% endblock %}
+{% block path %}
+<li class="breadcrumb-item">Home</li>
+<li class="breadcrumb-item">Usuários</li>
+<li class="breadcrumb-item active">{{ user.first_name }} {{ user.last_name }}</li>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+                <div class="text-center">
+                <img class="profile-user-img img-fluid img-circle"
+                        src="{% static 'dist/img/user4-128x128.jpg' %}"
+                        alt="User profile picture">
+                </div>
+                <h3 class="profile-username text-center">{{ user.first_name }} {{ user.last_name }}</h3>
+                <p class="text-muted text-center">@{{ user.username }} | {{ user.job }}</p>
+                <ul class="list-group list-group-unbordered mb-3">
+                <li class="list-group-item">
+                    <b>UsuárioID</b> <a class="float-right">#{{ user.id }}</a>
+                </li>
+                <li class="list-group-item">
+                    <b>Cadastro</b> <a class="float-right">{{ user.join_date }}</a>
+                </li>
+                <li class="list-group-item">
+                    <b>Email</b> <a class="float-right">{{ user.email }}</a>
+                </li>
+                <li class="list-group-item">
+                    <b>Último Acesso</b> <a class="float-right">{{ user.last_login }}</a>
+                </li>
+                <li class="list-group-item">
+                    <b>Formação</b> <a class="float-right">{{ user.education }}</a>
+                </li>
+                <li class="list-group-item">
+                    <b>Localização</b> <a class="float-right">{{ user.location }}</a>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

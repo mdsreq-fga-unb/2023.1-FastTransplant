@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <title>Relatório Semestral</title>
+    </head>
+    <body>
+        <h1>Relatório Semestral de Movimentação | FastTransplant</h1>
+        {% if donators %}
+            <hr>
+            <h2>Doadores</h2>
+            <table>
+                {% for donator in donators %}
+                <tr>
+                    <td>DoadorID: #{{ donator.id }}</td>
+                    <td>RGCT: {{ donator.rgct }}</td>
+                    <td>Idade: {{ donator.age }}</td>
+                    <td>Sexo: {{ donator.gender }}</td>
+                    <td>Localidade: {{ donator.location }}</td>
+                    <td>ABO: {{ donator.abo }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+        {% if receivers %}
+            <hr>
+            <h2>Receptores</h2>
+            <table>
+                {% for receiver in receivers %}
+                <tr>
+                    <td>ReceptorID: #{{ receiver.id }}</td>
+                    <td>RGCT: {{ receiver.rgct }}</td>
+                    <td>Idade: {{ receiver.age }}</td>
+                    <td>Posição: {{ receiver.position }}</td>
+                    <td>Painel: {{ receiver.panel }}</td>
+                    <td>ABO: {{ receiver.abo }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+        {% if transplants %}
+            <hr>
+            <h2>Aceitação e Recusa de Transplantes</h2>
+            <!-- <table>
+                    <tr>
+                        <td>{{address}}</td>
+                        <td>{{phone}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{city}} {{state}},</td>
+                        <td>{{email}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{zipcode}}</td>
+                        <td>{{website}}</td>
+                    </tr>
+            </table> -->
+        {% endif %}
+        <hr>
+        {% if users %}
+            <h2>Usuários</h2>
+            <table>
+                {% for user in users %}
+                <tr>
+                    <td>UsuárioID: #{{ user.id }}</td>
+                    <td>Nome: {{ user.first_name }} {{ user.last_name}}</td>
+                    <td>Username: {{ user.username }}</td>
+                    <td>Email: {{ user.email }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </body>
+</html>

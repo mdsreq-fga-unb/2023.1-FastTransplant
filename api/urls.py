@@ -4,6 +4,7 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('compatibility/', views.compatibility, name='compatibility'),
+    path('compatibility/transplant/<int:donator_id>/<int:receiver_id>/<str:compatibility>', views.transplant, name='transplant'),
     path('donators/', views.donators_list, name='donators_list'),
     path('donators/create/', views.donators_create, name='donators_create'),
     path('donators/create/pdf', views.donators_create_pdf, name='donators_create_pdf'),
@@ -14,6 +15,7 @@ urlpatterns = [
     path('log/', views.log, name='log'),
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
+    path('password_reset/<str:username>', views.password_reset, name='password_reset'),
     path('profile/', views.profile, name='profile'),
     path('receivers/', views.receivers_list, name='receivers_list'),
     path('receivers/create/', views.receivers_create, name='receivers_create'),
@@ -24,6 +26,9 @@ urlpatterns = [
     path('recover/', views.recover, name='recover'),
     path('reports/', views.reports, name='reports'),
     path('results/', views.results, name='results'),
-    path('search/', views.search, name='search'),
-    path('users/', views.users, name='users'),
+    path('results/<int:id>', views.results_read, name='results_read'),
+    path('users/', views.users_list, name='users_list'),
+    path('users/create/', views.users_create, name='users_create'),
+    path('users/<int:id>', views.users_read, name='users_read'),
+    path('users/delete/<int:id>', views.users_delete, name='users_delete'),
 ]

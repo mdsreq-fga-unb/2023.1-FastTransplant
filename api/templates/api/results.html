@@ -33,14 +33,16 @@
                     </tr>
                     </thead>
                     <tbody>
+                        {% for t in transplants %}
                         <tr>
-                            <td>Afonso</td>
-                            <td>#0011</td>
-                            <td>##1100</td>
-                            <td>13 jul 2023</td>
-                            <td>Recusado</td>
-                            <td><i class="fas fa-search"></i></td>
+                            <td>{{ t.user.username }}</td>
+                            <td>#{{ t.donator.id }}</td>
+                            <td>#{{ t.receiver.id }}</td>
+                            <td>{{ t.date }}</td>
+                            <td>{{ t.decision }}</td>
+                            <td><a href="{% url 'results_read' t.id %}"><i class="fas fa-search"></i></a></td>
                         </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>
