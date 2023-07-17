@@ -18,8 +18,8 @@ Figura 01 - Diagrama de casos de uso (Fonte: Autor, 2023)
 
 Segue abaixo as especificações de casos de uso que foram produzidas pelo grupo.
 
-[Buscar dados de um doador/receptor]()
+[Aprovar transplante](./especificacoes//aprovar-transplante.md)
 
-[Visualizar registro de transplantes]()
+[Buscar dados de um doador/receptor](./especificacoes//buscar-dados.md)
 
-[Aprovar transplante]()
+[Visualizar registro de transplantes](./especificacoes//visualizar-registro.md)
