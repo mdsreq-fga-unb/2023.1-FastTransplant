@@ -1,5 +1,6 @@
 # Tabela prorização de US para construção dos MVPs
 
+Para melhor visualização da tabela, acesse o [link](https://docs.google.com/spreadsheets/d/1ZKEHNyYo_hBxK9R2Sjs1BWzV-quIr_ydlqZIk3Ac8Ew/edit?usp=sharing) com a planilha de priorização
 
 |**MVP**|**Épico**|**US**|**Descrição resumida da US**|**Valor de negócio (1 - 5)**|**Viabilidade (1 - 5)**|**Complexidade (5 - 1)**|**Total**|
 | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |

@@ -23,14 +23,20 @@ theme:
     - navigation.top
     - tabs
 
-  nav:
+nav:
   - Home: index.md
   - Visão do Produto e Projeto:
     - Visão do Produto: visao-do-produto-e-projeto/visao-do-produto.md
     - Visão do Projeto: visao-do-produto-e-projeto/visao-do-projeto.md
     - Processo de Desenvolvimento: visao-do-produto-e-projeto/processo-de-desenvolvimento.md
     - Lições Aprendidas: visao-do-produto-e-projeto/licoes-aprendidas.md
-    - Registros Reuniões: visao-do-produto-e-projeto/ata-e-videos.md
+  - Registros de Reuniões: 
+    - Ata e vídeos: atas-e-videos/registros-reunioes.md
+    - Ata do dia 13/05: atas-e-videos/13-05.md 
+    - Ata do dia 30/05: atas-e-videos/30-05.md 
+    - Ata do dia 17/06: atas-e-videos/17-06.md 
+    - Ata do dia 29/06: atas-e-videos/29-06.md 
+    - Ata do dia 06/07: atas-e-videos/06-07.md 
   - Requisitos do Produto: 
     - Definition of Done: requisitos-do-produto/dod.md
     - Definition of Ready: requisitos-do-produto/dor.md
@@ -38,18 +44,18 @@ theme:
     - Backlog: requisitos-do-produto/productbacklog.md
   - Entregas das Unidades: 
     - Unidade 1:
-      - Pitch RAD: entregas/unidade%201/pitch-rad.md 
-      - Diagrama de Ishikawa: entregas/unidade%201/ishiwaka.md 
-      - Processo de ER: entregas/unidade%201/processo-ER.md
+      - Pitch RAD: entregas/unidade 1/pitch-rad.md 
+      - Diagrama de Ishikawa: entregas/unidade 1/ishiwaka.md 
+      - Processo de ER: entregas/unidade 1/processo-ER.md
     - Unidade 2:
-      - Mural: entregas/unidade%202/mural.md
-      - Tabela priorização de US: entregas/unidade%202/tabela priorizacao.md
+      - Mural: entregas/unidade 2/mural.md
+      - Tabela priorização de US: entregas/unidade 2/tabela priorizacao.md
     - Unidade 3:
-      - Canvas PBB: entregas/unidade%203/canvas-pbb.md
-      - SAFe: entregas/unidade%203/safe.md
+      - Canvas PBB: entregas/unidade 3/canvas-pbb.md
+      - SAFe: entregas/unidade 3/safe.md
     - Unidade 4:
-      - User Story Mapping: entregas/unidade%204/usm.md
-      - Casos de Uso: entregas/unidade%204/casos-de-uso.md
+      - User Story Mapping: entregas/unidade 4/usm.md
+      - Casos de Uso: entregas/unidade 4/casos-de-uso.md
     - Vídeos: entregas/videos/videos.md
 
     
