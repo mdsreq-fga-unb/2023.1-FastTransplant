@@ -7,48 +7,92 @@
 {% block content %}
 <div class="row">
     <div class="col-lg-3 col-6">
-    <div class="small-box bg-secondary">
-        <div class="inner">
-        <h3>{{ donators }}</h3>
-        <p>Doadores cadastrados</p>
+        <div class="small-box bg-secondary">
+            <div class="inner">
+                <h3>{{ donators }}</h3>
+                <p>Doadores cadastrados</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-bag"></i>
+            </div>
         </div>
-        <div class="icon">
-        <i class="ion ion-bag"></i>
-        </div>
-    </div>
     </div>
     <div class="col-lg-3 col-6">
-    <div class="small-box bg-secondary">
-        <div class="inner">
-        <h3>{{ receivers }}</h3>
-        <p>Receptores na fila</p>
+        <div class="small-box bg-secondary">
+            <div class="inner">
+                <h3>{{ receivers }}</h3>
+                <p>Receptores na fila</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+            </div>
         </div>
-        <div class="icon">
-        <i class="ion ion-stats-bars"></i>
-        </div>
-    </div>
     </div>
     <div class="col-lg-3 col-6">
-    <div class="small-box bg-secondary">
-        <div class="inner">
-        <h3>{{ acceptance }}</h3>
-        <p>Rins aceitos</p>
+        <div class="small-box bg-secondary">
+            <div class="inner">
+                <h3>{{ acceptance }}</h3>
+                <p>Rins aceitos</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-person-add"></i>
+            </div>       
         </div>
-        <div class="icon">
-        <i class="ion ion-person-add"></i>
-        </div>       
-    </div>
     </div>
     <div class="col-lg-3 col-6">
-    <div class="small-box bg-secondary">
-        <div class="inner">
-        <h3>{{ users }}</h3>
-        <p>Usuários cadastrados</p>
+        <div class="small-box bg-secondary">
+            <div class="inner">
+                <h3>{{ users }}</h3>
+                <p>Usuários cadastrados</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-pie-graph"></i>
+            </div>
         </div>
-        <div class="icon">
-        <i class="ion ion-pie-graph"></i>
-        </div>
-    </div>
     </div>
 </div>
+
+<!-- Adicionar o gráfico de barras -->
+<div class="row">
+    <div class="col-lg-6">
+        <canvas id="barChart"></canvas>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Dados do gráfico (substitua com seus dados reais)
+        var chartData = {
+            labels: ["Doadores cadastrados", "Receptores na fila", "Rins aceitos"],
+            datasets: [{
+                label: "Dados do gráfico",
+                data: [{{ donators }}, {{ receivers }}, {{ acceptance }}],  // Substitua com seus valores reais
+                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                borderColor: "rgba(75, 192, 192, 1)",
+                borderWidth: 1
+            }]
+        };
+
+        // Configurações do gráfico
+        var chartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+        // Criar o gráfico de barras
+        var barChart = new Chart(document.getElementById("barChart"), {
+            type: 'bar',
+            data: chartData,
+            options: chartOptions
+        });
+    });
+</script>
+
 {% endblock %}
+
