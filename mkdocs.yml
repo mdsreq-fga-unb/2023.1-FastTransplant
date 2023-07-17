@@ -56,6 +56,10 @@ nav:
     - Unidade 4:
       - User Story Mapping: entregas/unidade 4/usm.md
       - Casos de Uso: entregas/unidade 4/casos-de-uso.md
+      - Especificações de UCs: 
+        - Aprovar transplante: entregas/unidade 4/especificacoes/aprovar-transplante.md
+        - Buscar dados: entregas/unidade 4/especificacoes/buscar-dados.md
+        - Visualizar registro: entregas/unidade 4/especificacoes/visualizar-registro.md
     - Vídeos: entregas/videos/videos.md
 
     
