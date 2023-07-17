@@ -10,24 +10,25 @@ class User(AbstractUser):
         db_table = 'auth_user'
 
 class Donator(models.Model):
-    gender_choices = ('M', 'Masculino'), ('F', 'Feminino')
+    #gender_choices = ('M', 'Masculino'), ('F', 'Feminino')
     abo_choices = ('A', 'A'), ('B', 'B'), ('AB', 'AB'), ('O', 'O')
 
     report = models.FileField(upload_to='reports/', blank=True, default='')
-    rgct = models.BigIntegerField(blank=False, default=0)
-    date = models.CharField(blank=False, default='', max_length=10)
+    gender = models.CharField(blank=False, max_length=10)
+    rgct = models.CharField(blank=False, max_length=100)
+    date = models.DateField(blank=False)
     location  = models.CharField(max_length=100, blank=False, default='')
     abo = models.CharField(max_length=2, choices=abo_choices, blank=False, default='A')
     height = models.FloatField(blank=False, default=0)
     age = models.IntegerField(blank=False, default=0)
-    gender = models.CharField(max_length=1, choices=gender_choices, blank=False, default='M')
+    #gender = models.CharField(max_length=1, choices=gender_choices, blank=False, default='M')
     death_cause = models.TextField(blank=False, default='')
 
 class Receiver(models.Model):
     abo_choices = ('A', 'A'), ('B', 'B'), ('AB', 'AB'), ('O', 'O')
 
     name = models.CharField(max_length=100, blank=False, default='')
-    rgct = models.BigIntegerField(blank=False, default=0)
+    rgct = models.CharField(blank=False, max_length=100)
     position = models.IntegerField(blank=False, default=0)
     abo = models.CharField(max_length=2, choices=abo_choices, blank=False, default='A')
     age = models.IntegerField(blank=False, default=0)
@@ -48,7 +49,6 @@ class Acceptance(models.Model):
     receiver = models.ForeignKey(Receiver, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
     compatibility = models.BooleanField(default=True)
-    # compatibility = models.CharField(max_length=1, choices=compatibility_choices, blank=False, default='C')
     decision = models.CharField(max_length=1, choices=decision_choices, blank=False, default='A')
     description = models.CharField(max_length=100)
 

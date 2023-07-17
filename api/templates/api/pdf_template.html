@@ -38,21 +38,18 @@
         {% endif %}
         {% if transplants %}
             <hr>
-            <h2>Aceitação e Recusa de Transplantes</h2>
-            <!-- <table>
-                    <tr>
-                        <td>{{address}}</td>
-                        <td>{{phone}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{city}} {{state}},</td>
-                        <td>{{email}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{zipcode}}</td>
-                        <td>{{website}}</td>
-                    </tr>
-            </table> -->
+            <h2>Transplantes</h2>
+            <table>
+                {% for t in transplants %}
+                <tr>
+                    <td>Usuário: {{ t.user.first_name }} {{ t.user.last_name }}</td>
+                    <td>DoadorID: #{{ t.donator.id }}</td>
+                    <td>ReceptorID: #{{ t.receiver.id }}</td>
+                    <td>Decisão: {{ t.decision }}</td>
+                    <td>Data: {{ t.date }}</td>
+                </tr>
+                {% endfor %}
+            </table>
         {% endif %}
         <hr>
         {% if users %}

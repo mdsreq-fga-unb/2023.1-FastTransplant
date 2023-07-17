@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import *
-from .util import new_log, check_compatibility, render_to_pdf
+from .util import *
 from django.core.mail import send_mail
 from django.conf import settings
 from django.urls import reverse
@@ -144,8 +144,21 @@ def donators_create(request):
 
 @login_required(login_url='login')
 def donators_create_pdf(request):
-    if request.method == 'POST':
-        pass
+    if request.method == 'POST' and request.FILES['docpdf']:
+        donator_file = request.FILES['docpdf']
+        data = donator_pdf_to_text(donator_file)
+        donator = Donator.objects.create(
+            rgct=data['rgct'],
+            location=data['location'],
+            height=data['height'],
+            age=data['age'],
+            gender=data['gender'],
+            death_cause=data['death_cause'],
+            date=data['date'],
+        )
+        donator.save()
+        return redirect('donators_update', id=donator.id)
+        
     else: return render(request, 'api/donators_form_pdf.html')
 
 @login_required(login_url='login')
