@@ -120,12 +120,12 @@ def donator_pdf_to_text(file):
             causa_obito = ""
 
         data  = {
-            "rgct": rgct,
             "date": data_oferta,
             "location": localidade,
             "height": altura,
             "age": idade,
             "gender": sexo,
+            "rgct": rgct,
             "death_cause": causa_obito,
         }
         return data

@@ -14,7 +14,7 @@ class Donator(models.Model):
     abo_choices = ('A', 'A'), ('B', 'B'), ('AB', 'AB'), ('O', 'O')
 
     report = models.FileField(upload_to='reports/', blank=True, default='')
-    rgct = models.BigIntegerField(blank=False, default=0)
+    rgct = models.CharField(blank=False, max_length=100)
     date = models.CharField(blank=False, default='', max_length=10)
     location  = models.CharField(max_length=100, blank=False, default='')
     abo = models.CharField(max_length=2, choices=abo_choices, blank=False, default='A')
@@ -27,7 +27,7 @@ class Receiver(models.Model):
     abo_choices = ('A', 'A'), ('B', 'B'), ('AB', 'AB'), ('O', 'O')
 
     name = models.CharField(max_length=100, blank=False, default='')
-    rgct = models.BigIntegerField(blank=False, default=0)
+    rgct = models.CharField(blank=False, max_length=100)
     position = models.IntegerField(blank=False, default=0)
     abo = models.CharField(max_length=2, choices=abo_choices, blank=False, default='A')
     age = models.IntegerField(blank=False, default=0)

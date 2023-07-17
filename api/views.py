@@ -148,7 +148,7 @@ def donators_create_pdf(request):
         donator_file = request.FILES['docpdf']
         data = donator_pdf_to_text(donator_file)
         donator = Donator.objects.create(
-            # rgct=data['rgct'],
+            rgct=data['rgct'],
             location=data['location'],
             height=data['height'],
             age=data['age'],
