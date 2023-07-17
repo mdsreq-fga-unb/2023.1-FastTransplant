@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='donator',
             name='date',
-            field=models.DateTimeField(),
+            field=models.DateField(),
         ),
         migrations.AlterField(
             model_name='donator',
