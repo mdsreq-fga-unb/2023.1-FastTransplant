@@ -51,4 +51,4 @@ python3 manage.py runserver
 Você pode acessar a nosso backlog [aqui](https://docs.google.com/spreadsheets/d/1ZKEHNyYo_hBxK9R2Sjs1BWzV-quIr_ydlqZIk3Ac8Ew/edit?usp=sharing). Para informações mais detalhadas, como a Visão de Produto, Visão de Projeto, Processo de Desenvolvimento, etc., acesse a nossa [gitpages](https://mdsreq-fga-unb.github.io/2023.1-FastTransplant/).
 
 ## 5. Deploy
-Você pode acessar a API agora mesmo por meio da URL [fast-transplant.com](fast-transplant.com).
+Você pode acessar a API agora mesmo por meio da URL [https://fasttransplant-b3eda1075cbb.herokuapp.com/](https://fasttransplant-b3eda1075cbb.herokuapp.com/).
