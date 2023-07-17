@@ -38,15 +38,17 @@ theme:
     - Backlog: requisitos-do-produto/productbacklog.md
   - Entregas das Unidades: 
     - Unidade 1:
-      - Pitch RAD: entregas/unidade1/pitch-rad.md 
-      - Diagrama de Ishikawa: entregas/unidade1/ishiwaka.md 
-      - Processo de ER: entregas/unidade1/processo-ER.md
+      - Pitch RAD: entregas/unidade%201/pitch-rad.md 
+      - Diagrama de Ishikawa: entregas/unidade%201/ishiwaka.md 
+      - Processo de ER: entregas/unidade%201/processo-ER.md
     - Unidade 2:
-      - Mural: entregas/unidade2/mural.md
-      - Tabela priorização de US: entregas/unidade2/tabela priorizacao.md
+      - Mural: entregas/unidade%202/mural.md
+      - Tabela priorização de US: entregas/unidade%202/tabela priorizacao.md
     - Unidade 3:
-      - Canvas PBB: entregas/unidade3/canvas-pbb.md
-      - SAFe: entregas/unidade3/safe.md
+      - Canvas PBB: entregas/unidade%203/canvas-pbb.md
+      - SAFe: entregas/unidade%203/safe.md
+    - Unidade 4:
+      - User Story Mapping: entregas/unidade%204/usm.md
     - Vídeos: entregas/videos/videos.md
 
     
