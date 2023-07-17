@@ -30,11 +30,7 @@
                     </div>
                     <div class="form-group">
                         <label for="gender">Sexo:</label>
-                        <select class="form-control" id="gender" name="gender" value="{{ donator.gender }}">
-                        <option>Selecione</option>
-                        <option value="M" {% if donator.gender == 'M'%} selected {% endif %}>Masculino</option>
-                        <option value="F" {% if donator.gender == 'F'%} selected {% endif %}>Feminino</option>
-                        </select>
+                        <input type="text" class="form-control" id="gender" name="gender" placeholder="Insira o sexo do doador" value="{{ donator.gender }}">
                     </div>
                     <div class="form-group">
                         <label for="death_cause">Causa do Óbito:</label>

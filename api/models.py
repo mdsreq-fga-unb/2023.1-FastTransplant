@@ -10,17 +10,18 @@ class User(AbstractUser):
         db_table = 'auth_user'
 
 class Donator(models.Model):
-    gender_choices = ('M', 'Masculino'), ('F', 'Feminino')
+    #gender_choices = ('M', 'Masculino'), ('F', 'Feminino')
     abo_choices = ('A', 'A'), ('B', 'B'), ('AB', 'AB'), ('O', 'O')
 
     report = models.FileField(upload_to='reports/', blank=True, default='')
+    gender = models.CharField(blank=False, max_length=10)
     rgct = models.CharField(blank=False, max_length=100)
     date = models.DateTimeField(blank=False)
     location  = models.CharField(max_length=100, blank=False, default='')
     abo = models.CharField(max_length=2, choices=abo_choices, blank=False, default='A')
     height = models.FloatField(blank=False, default=0)
     age = models.IntegerField(blank=False, default=0)
-    gender = models.CharField(max_length=1, choices=gender_choices, blank=False, default='M')
+    #gender = models.CharField(max_length=1, choices=gender_choices, blank=False, default='M')
     death_cause = models.TextField(blank=False, default='')
 
 class Receiver(models.Model):

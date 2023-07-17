@@ -52,7 +52,7 @@ class Migration(migrations.Migration):
                 ('abo', models.CharField(choices=[('A', 'A'), ('B', 'B'), ('AB', 'AB'), ('O', 'O')], default='A', max_length=2)),
                 ('height', models.FloatField(default=0)),
                 ('age', models.IntegerField(default=0)),
-                ('gender', models.CharField(choices=[('M', 'Masculino'), ('F', 'Feminino')], default='M', max_length=1)),
+                ('gender', models.CharField(default='', max_length=10)),
                 ('death_cause', models.TextField(default='')),
             ],
         ),

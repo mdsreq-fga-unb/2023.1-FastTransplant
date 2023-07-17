@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='donator',
             name='gender',
-            field=models.CharField(choices=[('M', 'Masculino'), ('F', 'Feminino')], default='M', max_length=1),
+            field=models.CharField(max_length=10),
         ),
         migrations.AlterField(
             model_name='receiver',
