@@ -154,6 +154,7 @@ def donators_create_pdf(request):
             age=data['age'],
             gender=data['gender'],
             death_cause=data['death_cause'],
+            date=data['date'],
         )
         donator.save()
         return redirect('donators_update', id=donator.id)

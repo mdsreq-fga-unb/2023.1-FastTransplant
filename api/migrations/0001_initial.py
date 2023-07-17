@@ -47,7 +47,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('report', models.FileField(blank=True, default='', upload_to='reports/')),
                 ('rgct', models.CharField(default='', max_length=20)),
-                ('date', models.CharField(default='', max_length=10)),
+                ('date', models.DateTimeField(default=django.utils.timezone.now)),
                 ('location', models.CharField(default='', max_length=100)),
                 ('abo', models.CharField(choices=[('A', 'A'), ('B', 'B'), ('AB', 'AB'), ('O', 'O')], default='A', max_length=2)),
                 ('height', models.FloatField(default=0)),

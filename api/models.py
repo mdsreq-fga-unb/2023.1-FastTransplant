@@ -15,7 +15,7 @@ class Donator(models.Model):
 
     report = models.FileField(upload_to='reports/', blank=True, default='')
     rgct = models.CharField(blank=False, max_length=100)
-    date = models.CharField(blank=False, default='', max_length=10)
+    date = models.DateTimeField(blank=False)
     location  = models.CharField(max_length=100, blank=False, default='')
     abo = models.CharField(max_length=2, choices=abo_choices, blank=False, default='A')
     height = models.FloatField(blank=False, default=0)

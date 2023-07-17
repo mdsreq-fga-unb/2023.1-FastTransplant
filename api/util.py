@@ -60,7 +60,7 @@ def donator_pdf_to_text(file):
         correspondencia_data = re.search(r'Data: (\d{2}/\d{2}/\d{4})', parsed)
         if correspondencia_data:
             data_oferta = datetime.datetime.strptime(correspondencia_data.group(1), '%d/%m/%Y').date()
-            # print("Data da Oferta encontrada:", data_oferta)
+            print("Data da Oferta encontrada:", data_oferta)
         else:
             data_oferta = ""
 
