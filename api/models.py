@@ -48,7 +48,6 @@ class Acceptance(models.Model):
     receiver = models.ForeignKey(Receiver, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
     compatibility = models.BooleanField(default=True)
-    # compatibility = models.CharField(max_length=1, choices=compatibility_choices, blank=False, default='C')
     decision = models.CharField(max_length=1, choices=decision_choices, blank=False, default='A')
     description = models.CharField(max_length=100)
 
