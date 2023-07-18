@@ -36,3 +36,7 @@ Link do vídeo de validação do protótipo, o protótipo pode ser encontrado ne
 ## [Vídeo reunião 19/06 (validação MVP1)](https://youtu.be/BrrRnM34xC4)
 
 Link do vídeo de validação do MVP1.
+
+## [Vídeo reunião 18/07 (validação MVP2)](https://youtu.be/Nmt5oTmZ19w)
+
+Link do vídeo de validação do MVP2.
